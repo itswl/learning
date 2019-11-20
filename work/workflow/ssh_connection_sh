@@ -1,0 +1,36 @@
+
+from contextlib import contextmanager
+import paramiko
+from host import *
+from cmd_list import CMD
+from ssh_connection import *
+
+
+def backup_fi_files_sh():
+    with connection():
+        stdin, stdout, stderr = ssh.exec_command(CMD.A.value)
+        print(stdout.readlines())
+
+
+def uninstall():
+    with connection():
+        stdin, stdout, stderr = ssh.exec_command(CMD.B.value)
+        print(stdout.readlines())
+
+
+def rm_swiftinstalll():
+    with connection():
+        stdin, stdout, stderr = ssh.exec_command(CMD.C.value)
+        print(stdout.readlines())
+
+
+def second_step_sh():
+    with connection():
+        stdin, stdout, stderr = ssh.exec_command(CMD.D.value)
+        print(stdout.readlines())
+
+
+def second_cp_linux_step_sh():
+    with connection():
+        stdin, stdout, stderr = ssh.exec_command(CMD.E.value)
+        print(stdout.readlines())

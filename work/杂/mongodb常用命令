@@ -1,0 +1,185 @@
+1.mongo
+连入本机数据库
+
+2.mongo 10.66.66.126:27017
+连入ip地址为10.66.66.126的机器的数据库
+
+3.db / db.getName()
+查看当前数据库(db就是Database)
+
+4.use demo
+切换/创建数据库(demo为数据库名)
+
+5.show dbs
+查看所有数据库
+show tables
+查看所有表集合
+
+6.db.dropDatabase()
+删除当前操作的数据库
+
+7.db.copyDatabase("mydb", "temp", "127.0.0.1")
+从指定的机器上复制指定数据库数据到某个数据库，将本机的mydb的数据复制到temp数据库中
+
+8.db.repairDatabase()
+修复当前数据库
+
+9.db.version()
+当前db版本
+
+10.db.stats()
+显示当前db状态
+
+11.db.getMongo()
+查看当前db的链接机器地址
+
+12.数据库表 (Collection聚集集合 )
+	1)创建一个表
+	db.createCollection(“collName”, {size: 20, capped: 5, max: 100})
+
+	2)得到指定名称的表
+	db.getCollection("table")
+
+	3)查询当前db的所有表名的集合
+	db.getCollectionNames()
+
+	4)显示当前db所有表索引的状态
+	db.printCollectionStats()
+	
+13.查数据
+	1)查询某表中所有记录(如果数据太多分页查看输出 it 回车)
+	db.table.find() 
+	相当于：select * from table;
+	db.table.find().pretty()  查看的数据格式化
+	db.table.find({}, {id: 0, "name": 0})	查询表中所有数据,id和name字段不返回
+	db.table.find({}, {id: 1, "name": 1})	查询表中所有数据,id和name字段返回(默认返回)
+	
+	
+	2)查询某张表中的某个字段的重复数据(会过滤掉name字段中相同的数据)
+	db.table.distinct("name")
+	相当于: select distinct name from table;
+	
+	3)查询某张表中"name"="Bill"的数据
+	db.table.find({"name"="Bill"})
+	相当于：select * from table where name = Bill;
+
+	4)查询某张表中 id > 1 的数据 ($gt >, $lt <，$gte >=, $lte <=, $ne !=)
+	db.table.find({id: {$gt: 1}})
+	相当于: select * from table where id > 1;
+	
+	5)查询某张表中 id > 1 $$ id <= 5的数据
+	db.table.find({id: {$gt: 1,$lte: 5}})
+	相当于： select * from table where (id > 1 and id <= 5);
+	
+	6)查询某张表中 name 中包含 li 的数据
+	db.table.find({name: /li/})
+	相当于： select * from table where name like '%li%';
+	
+	7)查询某张表中 name 以 li 开头的数据
+	db.table.find({name: /^li/})
+	相当于： select * from table where name like 'li%';
+	
+	8)查询某张表中 name 以 li 结尾的数据
+	db.table.find({name: /li$/})
+	相当于：select * from table where name like '%li'; 
+	
+	9)查询指定列 name 和 work 的数据
+	db.table.find({}, {name: 1, work: 1})
+	相当于：select name, work from table;
+	
+	10)查询 id > 3 的指定列 name 和 work 的数据
+	db.table.find({id: {$gt: 3}}, {name: 1, work: 1})
+	想当于： select name, work from table where id > 3;
+	
+	11)按照 number 大小 升序和降序查询 (1表示升序, -1表示降序)
+	升序: db.table.find().sort({number: 1})	
+	降序：db.table.find().sort({number: -1})
+	
+	12)查询前三条数据
+	db.table.find().limit(3)
+	相当于：select top 3 * from table;
+	
+	13)查询前三条之后的数据
+	db.table.find().skip(3)
+	相当于：select * from table where id not in (select top 3 * from table);
+	
+	14)查询前三条之后的5条数据
+	db.table.find().limit(5).skip(3)
+	
+	15)查询 id=2 或者 id=5 的数据($or 或者, $in 包含, $nin 不包含)
+	db.table.find({$or: [{id: 2}, {id: 5}]})
+	相当于：select * from table where id = 2 or id = 5;
+	
+	16)查询第一条数据
+	db.table.findOne()
+	相当于：select top 1 * from table;
+	
+	17)查询 id >= 5 的数据的个数 (count() 查询数量)
+	db.table.find({id: {$gte: 5}}).count()
+	相当于：select count(*) from table where id >= 5;
+	
+	18)查询有 name字段 的数据的个数 
+	db.table.find({name: {$exists: true}}).count()
+	相当于: select count(name) from table;
+	
+14.索引
+索引是为了快速查找数据用的,主要是用来降低CPU成本消耗的。
+索引相当于排序，但与排序不同的是，排序是将原数据重新排列，改变了原数据的排列顺序。而索引只是建立一个顺序表，由这个顺序表指出数据的顺序，所以索引不改变原数据的排列顺序。
+MongoDB支持的索引：_id索引(默认建立)、单键索引、多键索引、复合索引、过期索引、全文索引、地理位置索引
+此外，排序可能升序或降序排列，而索引只有升序一种方式。
+	1)创建索引
+	db.table.ensureIndex({name: 1})
+	db.table.ensureIndex({name: 1, ts: -1})
+	 
+	2)查询当前聚集集合所有索引
+	db.table.getIndexes()
+	 
+	3)查看总索引记录大小
+	db.table.totalIndexSize()
+	 
+	4)读取当前集合的所有index信息
+	db.table.reIndex()
+	 
+	5)删除指定索引
+	db.table.dropIndex("name_1")
+	 
+	6)删除所有索引索引
+	db.table.dropIndexes()
+	
+15.添加数据
+	1)插入数据字段
+	db.table.insert({})
+	db.table.save({})
+	
+	2)导入数据表
+	mongoimport -d Lanyu -c shangpin --file D:\MongoDB\data\product.json --jsonArray
+	-d: 数据库
+	-c: 表名
+	--file: 数据文件地址
+	--jsonArray: 导入json文件专用,否则导入失败, json文件格式：[{},{},{},{},{}]
+	
+	
+	
+16.修改数据
+	1)修改表中条件为 name : "baiqi" 的数据的 字段 number($set设置)
+	db.table.update({name: "baiqi"}, {$set: {number: "111"}}, false, true)
+	第一个false表示不新增数据
+	相当于：update table set number = '111' where name = "baiqi";
+	
+	2)修改表中条件为 name : "mayun" 的数据 让 number = number + 111, id = id + 2($inc自增)
+	db.table.update({name: "mayun"}, {$inc: {number: 111, id: 2}}, false, true)
+	相当于：update table set number = number + 111, id = id + 2 where name = "mayun";
+	
+	3)综合上面两个修改
+	db.table.update({name: 'liuqiangdong'}, {$inc: {id: 3}, $set: {number: 113}}, false, true)
+	相当于： update table set id = id + 3, number = 113 where name = 'liuqiangdong';
+	
+17.删除数据
+	db.table.remove({_id: ObjectId("59a67e103cbae75d282fe46b")})
+	
+其他
+	1)查询之前的错误信息
+	db.getPrevError()
+	
+	2)清除错误记录
+	db.resetError()

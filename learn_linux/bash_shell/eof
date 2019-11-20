@@ -1,0 +1,8 @@
+```
+bash test1<<eof
+haha # 输入 haha
+eof
+bash test<<eof
+yes  # 输入 yes
+eof
+```
