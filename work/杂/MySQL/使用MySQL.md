@@ -3,8 +3,8 @@
 导入 eg: `mysql -u root -p < employees.sql`
 
 ## 连接到 MySQL
-; \g 输出水平显示
-、G 输出垂直显示
+ \g 输出水平显示
+ \G 输出垂直显示
 
 ```
 mssql -h localhost -P 3306 -u root -p  - 连接到mysql
