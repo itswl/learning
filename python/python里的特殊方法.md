@@ -59,18 +59,18 @@ AttributeError: 'SimpleInit' object has no attribute '_list'
 
 ## 算术运算,增量赋值
 
-1.  __add__(self.other)  +    __iadd__(self.other)  +=
-2.  __sub__(self.other)  -    __isub__(self.other)  -=
-3.  __mul__(self.other)  *    __imul__(self.other)  *=
-4.  __floordiv__(self.other) //   __ifloordiv__(self.other) //=
-5.  __div__(self.other) /   __idiv__(self.other) /=
-5.  __mod__(self.other)  %   __imod__(self.other)  %=
-6.  __and__(self.other)  &   __iand__(self.other)  &=
-7.  __or__(self.other)  |    __ior__(self.other)  |=
-8.  __xor__(self.other)  ^   __ixor__(self.other)  ^=
-9.  __pow__(self.other)  **   __ipow__(self.other)  **=
-10. __lshift__(self.other)  <<   __ilshift__(self.other)  <<=
-11. __rshift__(self.other)  >>   __irshift__(self.other)  >>=
+1.  `__add__(self.other)  +    __iadd__(self.other)  +=`
+2.  `__sub__(self.other)  -    __isub__(self.other)  -=`
+3.  `__mul__(self.other)  *    __imul__(self.other)  *=`
+4.  `__floordiv__(self.other) //   __ifloordiv__(self.other) //=`
+5.  `__div__(self.other) /   __idiv__(self.other) /=`
+5.  `__mod__(self.other)  %   __imod__(self.other)  %=`
+6.  `__and__(self.other)  &   __iand__(self.other)  &=`
+7.  `__or__(self.other)  |    __ior__(self.other)  |=`
+8.  `__xor__(self.other)  ^   __ixor__(self.other)  ^=`
+9.  `__pow__(self.other)  **   __ipow__(self.other)  **=`
+10. `__lshift__(self.other)  <<   __ilshift__(self.other)  <<=`
+11. `__rshift__(self.other)  >>   __irshift__(self.other)  >>=`
 ```
 from dataclasses import dataclass, field
 
@@ -90,33 +90,33 @@ print(a + b)  # [1, 2, 3, 4, 5, 4, 5, 6, 7, 8]
 ## 比较运算
 **python3.7 可使用dataclass**
 
-1. __eq__(self.other)  ==
-2. __ne__(self.other)  !=
-3. __lt__(self.other)  <
-4. __gt__(self.other)  >
-5. __le__(self.other)  <=
-6. __ge__(self.other)  >=
+1. `__eq__(self.other)  ==`
+2. `__ne__(self.other)  !=`
+3. `__lt__(self.other)  <`
+4. `__gt__(self.other)  >`
+5. `__le__(self.other)  <=`
+6. `__ge__(self.other)  >=`
 
 ## 类型转换
-1. __int__(self)      int
-2. __long__(self)     long
-3. __float__(self)    float
-4. __complex__(self)  complex
-5. __oct__(self)      octal (八进制)
-6. __hex__(self)      (十六进制)
-7. __index__(self)    转为int, 当对象被用于切片表达式
+1. `__int__(self)`      int
+2. `__long__(self)`     long
+3. `__float__(self) `   float
+4. `__complex__(self)`  complex
+5. `__oct__(self)`      octal (八进制)
+6. `__hex__(self)`      (十六进制)
+7. `__index__(self)`    转为int, 当对象被用于切片表达式
 
 ## 最常用
-1. __str__(self) 
-2. __repr__(self)  类似__str__().str()主要用于人类可读, repr() 机器可读
-3. __hash__(self)  定义了行为调用hash()
-4. __len__(self)   返回容器长度
-5. __getitem__(self) __setitem__(self)
-6. __delitem__(self)  定义一个删除一个项目的行为
-7. __iter__(self)    返回一个迭代容器
-8. __call__(self)    使实例能够像函数一样被调用，同时不影响实例本身的生命周期
+1. `__str__(self)` 
+2. `__repr__(self)`  类似`__str__()`  str()主要用于人类可读, repr() 机器可读
+3. `__hash__(self)`  定义了行为调用hash()
+4. `__len__(self)`   返回容器长度
+5. `__getitem__(self)` __setitem__(self)
+6. `__delitem__(self)`  定义一个删除一个项目的行为
+7. `__iter__(self)`    返回一个迭代容器
+8. `__call__(self)`    使实例能够像函数一样被调用，同时不影响实例本身的生命周期
 
-**__call__()不影响一个实例的构造和析构。但是__call__()可以用来改变实例的内部成员的值**
+**`__call__()`不影响一个实例的构造和析构。但是`__call__()`可以用来改变实例的内部成员的值**
 ```
 from dataclasses import dataclass
 
