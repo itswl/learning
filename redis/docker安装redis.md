@@ -8,7 +8,7 @@
 
 ```
 $ mkdir -p /opt/data/redis
-$ docker run -p 6379:6379 --name myredis -v /opt/data/redis/redis.conf:/etc/redis/redis.conf -v /opt/data/redis:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes --requirepass "lynch#1508"
+$ docker run -p 6379:6379 --name myredis -v /opt/data/redis/redis.conf:/etc/redis/redis.conf -v /opt/data/redis:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes 
 ```
 命令解释说明：
 -p 6379:6379  ##端口映射，:前表示主机部分，:后表示容器部分。
@@ -32,7 +32,7 @@ docker exec -ti 5f4c4cf5a5f5 redis-cli -h localhost -p 6379
 docker exec -ti 5f4c4cf5a5f5 redis-cli -h 127.0.0.1 -p 6379 
 docker exec -ti 5f4c4cf5a5f5 redis-cli -h 172.17.0.3 -p 6379
 
-// 注意，5f4c4cf5a5f5是容器运行的ip
+// 注意，5f4c4cf5a5f5是容器运行的id
 ```
 docker-compose.yml文件内容：
 ```
@@ -46,3 +46,6 @@ redis:
     - /opt/data/redis:/data
   command: redis-server --appendonly yes --requirepass "redis"
 ```
+
+7. 客户端连接
+docker run -it redis:latest redis-cli -h localhost -p 6379
