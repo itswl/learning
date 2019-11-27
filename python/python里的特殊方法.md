@@ -34,16 +34,26 @@ class SimpleInit:
         print(self._list)
 
 a = SimpleInit()
+a.__del__()
 '''
 输出如下：
-Exception ignored in: <function SimpleInit.__del__ at 0x0000017E8A409840>
-Traceback (most recent call last):
-  File "C:/Users/wwx705334/Desktop/python/Thread.py", line 15, in __del__
-AttributeError: 'SimpleInit' object has no attribute '_list'    执行时 __del__（self） 会自动调用
 __new__ is called   # __new__()创造实例， __init__()初始化实例
 __init__ is called
 self is:  <__main__.SimpleInit object at 0x0000017E8A132470>
 [10]
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-22-3666a9307d4d> in <module>
+----> 1 a.__del__()
+
+<ipython-input-21-cb926d3eed30> in __del__(self)
+     12         print(self._list)
+     13         del self._list
+---> 14         print(self._list)
+     15
+     16 a = SimpleInit()
+
+AttributeError: 'SimpleInit' object has no attribute '_list'
 '''
 ```
 
