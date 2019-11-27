@@ -8,7 +8,7 @@
 
 ```
 $ mkdir -p /opt/data/redis
-$ docker run -p 6379:6379 --name myredis -v /opt/data/redis/redis.conf:/etc/redis/redis.conf -v /opt/data/redis:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes 
+$ docker run -p 6379:6379 --name myredis -v /opt/data/redis/redis.conf:/etc/redis/redis.conf -v /opt/data/redis:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes --requirepass "passwd" 
 ```
 命令解释说明：
 -p 6379:6379  ##端口映射，:前表示主机部分，:后表示容器部分。
@@ -19,20 +19,21 @@ $ docker run -p 6379:6379 --name myredis -v /opt/data/redis/redis.conf:/etc/redi
 
 -d redis 表示后台启动redis
 redis-server /etc/redis/redis.conf  以配置文件启动redis，加载容器内的conf文件，最终找到的是挂载的目录/opt/data/redis/redis.conf
---appendonly yes 开启redis 持久化
+--appendonly yes 开启redis 持久化 --requirepass "passwd"  需要密码
+
 5. `docker ps` 查看容器启动情况
 6. 连接redis的几种方式
 
 ```
-docker exec -ti 5f4c4cf5a5f5 redis-cli
+docker exec -ti myredis redis-cli  # 或者用id
 
-docker exec -ti 5f4c4cf5a5f5 redis-cli a "redis passwd"
+docker exec -ti myredis redis-cli -a "passwd"
 
-docker exec -ti 5f4c4cf5a5f5 redis-cli -h localhost -p 6379 
-docker exec -ti 5f4c4cf5a5f5 redis-cli -h 127.0.0.1 -p 6379 
-docker exec -ti 5f4c4cf5a5f5 redis-cli -h 172.17.0.3 -p 6379
+docker exec -ti myredis redis-cli -h localhost -p 6379 
+docker exec -ti myredis redis-cli -h 127.0.0.1 -p 6379 
+docker exec -ti myredis redis-cli -h 172.17.0.3 -p 6379
 
-// 注意，5f4c4cf5a5f5是容器运行的id
+
 ```
 docker-compose.yml文件内容：
 ```
@@ -48,4 +49,7 @@ redis:
 ```
 
 7. 客户端连接
-docker run -it redis:latest redis-cli -h localhost -p 6379
+`docker run --name myredis-cli -it redis:latest  redis-cli -h  服务器 -p 6379`
+`ctrl + p + q `后台运行
+再次进入
+`docker exec -ti myredis-cli redis-cli -h 服务器 -p 6379`
