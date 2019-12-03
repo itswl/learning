@@ -63,10 +63,28 @@ class TestString:
         print(result)
         return result
 
+    def test_mset(self):
+        d = {
+            'name3' : 'user3',
+            'name4' : 'user4'
+        }
+        result = self.r.mset(d)
+        print(result)
+        return result
+
+    def test_mget(self):
+        l = ['name3', 'name4']
+        result = self.r.mget(l)
+        print(result)
+        return result
+
+
 def main():
     str_obj =  TestString()
     str_obj.test_set()
     str_obj.test_get()
+    str_obj.test_mset()
+    str_obj.test_mget()
 
 if __name__ == '__main__':
     main()
