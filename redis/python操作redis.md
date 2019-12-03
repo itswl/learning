@@ -45,17 +45,30 @@ pool = ConnectionPool.from_url(url)
 redis = StrictRedis(connection_pool=pool) 
 print(redis.get('name'))
 ```
-### 键操作
+## 类 改写
+```
+import redis
 
-### 字符串操作
+class TestString:
+    def __init__(self):
+        self.r = redis.StrictRedis(host='localhost', port=6379, db=0) 
+    
+    def test_set(self):
+        result = self.r.set('name2','weilai2') 
+        print(result)
+        return result
 
-### 列表操作
+    def test_get(self):
+        result = self.r.get('name2')
+        print(result)
+        return result
 
-### 集合操作
+def main():
+    str_obj =  TestString()
+    str_obj.test_set()
+    str_obj.test_get()
 
-### 有序集合操作
-
-### 散列操作
-
-### RedisDump
+if __name__ == '__main__':
+    main()
+```
 
