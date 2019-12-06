@@ -1,7 +1,7 @@
-```
 from pymongo import MongoClient
 from dataclasses import dataclass
 from bson.objectid import ObjectId
+
 
 @dataclass
 class Test_Mongo():
@@ -28,4 +28,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-```
+
