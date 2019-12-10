@@ -1,3 +1,12 @@
+# package
+1. package 是最基本的分发单位 和 工程管理中依赖关系的体现
+2. 每个 GO 语言源代码文件开头  都拥有一个 package 声明，表示源代码所属的代码包
+3. 要生成 GO 语言可执行程序，必须要有main 的 package包，且必须在该包下 有 main()函数
+4. 同一个路径下(文件夹) 只能存在 一个 package, 一个package 可以拆分为多个源文件组成
+
+
+
+
 ## import 原理
 此处需要插图
 
@@ -22,9 +31,9 @@
 1. 点操作` import( . "fmt" )` 
 可以省略前缀的包名，`fmt.Println("hello world") ` 可以省略的写成Println("hello world")
 
-2. 别名操作`import( f “fmt” )`   调用包函数时前缀变成了重命名的前缀，即f.Println("hello world")
+2. 别名操作`import( f "fmt" )`   调用包函数时前缀变成了重命名的前缀，即f.Println("hello world")
 
-3.  _操作`import ( "database/sql" _ "github.com/ziutek/mymysql/godrv" ) `
+3.  \_ 操作`import ( "database/sql" _ "github.com/ziutek/mymysql/godrv" ) `
 
-_操作其实只是引入该包。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()
+\_操作其实只是引入该包。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()
 
