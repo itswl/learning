@@ -1,0 +1,37 @@
+一般来说，要使用某个类的方法，需要先实例化一个对象再调用方法。
+
+而使用 `@staticmethod`或 `@classmethod`，就可以不需要实例化，直接类名.方法名()来调用。
+
+```
+class A:
+    bar = 1
+    def foo(self):
+        print 'foo'
+ 
+    @staticmethod
+    def static_foo():
+        print 'static_foo'
+        print A.bar
+ 
+    @classmethod
+    def class_foo(cls):
+        print 'class_foo'
+        print cls.bar
+        cls().foo()
+ 
+A.static_foo()
+A.class_foo()
+
+```
+如果在@staticmethod中要调用到这个类的一些属性方法，只能直接类名.属性名或类名.方法名。
+
+而@classmethod因为持有cls参数，可以来调用类的属性，类的方法，实例化对象等，避免硬编码
+
+
+这两个方法的用法是类似的，大多数情况下，classmethod也可以通过staticmethod代替，在通过类调用时，这两者对于调用者来说是不可区分的。
+
+这两者的区别在于，classmethod增加了一个对实际调用类的引用，这带来了很多方便的地方：
+
+1. 方法可以判断出自己是通过基类被调用，还是通过某个子类被调用
+2. 通过子类调用时，方法可以返回子类的实例而非基类的实例
+3. 通过子类调用时，方法可以调用子类的其他classmethod
