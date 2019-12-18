@@ -7,7 +7,7 @@
  \G 输出垂直显示
 
 ```
-mssql -h localhost -P 3306 -u root -p  - 连接到mysql
+msql -h localhost -P 3306 -u root -p  - 连接到mysql
 ALTER USER `root`@`localhost` IDENTIFIED BY 'password';  - 修改密码
 ```
 ### 创建数据库
