@@ -61,8 +61,8 @@ st:standard
 1. stdin < << (代码0)
 2. stout > >> (代码0)
 3. stderr 2> 2>> (代码2)
-4. >/dev/null ,2>/dev/null 丢弃输出
-5. > list 2>&1 (都输出 list)或 &> list
+4. `>/dev/null ,2>/dev/null` 丢弃输出
+5. `> list 2>&1 (都输出 list)或 &> list`
 
 ## 命令执行判断依据
 1. cmd1,cmd2,cmd3 依次执行
