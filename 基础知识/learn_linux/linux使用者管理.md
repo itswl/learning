@@ -30,3 +30,11 @@ cron
 ### SELinux
 **Security Enhanced Linux**
 
+
+## screen 
+```
+screen -dmS test   # 创建 test 窗口
+screen -r test     # 连接 test 窗口
+screen -d test 后  screen -r test   # 如果连接不上，这样连接
+screen -S test -X quit  # 删除 test 窗口
+```
