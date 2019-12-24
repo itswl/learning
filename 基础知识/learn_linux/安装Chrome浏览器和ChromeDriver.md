@@ -26,6 +26,7 @@ sudo apt-get install -f
 3、下载安装包
 
 `wget -N http://chromedriver.storage.googleapis.com/2.26/chromedriver_linux64.zip`
+
 要下载对应版本 http://chromedriver.storage.googleapis.com/index.html 
 
 4、解压缩+添加执行权限
