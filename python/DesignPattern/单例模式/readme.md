@@ -56,6 +56,12 @@ logger_object.info( 'hahahaha')
 **__init__函数并不是真正意义上的构造函数，__init__方法做的事情是在对象创建好之后初始化变量。真正创建实例的是__new__方法**
 ```
 class Singleton(object):
+    '''
+    实现__new__方法  
+    并在将一个类的实例绑定到类变量_instance上,  
+    如果cls._instance为None说明该类还没有实例化过,实例化该类,并返回  
+    如果cls._instance不为None,直接返回cls._instance  
+    '''
     _instance = None
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
