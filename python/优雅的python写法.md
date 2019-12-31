@@ -213,10 +213,14 @@ f'PI is {PI:.4f}'
 ### 将值赋值给未初始化的变量
 python3.8 “海象运算符”,  `:=`可在表达式内部为变量赋值
 ```
-if (my_variable := input()):
+if (my_variable := input()):  #  加（）方便查看
     print(f'input {my_variable}') #exists now
 else:
     print('input nothoing')
+```
+```
+while my_variable := input('please input:') != 'hello':
+    print('wrong')
 ```
 ### 仅限位置形参
 python3.8 
