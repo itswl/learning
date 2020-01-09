@@ -10,7 +10,45 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 2. 开启开发者模式，`WIN + S` 搜索 开发者设置，打开后选择 开发者模式
 3. `WIN + S` 搜索 store， 打开 Microsoft Store（微软应用商店）,eg: 搜索 Ubuntu ，选择 Ubuntu 18.04 LST 进行安装
 4. 待安装完成后，从应用中打开 Ubuntu 18.04 LST
+#### 优化
+1. 换源
 
+2. 打开自动切换到root用户
+
+当前用户目录下 `vi .bash_profile  `  添加以下内容
+```
+#.bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+
+ 
+
+         . ~/.bashrc
+
+fi
+
+sudo su - root
+
+PATH=$PATH:$HOME/bin
+
+export PATH
+```
+
+修改/etc/sudoers文件
+
+```
+su - root
+chmod u+w /etc/sudoers
+
+vi /etc/sudoers # 编辑文件，在root ALL=(ALL)ALL行下添加
+
+xxx ALL=(ALL) NOPASSWD: ALL
+
+# XXX为用户名。
+
+chmod u－w /etc/sudoers   # 回到文件的原权限！
+```
 ### 安装docker
 实际上是在Win10中安装Docker桌面服务，Linux子系统中安装客户端，连接Win10上的Docker服务，进行操作
 
