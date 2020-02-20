@@ -81,10 +81,13 @@ doker diff weilai  # 查看 weilai 文件的更改
 docker logs weilai # weilai 容器日志记录
 docker ps # 正在运行的 docker 容器
 docker ps -a # 列出所有容器
+docker ps -n 2  # 显示最近创建的2个容器
+docker ps -f status=exited # 查看停止的容器
 docker start weilai # 启动已有容器   docker run 是启动一个新的实例  
 docker attach weilai  # 切换到运行交互式容器
 docker exec  weilai ls -l # 进入容器 执行 ls -l 并回到宿主机，显示结果
 docker stop weilai  # 停止容器
+docker kill weilai # 强制停止（不建议）
 docker rm weilai # 删除容器
 docker rmi -f debian # 删除 debian  -f 强制删除
 
@@ -106,11 +109,21 @@ docker images --no-trunc # 显示完整的镜像信息
 `docker search redis` : 搜索 `redis` 镜像
 `docker pull redis:latest`  :  拉取 `redis:latest` 镜像 (TAG  默认为 latest
 
-删除多个：`docker rmi -f 镜像名称1:[TAG] 镜像名称2:[TAG]`
+删除多个镜像：`docker rmi -f 镜像名称1:[TAG] 镜像名称2:[TAG]`
 中间空格隔开
  
+删除全部镜像：`docker rmi -f $(docker images -qa)`
 
-删除全部：`docker rmi -f $(docker images -qa)`
+同样的
+
+强制删除 `docker rm -f 容器ID或name`
+
+删除多个容器 
+`docker rm -f 容器ID1  容器ID2 `
+ 
+删除所有容器
+
+`docker rm -f $(docker ps -qa)`
  
 
 
