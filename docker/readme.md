@@ -85,8 +85,8 @@ docker ps -n 2  # 显示最近创建的2个容器
 docker ps -f status=exited # 查看停止的容器
 docker start weilai # 启动已有容器   docker run 是启动一个新的实例  
 docker attach weilai  # 切换到运行交互式容器
-docker cp weilai:/tmp /home # 拷贝容器下的/tmp 到宿主机下的 /home 目录下
-docker cp weilai:/tmp /home
+docker cp weilai:/tmp /home # 拷贝容器下的/tmp文件夹  到宿主机下的 /home 目录下
+docker cp /home/test.sh  weilai:/tmp/weuilai.sh # 宿主机下的 /home 目录的 tets.sh 到容器下的/tmp文件夹 并改名为weilai.sh
 docker exec  weilai ls -l # 进入容器 执行 ls -l 并回到宿主机，显示结果
 docker start weilai # 查看容器进程
 docker stop weilai  # 停止容器
@@ -128,7 +128,3 @@ docker images --no-trunc # 显示完整的镜像信息
 
 `docker rm -f $(docker ps -qa)`
  
-
-
-
-
