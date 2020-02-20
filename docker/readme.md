@@ -28,10 +28,30 @@ chmod +x /tmp/install.sh
 sudo usermod -aG docker root
 service docker restart
 service docker status
+systemctl enable docker   # 开机自启
+docker info  #  获取docker信息
+docker --help # docker 帮助文档
+
 ```
 
 ## 快速确认
+
 `docker version `
+
+
+## 换源
+`vi /etc/docker`  目录下找到在`daemon.json`文件（没有就新建），将下面内容写入(阿里云)
+```
+{
+ "registry-mirrors": ["https://xxxxxxx.mirror.aliyuncs.com"]
+}
+```
+
+### 重启daemon
+`systemctl daemon-reload`
+ 
+### 重启docker服务
+`systemctl restart docker`
 
 ## 第一个镜像
 
@@ -40,7 +60,7 @@ docker run debian echo "hello world"
 ```
 
 1. **docker run**  : 启动容器
-2. **debian** : 使用的镜像名称  （在docker hub 进行搜素，并下载最新版）
+2. **debian** : 使用的镜像名称  （本地如果没有镜像，就在docker hub 进行搜素，并下载最新版）
 3. **echo "hello world"** : 执行的命令
 
 
@@ -58,17 +78,19 @@ docker run -i -t debian   #  也可以不加  /bin/bash
 docker run --name weilai -h docker -it debian /bin/bash  # -h 指定hostname --name 指定docker name
 docker inspect weilai # 获取 weilai 容器的更多信息
 doker diff weilai  # 查看 weilai 文件的更改
-docker logs weilai # weilai 容器里曾经发生的事情日志记录
+docker logs weilai # weilai 容器日志记录
 docker ps # 正在运行的 docker 容器
 docker ps -a # 列出所有容器
 docker start weilai # 启动已有容器   docker run 是启动一个新的实例  
 docker attach weilai  # 切换到运行交互式容器
+docker exec  weilai ls -l # 进入容器 执行 ls -l 并回到宿主机，显示结果
 docker stop weilai  # 停止容器
-docker rm weilai 
+docker rm weilai # 删除容器
+docker rmi debian # 删除 debian 镜像
 
 ```
 
 
-`docker run`；创建和启动一个新的容器实例，操作对象是镜像，选项较多，如果你要创建和启动一个容器，只能用run；
+`docker run` ：创建和启动一个新的容器实例，操作对象是镜像，选项较多，如果你要创建和启动一个容器，只能用run；
 `docker exec`: 在已运行的容器中，执行命令，操作对象是容器，如果你要进入已运行的容器，并且执行命令，用exec；
 `docker attach`: 同样操作的是已运行的容器，可以将本机标准输入（键盘输入）输到容器中，也可以将容器的输出显示在本机的屏幕上，如果你想查看容器运行过程中产生的标准输入输出，用attach；
