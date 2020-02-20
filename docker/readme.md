@@ -1,4 +1,4 @@
-## docker
+# docker
 **Linux 容器**不是模拟一个完整的操作系统，而是对进程进行隔离。对于容器里面的进程来说，它接触到的各种资源都是虚拟的，从而实现与底层系统的隔离
 
 Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接口
@@ -13,12 +13,12 @@ Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接
  
 Docker 从 17.03 版本之后分为 CE（Community Edition: 社区版） 和 EE（Enterprise Edition: 企业版）
 
-## docker 用途
+### docker 用途
 1. 简化环境搭建
 2. 简化运维工作量
 3. 微服务利器
 
-## docker 安装
+### docker 安装
 ` uname -r` 内核版本大于 `3.10`
 
 ```
@@ -34,12 +34,12 @@ docker --help # docker 帮助文档
 
 ```
 
-## 快速确认
+### 快速确认
 
 `docker version `
 
 
-## 换源
+### 换源
 `vi /etc/docker`  目录下找到在`daemon.json`文件（没有就新建），将下面内容写入(阿里云)
 ```
 {
@@ -47,13 +47,13 @@ docker --help # docker 帮助文档
 }
 ```
 
-### 重启daemon
+#### 重启daemon
 `systemctl daemon-reload`
  
-### 重启docker服务
+#### 重启docker服务
 `systemctl restart docker`
 
-## 第一个镜像
+### 第一个镜像
 
 ```
 docker run debian echo "hello world"
@@ -86,7 +86,7 @@ docker attach weilai  # 切换到运行交互式容器
 docker exec  weilai ls -l # 进入容器 执行 ls -l 并回到宿主机，显示结果
 docker stop weilai  # 停止容器
 docker rm weilai # 删除容器
-docker rmi debian # 删除 debian 镜像
+docker rmi -f debian # 删除 debian  -f 强制删除
 
 ```
 
@@ -94,3 +94,25 @@ docker rmi debian # 删除 debian 镜像
 `docker run` ：创建和启动一个新的容器实例，操作对象是镜像，选项较多，如果你要创建和启动一个容器，只能用run；
 `docker exec`: 在已运行的容器中，执行命令，操作对象是容器，如果你要进入已运行的容器，并且执行命令，用exec；
 `docker attach`: 同样操作的是已运行的容器，可以将本机标准输入（键盘输入）输到容器中，也可以将容器的输出显示在本机的屏幕上，如果你想查看容器运行过程中产生的标准输入输出，用attach；
+
+## docker 镜像
+`docker images` : 列出本机所有镜像
+```
+docker images -qa # -a 显示所有镜像（含中间层） -q 只显示镜像id
+docker images --digests # 显示镜像的摘要信息
+docker images --no-trunc # 显示完整的镜像信息 
+```
+
+`docker search redis` : 搜索 `redis` 镜像
+`docker pull redis:latest`  :  拉取 `redis:latest` 镜像 (TAG  默认为 latest
+
+删除多个：`docker rmi -f 镜像名称1:[TAG] 镜像名称2:[TAG]`
+中间空格隔开
+ 
+
+删除全部：`docker rmi -f $(docker images -qa)`
+ 
+
+
+
+
