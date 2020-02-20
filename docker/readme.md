@@ -13,7 +13,14 @@ Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接
  
 Docker 从 17.03 版本之后分为 CE（Community Edition: 社区版） 和 EE（Enterprise Edition: 企业版）
 
+## docker 用途
+1. 简化环境搭建
+2. 简化运维工作量
+3. 微服务利器
+
 ## docker 安装
+` uname -r` 内核版本大于 `3.10`
+
 ```
 curl https://get.docker.com > /tmp/install.sh
 chmod +x /tmp/install.sh
@@ -38,19 +45,20 @@ docker run debian echo "hello world"
 
 
 ```
-docker run -i -t debian /bin/bash
+docker run -i -t debian /bin/bash   
+docker run -i -t debian   #  也可以不加  /bin/bash
 ```
 
 
 1. **-i -t**  : 附有一个 tty 的交互会话     -i 支持stdin , -t 终端或伪终端
 2. **/bin/bash** : 获得一个 bash shell
-3. **退出 shell, 容器就会停止**
+3. **退出 shell, 容器就会停止**, **Ctrl+ P + Q 退出而不停止**
 
 ``` 
-docker run --name weilai -h docker -i -t debian /bin/bash  # -h 指定hostname --name 指定docker name
+docker run --name weilai -h docker -it debian /bin/bash  # -h 指定hostname --name 指定docker name
 docker inspect weilai # 获取 weilai 容器的更多信息
 doker diff weilai  # 查看 weilai 文件的更改
-docker logs weilai # weilai 容器里曾经发生的事情
+docker logs weilai # weilai 容器里曾经发生的事情日志记录
 docker ps # 正在运行的 docker 容器
 docker ps -a # 列出所有容器
 docker start weilai # 启动已有容器   docker run 是启动一个新的实例  
