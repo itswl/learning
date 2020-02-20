@@ -4,9 +4,15 @@
 Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接口
 
 **Docker** 将应用程序与该程序的依赖，打包在一个文件(**image**)里面。运行这个文件，就会生成一个虚拟容器。程序在这个虚拟容器里运行，就好像在真实的物理机上运行一样.
+
 容器还可以进行版本管理、复制、分享、修改，就像管理普通的代码一样。
 
 **image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例**
+
+容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。
+ 
+Docker 从 17.03 版本之后分为 CE（Community Edition: 社区版） 和 EE（Enterprise Edition: 企业版）
+
 ## docker 安装
 ```
 curl https://get.docker.com > /tmp/install.sh
