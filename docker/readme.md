@@ -128,3 +128,27 @@ docker images --no-trunc # 显示完整的镜像信息
 
 `docker rm -f $(docker ps -qa)`
  
+## 容器目录挂载
+创建容器的时候，将宿主机的目录与容器内的目录进行映射，实现宿主机和容器目录的双向数据自动同步；
+
+相比前面的 `cp` 更加简单方便
+
+### 语法
+`docker run -it -v  /宿主机目录:/容器目录 镜像名`
+ 
+**多目录挂载**
+`docker run -it -v /宿主机目录:/容器目录 -v /宿主机目录2:/容器目录2  镜像名`
+
+**挂载目录制度**
+`docker run -it -v  /宿主机目录:/容器目录:ro 镜像名`
+
+例如安装`redis`
+```
+$ mkdir -p /opt/data/redis
+$ docker run -p 6379:6379 --name myredis -v /opt/data/redis/redis.conf:/etc/redis/redis.conf -v /opt/data/redis:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes --requirepass "passwd" 
+```
+
+**注意**
+同步多级目录，可能会出现权限不足的提示；
+这是因为selinux把权限禁掉了，我们需要添加  --privileged=true 来解决挂载的目录没有权限的问题；
+
