@@ -47,3 +47,7 @@ screen -S test -X quit  # 删除 test 窗口
 
 
 `rsync`  同步
+
+`rsync -arv ./ back/`
+
+`rsync -arv ./ root@107.172.82.37:/root/back/`
