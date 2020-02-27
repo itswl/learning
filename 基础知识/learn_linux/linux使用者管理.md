@@ -5,6 +5,12 @@ useradd test
 passwd test
 
 userdel -r test # 连同文件夹一起删掉
+
+
+
+addgrop friends
+usermod -l
+addgrop -g/G
 ```
 
 ## 例行工作
