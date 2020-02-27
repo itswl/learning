@@ -152,3 +152,76 @@ $ docker run -p 6379:6379 --name myredis -v /opt/data/redis/redis.conf:/etc/redi
 同步多级目录，可能会出现权限不足的提示；
 这是因为selinux把权限禁掉了，我们需要添加  --privileged=true 来解决挂载的目录没有权限的问题；
 
+## docker 网络模式
+**docker** 默认使用的是 **bridge桥接网络模式**
+
+```
+# docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+d2a8ca970a9c        bridge              bridge              local
+e379fa1c8774        host                host                local
+3dfff078ede1        none                null                local
+```
+
+
+1. 自定义网络模式
+```
+# docker network create --subnet=172.20.0.0/16 extnetwork
+a2c75e5e49ea2bf16380befd73ac19be54e271f4ad1e39549c47290d1b9fa7f3
+# ifconfig
+br-a2c75e5e49ea: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.20.0.1  netmask 255.255.0.0  broadcast 172.20.255.255
+        ether 02:42:43:82:72:6e  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        inet6 fe80::42:d5ff:fe34:51d4  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:d5:34:51:d4  txqueuelen 0  (Ethernet)
+        RX packets 10771  bytes 601704 (587.6 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 10230  bytes 51101359 (48.7 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+...
+...
+...
+
+```
+2. 创建容器并指定ip  `--net extnetwork --ip 172.20.0.2`
+
+`extnetwork` 上文指定
+`172.20.0.1` 是网关,所以从2 分配
+
+```
+# docker run -p 8066:8066 -it --net extnetwork --ip 172.20.0.2 debian
+root@b4246dddf9f5:/#ip address
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+17: eth0@if18: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:14:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.20.0.2/16 brd 172.20.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+
+```
+也可以用 `docker inspect 容器id` 查看信息
+
+```
+# docker inspect b4246dddf9f5
+....
+ "NetworkID": "a2c75e5e49ea2bf16380befd73ac19be54e271f4ad1e39549c47290d1b9fa7f3",
+                    "EndpointID": "efa3cd2ed24010ba37bcf7183fba6cce7bc89f9327375f1148db1a6888005d6f",
+                    "Gateway": "172.20.0.1",
+                    "IPAddress": "172.20.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+
+....
+```
+3. 删除网络
+`docker network rm extnetwork`
+
