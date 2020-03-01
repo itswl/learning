@@ -1,0 +1,3227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/mysteryflower/article/details/101099678"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="report" content='{"pid":"blog"}'>
+    <meta name="referrer" content="always">
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+        <meta name="csdn-baidu-search"  content='{"autorun":true,"install":true,"keyword":"编程必备基础知识-计算机组成原理-01概述篇-笔记_网络_mysteryflower的专栏-CSDN博客"}'>
+    
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>编程必备基础知识-计算机组成原理-01概述篇-笔记_网络_mysteryflower的专栏-CSDN博客</title>
+    <meta name="description" content="章节介绍环境说明Linux环境：VMWare WorkStation + Linux虚拟机 编程语言网络">
+    <script src='//g.csdnimg.cn/tingyun/1.8.3/blog.js' type='text/javascript'></script>
+        
+                    <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-fe8e85a72c.min.css">
+                            <script type="application/ld+json">{"@context":"https:\/\/ziyuan.baidu.com\/contexts\/cambrian.jsonld","@id":"https:\/\/blog.csdn.net\/mysteryflower\/article\/details\/101099678","appid":1638831770136827,"title":"\u7f16\u7a0b\u5fc5\u5907\u57fa\u7840\u77e5\u8bc6-\u8ba1\u7b97\u673a\u7ec4\u6210\u539f\u7406-01\u6982\u8ff0\u7bc7-\u7b14\u8bb0_\u7f51\u7edc_mysteryflower\u7684\u4e13\u680f-CSDN\u535a\u5ba2","pubDate":"2019-09-21T10:29:33","upDate":"2019-09-21T10:56:04"}</script>
+    
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-c9d2f651cc.min.css">
+    
+<!--    自定义皮肤样式-->
+    
+    <script type="text/javascript">
+        var username = "mysteryflower";
+        var blog_address = "https://blog.csdn.net/mysteryflower";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/mysteryflower/article/details/101099678"
+        var blogUrl = "https://blog.csdn.net/";
+
+        var curSkin = "skin3-template";
+        // 收藏所需数据
+        var articleTitle = "编程必备基础知识-计算机组成原理-01概述篇-笔记";
+        var articleDesc = "章节介绍环境说明Linux环境：VMWare WorkStation + Linux虚拟机 编程语言网络";
+
+        var articleTitles = "编程必备基础知识-计算机组成原理-01概述篇-笔记_网络_mysteryflower的专栏-CSDN博客";
+        
+        var nickName = "mysteryflower";
+        var isCorporate = false;
+        var subDomainBlogUrl = "https://blog.csdn.net/"
+        var digg_base_url = "https://blog.csdn.net/mysteryflower";
+        var articleDetailUrl = "https://blog.csdn.net/mysteryflower/article/details/101099678";
+        var isShowThird = "1"
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <!--js引用-->
+            <script src="//g.csdnimg.cn/??fixed-sidebar/1.1.6/fixed-sidebar.js,report/1.4.2/report.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<body class="nodata " > 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging-e040f0c7c8.css">
+
+<script type="text/javascript">
+	var NEWS_FEED = function(){}
+</script>
+
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+<div class="main_father clearfix d-flex justify-content-center" style="height:100%;"> 
+    <div class="container clearfix" id="mainBox">
+        <div  class='space_container'></div>
+        <main>
+            <div class="blog-content-box">
+    <div class="article-header-box">
+        <div class="article-header">
+            <div class="article-title-box">
+                <h1 class="title-article">编程必备基础知识-计算机组成原理-01概述篇-笔记</h1>
+            </div>
+            <div class="article-info-box">
+                <div class="article-bar-top">
+                    <!--文章类型-->
+                    <span class="article-type type-2 float-left">转载</span>                                                                                                                                            <a class="follow-nickName" href="https://me.csdn.net/mysteryflower" target="_blank" rel="noopener">mysteryflower</a>
+                    <span class="time">最后发布于2019-09-21 10:56:04                    </span>
+                    <span class="read-count">阅读数 313</span>
+                    <a id='blog_detail_zk_collection' data-report-click='{"mod":"popu_823"}'>
+                        <svg class="icon">
+                            <use xlink:href="#icon-csdnc-Collection-G" ></use>
+                        </svg>
+                        收藏
+                    </a>
+                                    </div>
+                                <div class="up-time">发布于2019-09-21 10:29:33</div>
+                <div class="slide-content-box">
+                                                        <div class="tags-box artic-tag-box">
+                           <span class="label">分类专栏：</span>
+                                                                                             <a class="tag-link" target="_blank" rel="noopener"
+                                      href="https://blog.csdn.net/mysteryflower/category_9370186.html">
+                                       编程基础                                   </a>
+                                                                                  </div>
+                                                                                                       <div class="article-source-link">
+                            原文链接：<a href="https://www.cnblogs.com/sum-41/p/11492698.html" target="_blank" rel="noopener">https://www.cnblogs.com/sum-41/p/11492698.html</a>
+                        </div>
+                                    </div>
+                <div class="operating">
+                                                                <a class="href-article-edit slide-toggle">展开</a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <article class="baidu_pl">
+        <!--python安装手册开始-->
+                <!--python安装手册结束-->
+                <!--####专栏广告位图文切换开始-->
+                                    <!--####专栏广告位图文切换结束-->
+         <div id="article_content" class="article_content clearfix">
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-833878f763.css" />
+                            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-833878f763.css" />
+                <div class="htmledit_views" id="content_views">
+                                            <h3><span style="color:#f33b45;">章节介绍</span></h3>
+
+<p><img alt="" class="has" height="354" src="https://img-blog.csdnimg.cn/20190921102800612.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<h3><span style="color:#f33b45;">环境说明</span></h3>
+
+<ul><li>Linux环境：VMWare WorkStation + Linux虚拟机</li>
+	<li>编程语言：C++、Python</li>
+</ul><p> </p>
+
+<h1><a href="https://www.cnblogs.com/sum-41/p/11492698.html" rel="nofollow" id="cb_post_title_url">(01)：计算机的发展历史</a></h1>
+
+<p>计算机基础方面的知识，对于一些非科班出身的同学来讲，一直是他们心中的痛，而对于科班出身的同学，很多同学在工作之后，也意识到自身所学知识的不足与欠缺，想回头补补基础知识。关于计算机基础的课程很多，内容繁杂，但无论是相关书籍还是大学课程，都有点脱离工作。特别地，计算机基础知识体系庞杂，想要从零学习或者复习都耗时耗力。</p>
+
+<p>有鉴于此，本系列文章将带你更快的补足编程必备基础知识，涵盖计算机领域三大基础知识：计算机组成原理、操作系统、计算机网络。同时，挑出了作为程序员最应该掌握的那部分知识，摒弃了对程序员来说不那么重要的硬件相关知识。</p>
+
+<p>目的是：</p>
+
+<ul><li>帮助大家形成计算机知识的结构体系</li>
+	<li>帮助大家理解计算机底层原理</li>
+	<li>帮助大家在工作实践中借鉴其中的优秀设计</li>
+</ul><h2 id="计算机发展的四个阶段">1. 计算机发展的四个阶段</h2>
+
+<p>根据计算机使用的物理电子器件，将计算机的发展划分为如下四个阶段：</p>
+
+<p><img alt="" class="has" height="255" src="https://img-blog.csdnimg.cn/20190921103132598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>每一个阶段的计算机分别有如下特点。</p>
+
+<p><strong>第一个阶段：电子管计算机。</strong></p>
+
+<p>第二次世界大战是电子管计算机产生的催化剂。<span style="color:#f33b45;">英国为了解密德国海军的密文。</span></p>
+
+<p>身处现代的我们可能对电子管比较陌生，它长下面这样：</p>
+
+<p><img alt="" class="has" height="310" src="https://img-blog.csdnimg.cn/20190921103254877.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="387" /></p>
+
+<p>现在在我们的个人计算机中，基本看不到电子管的身影了。</p>
+
+<p>这个阶段的第二台（第一台不怎么出名），同时也是最著名的电子管计算机就是ENIAC。它的诞生源于二战，是一个庞然大物，其拥有1)18000多个电子管，2)运行耗电量150千瓦，3)重量达30吨，占地1500平方英尺。</p>
+
+<h3>埃尼阿克（ENIAC）</h3>
+
+<ul><li>战争使用了飞机和火箭</li>
+	<li>打得准则需要计算射击参数</li>
+	<li>射击参数需要几千次运算才能计算出来</li>
+</ul><p><span style="color:#f33b45;">没有计算机前，需要人手算</span></p>
+
+<p><img alt="" class="has" height="261" src="https://img-blog.csdnimg.cn/2019092110331444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="388" /></p>
+
+<p>因此，这一阶段的计算机有如下特点：</p>
+
+<ul><li>集成度小，空间占用大</li>
+	<li>功耗高，运行速度慢（相较于现代计算机）</li>
+	<li>操作复杂，更换程序需要接线</li>
+</ul><p><strong>第二个阶段：晶体管计算机</strong></p>
+
+<p>1948年，<span style="color:#f33b45;">贝尔实验室的三个科学家发明了晶体管</span>，此后的数年，晶体管给计算机带来了革命。相比电子管，晶体管拥有更小的体积，更低的能耗，更高的计算效率。如下图所示就是晶体管：</p>
+
+<p><img alt="" class="has" height="313" src="https://img-blog.csdnimg.cn/20190921103331249.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="313" /></p>
+
+<p>晶体管的发明是划时代的，1956年的诺贝尔物理奖，就授予了这三名科学家。</p>
+
+<p>这个时期，著名的晶体管计算机有两台，分别是诞生于MIT林肯实验室的全世界第一台晶体管计算机——TX-0和当时性能最高的晶体管计算机——PDP-1。</p>
+
+<p><img alt="" class="has" height="359" src="https://img-blog.csdnimg.cn/20190921205352994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p><img alt="" class="has" height="291" src="https://img-blog.csdnimg.cn/20190921205425550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>这一阶段的计算机有如下特点：</p>
+
+<ul><li>集成度相对较高，空间占用相对小</li>
+	<li>功耗相对较低，运行速度较快</li>
+	<li>操作相对简单，交互更加方便</li>
+</ul><p><strong>第三个阶段：集成电路计算机</strong></p>
+
+<p>当时，<span style="color:#f33b45;">德州仪器的工程师发明了集成电路（IC）</span>，把大量的电子元件集成到了单一的半导体芯片里面 。</p>
+
+<p>这个阶段的1)计算机变得更小、2)功耗变得更低、3)计算速度变得更快。<span style="color:#f33b45;">计算机具备进入千家万户的条件</span>。</p>
+
+<p>操作系统也诞生于这个阶段。</p>
+
+<p><img alt="" class="has" height="467" src="https://img-blog.csdnimg.cn/2019092110335110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="649" /></p>
+
+<p><img alt="" class="has" height="330" src="https://img-blog.csdnimg.cn/20190921205835627.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p><strong>第四个阶段：超大规模集成电路计算机</strong></p>
+
+<p>这个阶段，1）一个芯片集成了上百万的晶体管， <br />
+2）使得计算机的速度更快，体积更小，价格更低，更能被大众接受，<br />
+3）用途也丰富了起来，包括文本处理、表格处理、高交互的游戏与应用等。</p>
+
+<p><img alt="" class="has" height="270" src="https://img-blog.csdnimg.cn/20190921205923500.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>PC的时代来临了。</p>
+
+<p>这个阶段不得不提一个人——乔布斯。当时其发明了两款个人计算机Apple和Apple二代，在家庭和学校非常受欢迎，成为这个时代个人计算机的佼佼者。</p>
+
+<p><img alt="" class="has" height="335" src="https://img-blog.csdnimg.cn/20190921103407226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p><strong>第五个阶段：未来的计算机</strong></p>
+
+<p><img alt="" class="has" height="308" src="https://img-blog.csdnimg.cn/20190921210123815.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>生物计算机</p>
+
+<ul><li>体积小，效率高</li>
+	<li>不易损坏，生物级别的自动修复</li>
+	<li>不受信号干扰，无热损耗</li>
+</ul><p> <img alt="" class="has" height="310" src="https://img-blog.csdnimg.cn/20190921210331833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>量子计算机</p>
+
+<ul><li>2013年5月，谷歌和NASA发布D-Wave-Two</li>
+	<li>2017年5月，中国科学院宣布制造出光量子计算机</li>
+	<li>2019年1月，IBM展示了世界首款商业化量子计算机</li>
+</ul><p>腾讯在2017年就组建了量子实验室</p>
+
+<p><img alt="" class="has" height="259" src="https://img-blog.csdnimg.cn/20190921210655241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="635" /><br />
+阿里巴巴在2017年成立了达摩院<br />
+ <img alt="" class="has" height="256" src="https://img-blog.csdnimg.cn/20190921210715746.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="577" /></p>
+
+<h2 id="微型计算机的发展历史">2. 微型计算机的发展历史</h2>
+
+<p>微型计算机的发展通常以CPU的发展为基点。<strong><span style="color:#f33b45;">受限于性能</span></strong></p>
+
+<p><img alt="" class="has" height="252" src="https://img-blog.csdnimg.cn/20190921103428489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>关于CPU的性能，有一个著名的定律——<span style="color:#f33b45;">摩尔定律：集成电路的性能，每18~24个月就会提升一倍</span>。</p>
+
+<p>进入21世纪后，随着芯片的发展，芯片里面的电路越来越复杂，越来越密集，并且热损耗也越来越高，我们没有办法解决这样的问题，因此，该定律慢慢失效了。</p>
+
+<p>受限于单核CPU的性能瓶颈，于是发展出了多核CPU。</p>
+
+<p><img alt="" class="has" height="241" src="https://img-blog.csdnimg.cn/20190921103447780.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p> </p>
+
+<p> </p>
+
+<h1><a href="https://www.cnblogs.com/sum-41/p/11492921.html" rel="nofollow">(02)：计算机的分类</a></h1>
+
+<h1 id="超级计算机">1.超级计算机</h1>
+
+<p>超级计算机是1）功能最强、运算速度最快、存储容量最大的计算机，2）多用于国家高科技领域和尖端技术研究，包括天气预报、海洋监测、生物制药、科学计算、核聚变核裂变模拟、加密解密算法的运算、军事战争模拟等等。</p>
+
+<p>用来衡量超级计算机运算速度的单位是TFlop/s，<span style="color:#f33b45;">1TFlop/s = 每秒一万亿次浮点计算</span>。</p>
+
+<p><span style="color:#f33b45;">Inter(R) Core(TM) i7-6700K CPU @ 4.00GHZ 44.87 GFlop/s<br />
+44.87 GFlop/s = 0.04487TFlop/s</span></p>
+
+<p>截至2018年11月，全世界超级计算机排名前三的见下图。</p>
+
+<p><img alt="" class="has" height="166" src="https://img-blog.csdnimg.cn/2019092110373921.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>为什么神威太湖之光的处理器个数远超Summit，但算力还没有Summit高呢？这是因为神威太湖之光采用的全部是拥有自主知识产权的国产芯片。</p>
+
+<p>截至2018年11月，下面是中国范围内排名前三的超级计算机。</p>
+
+<p><img alt="" class="has" height="197" src="https://img-blog.csdnimg.cn/20190921211247804.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>天河二号在广州</p>
+
+<p><img alt="" class="has" height="412" src="https://img-blog.csdnimg.cn/2019092121133442.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="505" /></p>
+
+<p><img alt="" class="has" height="288" src="https://img-blog.csdnimg.cn/20190921103834388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="426" /></p>
+
+<h1 id="大型计算机">2.大型计算机</h1>
+
+<p>大型计算机，1）又称大型机、大型主机、主机等，<br />
+2）具有高性能，可处理大量数据与复杂的运算，像银行金融交易的数据、证券交易所的数据处理、人口普查、企业资源规划等一些项目里面都会使用到大型计算机，<br />
+3）在大型机市场领域，IBM占据着很大的份额。（COBOL编程语言）</p>
+
+<p><img alt="" class="has" height="312" src="https://img-blog.csdnimg.cn/20190921103903179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="322" /></p>
+
+<p>IBM Z9</p>
+
+<ul><li>NASA 最后一台大型机</li>
+	<li>Red Hat Enterprise Linux</li>
+	<li>大型机造价高昂</li>
+</ul><p>提到大型机，不得不提到的就是——去“IOE”行动。<br />
+什么是IOE？<br />
+I——IBM，是服务器提供商，<br />
+O——Oracle，是数据库软件提供商，<br />
+E——EMC，则是存储设备提供商。</p>
+
+<p>1、去“IOE”是阿里巴巴提出的概念<br />
+2、代表了高维护费用的存储系统<br />
+3、不够灵活，伸缩性弱</p>
+
+<p>去“IOE”运动，阿里2008年提出 =》 阿里云2009年成立</p>
+
+<p>三者构成了一个从软件到硬件的企业数据库系统。由这三驾马车构成的数据库系统在当时几乎占领了全球大部分商用数据库系统市场份额。除阿里巴巴这样需要大量数据运算的电商企业，其他如石油、金融行业也广泛地使用这套系统。</p>
+
+<p>什么是去"IOE"？</p>
+
+<p>它是阿里巴巴提出的概念。其本意是，在阿里巴巴的IT架构中，去掉IBM的小型机、Oracle数据库、EMC存储设备，代之以自己在开源软件基础上开发的系统。</p>
+
+<p>为什么要去"IOE"？</p>
+
+<p>因为IOE代表了高维护费用的存储系统，仅Oracle系统三年的销售价格就达到了八位数，且IOE系统伸缩性差，扩展性差，无法满足阿里日益增长的业务需要。</p>
+
+<h1 id="迷你计算机服务器">3.迷你计算机（服务器）</h1>
+
+<p>迷你计算机，也称为1）小型机、普通服务器，2）不需要特殊的空调场所，3）具备不错的算力，可以完成较复杂的运算。它不像之前的超级计算机和大型计算机，很多公司（像<span style="color:#f33b45;">华为、浪潮、联想</span>等）都可以制造。现代背景下，很多公司已经将传统的大型机替换成了<span style="color:#f33b45;">普通服务器，成为大规模企业计算的中枢</span>。云服务厂商（比如阿里云、腾讯云等），也是使用普通服务器来构建自己的云服务和数据中心的。</p>
+
+<p><img alt="" class="has" height="428" src="https://img-blog.csdnimg.cn/20190921103918380.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="598" /></p>
+
+<h1 id="工作站">4.工作站</h1>
+
+<p>工作站是1）高端的通用微型计算机，提供比个人计算机更强大的性能，<br />
+2）类似于普通台式电脑，体积较大，但性能强劲，主要用于图像处理、动画设计、计算机辅助设计及制造CAD/CAM等领域。</p>
+
+<p><img alt="" class="has" height="473" src="https://img-blog.csdnimg.cn/20190921103933720.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="493" /></p>
+
+<h1 id="微型计算机">5.微型计算机</h1>
+
+<p>微型计算机，又称为个人计算机，是最普通的一类计算机，可以分为台式机、笔记本电脑、一体机。</p>
+
+<p>麻雀虽小，五脏俱全。<br /><span style="color:#f33b45;">从构成的本质上来讲，个人计算机与前面的分类无异</span>，都包含了计算机所必备的一些硬件。<br />
+所以，我们在学习计算机的时候，只要对个人计算机进行研究，就能触类旁通，来理解这里面所有的计算机分类了。因为我们对个人计算机相关理论的学习 ，同样适用于前面介绍的几种计算机。</p>
+
+<p><img alt="" class="has" height="255" src="https://img-blog.csdnimg.cn/20190921103945211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<h1 id="总结">总结</h1>
+
+<p>计算机分为五类，分别是超级计算机、大型计算机、<span style="color:#f33b45;"><strong>迷你计算机（普通服务器）</strong></span>、工作站、<span style="color:#f33b45;"><strong>微型计算机（PC）</strong></span>，其中，超级计算机、大型计算机、工作站，我们平常接触的比较少，微型计算机、迷你计算机我们接触的多一些。微型计算机就是我们平常使用的个人计算机，而迷你计算机就是普通服务器。</p>
+
+<p> </p>
+
+<h1><a href="https://www.cnblogs.com/sum-41/p/11495552.html" rel="nofollow">(03)：计算机的体系与结构</a></h1>
+
+<h1 id="冯诺依曼体系">冯诺依曼体系</h1>
+
+<p>冯诺依曼体系，用一句话来概括就是：<span style="color:#f33b45;">将程序指令和数据一起存储的计算机设计概念结构。</span></p>
+
+<p>在前面学习计算机的发展历史的时候，我们知道，早期的计算机只能运行固定用途的程序，怎么理解？举个例子：有个计算机它只能运行数学运算的程序，那么它就不能运行文字处理的软件，也不能拿来玩游戏，如果要让它能够进行别的功能，就需要改变计算机的程序，而在当时，所谓的重写程序并不是指现在的重新编译一个程序那么简单，而是必须更改电路或者说更改结构，甚至重新设计这个机器。</p>
+
+<p>这样就很坑爹了啊。如果说计算机只能用来打游戏，不能用来写代码，或者说只能用来写代码，不能用来玩游戏，那么我们就不能先玩一会游戏再写一会代码了，这样子是非常不合理的。于是冯诺依曼就想着将程序存储起来，然后在设计底层硬件的时候，不再是设计专有的电路，而是设计一个通用电路，当我们需要运行某种程序的时候，我们先把这段程序翻译成电路能够理解的语言，然后让通用电路去执行相关的逻辑。</p>
+
+<p>这就是冯诺依曼体系的核心概念——存储程序指令，设计通用电路。</p>
+
+<p><img alt="" class="has" height="299" src="https://img-blog.csdnimg.cn/2019092110405423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>了解了冯诺依曼体系是怎样诞生的，如果能够理解冯诺依曼体系给计算机领域带来的巨大改变，我们就能明白冯诺依曼体系为什么这么重要了。由冯诺依曼体系所延伸的存储型计算机的概念，改变了之前糟糕的一切，皆由创造一种通用的指令集结构，并将所谓的运算转化为一串程序指令的运行，使整个计算机更有弹性。借助将指令当成一种特殊类型的计算数据，一台存储型的计算机可以轻易地改变其程序，并且在程序的控制下，改变运行的内容，改变的时候不需要重新设计电路，不需要重新改变计算机的结构，这就是冯诺依曼体系所带来的巨大贡献。</p>
+
+<p>由冯诺依曼体系指导完成的计算机包含五大组件：</p>
+
+<ol><li>存储器：用来存放程序和数据</li>
+	<li>控制器：用来控制程序的流转和数据的输入运行，以及处理运算结果</li>
+	<li>运算器：主要运行算数运算和逻辑运算，并将中间结果暂存到运算器中</li>
+	<li>输入设备：用来将人们熟悉的信息形式转换为机器能够识别的信息形式，常见的有键盘，鼠标等</li>
+	<li>输出设备：可以将机器运算结果转换为人们熟悉的信息形式，如打印机输出，显示器输出等</li>
+</ol><p>我们<span style="color:#f33b45;">现代所有使用的计算机，从本质上讲，都是冯诺依曼机</span>，包括笔记本电脑、台式电脑、普通服务器、迷你计算机等等。由冯诺依曼体系所指导完成的计算机，必须有以下的几点功能：</p>
+
+<ol><li>能够把需要的程序和数据送至计算机中（由输入设备完成）</li>
+	<li>能够长期记忆程序、数据、中间结果及最终运算结果的能力（由存储器完成）</li>
+	<li>能够具备算术、逻辑运算和数据传送等数据加工处理的能力（由运算器、控制器完成）</li>
+	<li>能够按照要求将处理结果输出给用户（由输出设备完成）</li>
+</ol><p>冯诺依曼体系结构示意图：</p>
+
+<p><img alt="" class="has" height="386" src="https://img-blog.csdnimg.cn/20190921104114835.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>我们可以看到，存储器和CPU是分开的，这就导致一个问题：<span style="color:#f33b45;"><strong>CPU和存储器速率之间的问题无法调和</strong></span>。因为CPU是高速运算的，处理速率极快，而存储器没有CPU快，到CPU的数据传输速度慢，这会导致<span style="color:#f33b45;"><strong>CPU经常空转等待数据传输</strong></span>，这样子是非常浪费资源的。</p>
+
+<p><img alt="" class="has" height="374" src="https://img-blog.csdnimg.cn/20190921104132330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>既然我们都知道了冯诺依曼体系存在的性能瓶颈，那么，如何解决呢？</p>
+
+<h1 id="现代计算机的结构">现代计算机的结构</h1>
+
+<ul><li>现代计算机在冯诺依曼体系结构基础上进行了修改</li>
+	<li><span style="color:#f33b45;">解决了CPU和存储设备之间的性能差异问题</span></li>
+</ul><p>下面是现代计算机的结构示意图：</p>
+
+<p><img alt="" class="has" height="391" src="https://img-blog.csdnimg.cn/20190921104153635.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>可以看到，跟前面不一样的是，运算器、控制器和存储器组成了现代计算机的CPU。</p>
+
+<p>存储器，从广义上，可以理解为存储数据的介质，包括磁带和硬盘。但是，这里的存储器主要是指围绕CPU的高速设备，包括寄存器和内存。现代计算机的结构，可以理解为以存储器为核心的结构。</p>
+
+<p><img alt="" class="has" height="384" src="https://img-blog.csdnimg.cn/20190921212849857.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="595" /></p>
+
+<p>关于存储器，还有很多需要理解的知识，我们会在后续文章里详细介绍。</p>
+
+<h3>总结</h3>
+
+<p>这一节，我们需要了解冯诺依曼体系的含义和它是如何产生的，还需要了解现代计算机的结构和特点以及它解决了什么问题。</p>
+
+<h1> </h1>
+
+<h1><a href="https://www.cnblogs.com/sum-41/p/11496304.html" rel="nofollow">(04)：计算机的层次与编程语言</a></h1>
+
+<h1 id="程序翻译与程序解释">程序翻译与程序解释</h1>
+
+<p>计算机是无法直接理解人类语言的，它只认识01010101...这样的比特位，因此，我们需要进行程序翻译或程序解析，把人类语言翻译或解析成计算机所能理解的语言。</p>
+
+<p><img alt="" class="has" height="350" src="https://img-blog.csdnimg.cn/20190921215751875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="697" /></p>
+
+<p>那么程序翻译和程序解析这两者之间有什么区别和联系呢？为了理解问题，我们引入两个语言，</p>
+
+<p><span style="color:#f33b45;">一个是较为高级的计算机语言——L1，</span></p>
+
+<p><span style="color:#f33b45;">一个是较为低级的计算机语言——L0，</span></p>
+
+<p>我们接下来会使用这两个语言作为例子来理解什么是程序翻译，什么是程序解析。</p>
+
+<p><strong>程序翻译</strong></p>
+
+<p>假设我们现在使用较为高级的计算机语言L1来进行程序的逻辑描述，也就是说我们使用L1来编写程序，那么这个由L1编写的程序是怎么样执行的呢？当然了，它不是直接执行的，而是在执行的时候生成一个逻辑等价的由低级语言L0组成的程序，这个L0是计算机实际执行的语言，那么由L1生成L0这个过程，我们称之为程序翻译，用于生成L0的工具叫编译器。</p>
+
+<p><img alt="" class="has" height="341" src="https://img-blog.csdnimg.cn/20190921104311240.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p><strong>程序解析</strong></p>
+
+<p>同样的，假如我们使用L1来进行程序的逻辑描述，那么这个由L1编写的程序是怎样执行的呢？为了执行L1，我们还需要使用L0实现另外一个程序，这个程序把L1程序作为输入来进行执行，每一句L1程序会在L0所实现的程序里面进行等价的转换，然后执行，这就是程序的解析，其中，使用L0实现的程序叫做解释器。</p>
+
+<p><img alt="" class="has" height="350" src="https://img-blog.csdnimg.cn/20190921104401451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>简要的总结程序翻译和程序解析：</p>
+
+<ol><li>对于前面的两个例子而言，计算机执行的指令都是L0</li>
+	<li>翻译过程生成新的L0程序，解释过程不生成新的L0程序</li>
+	<li>解释过程由L0编写的解释器去解释L1程序</li>
+</ol><p>理解了程序翻译和程序解释，我们来看下常见的编程语言，哪些语言是翻译型语言，哪些是解释型语言，如下图：</p>
+
+<p><img alt="" class="has" height="360" src="https://img-blog.csdnimg.cn/20190921104616176.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>对于常见的，我们还有<span style="color:#f33b45;">Java和C#</span>，它们又属于哪种语言呢？其实，严格的来说，它们既不属于翻译型语言，也不属于解释型语言，它们是属于<span style="color:#f33b45;">翻译+解释型语言</span>。</p>
+
+<p>如何理解翻译+解释型语言呢？以Java程序的运行过程为例，Java程序首先会被编译器编译成JVM字节码，然后会通过解释器解释成机器码，从而被计算机执行。</p>
+
+<p><img alt="" class="has" height="299" src="https://img-blog.csdnimg.cn/20190921220127269.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="758" /></p>
+
+<h1 id="计算机的层次与编程语言">计算机的层次与编程语言</h1>
+
+<p>按层次来划分计算机系统的话，我们可以划分成七个层次。</p>
+
+<p><img alt="" class="has" height="411" src="https://img-blog.csdnimg.cn/20190921104810180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>下面逐一介绍每一层。</p>
+
+<p><strong>硬件逻辑层</strong>：1）主要由门电路、触发器等逻辑电路组成，2）属于电子工程的领域，这里就不展开介绍了。</p>
+
+<p><strong>微程序机器层</strong>：1）编程语言主要是<span style="color:#f33b45;">微指令集</span>，2）<span style="color:#f33b45;">微指令</span>所组成的<span style="color:#f33b45;">微程序</span>直接交由硬件执行，主要是由生产硬件的公司的程序员来编写的。</p>
+
+<p><strong>传统机器层</strong>：1）编程语言主要是<span style="color:#f33b45;">CPU指令集（机器指令）</span>，2）编程语言和硬件是直接相关的，程序员所用机器指令编写的程序可以交由微程序直接进行解析，而这里提到的指令集，存储在CPU内部，对CPU的运算进行指导和优化，拥有指令集，CPU就可以有效地运行。我们知道，CPU的制造商分为AMD和Intel两大阵营，那么这两大厂商生产的CPU最大的区别是——指令集不同，Intel的CPU所使用的指令集不适合AMD的CPU，同样的，AMD的CPU所使用的指令集也不适合Intel。除了不同厂商以后，同一个厂商也可以生产不同指令集的CPU，即3）不同架构的CPU使用不同的CPU指令集。</p>
+
+<p><img alt="" class="has" height="307" src="https://img-blog.csdnimg.cn/20190921104845311.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p><strong>操作系统层</strong>：1）向上提供了简易的操作界面，使得用户能够容易地操作计算机；<br />
+2）向下对接了指令系统，管理硬件资源。<br />
+3）操作系统是在软件和硬件之间的适配层。<br />
+   操作系统对用户程序所使用机器的各种资源进行管理和分配，包括CPU、存储器等等比如说，当一个用户程序需要运行的时候，首先由操作系统将其加载到内存中，这就需要操作系统首先为其分配内存空间来进行存储。再比如说，某一个程序需要使用某一个输出设备进行结果输出的时候，需要操作系统为其提供该设备的控制权。</p>
+
+<p><strong>汇编语言层</strong>：）编程语言是<span style="color:#f33b45;">汇编语言</span>，2）汇编语言可以<span style="color:#f33b45;">翻译</span>成可直接执行的机器语言，3）完成这个翻译过程的程序就是汇编器。从这一层开始，它们所使用的编程语言就是人类比较容易理解的语言了。</p>
+
+<p><img alt="" class="has" height="327" src="https://img-blog.csdnimg.cn/20190921220647465.png" width="290" /></p>
+
+<p><strong>高级语言层</strong>：</p>
+
+<ul><li>编程语言就是为广大程序员所接受的<span style="color:#f33b45;">高级语言</span></li>
+	<li>高级语言的种类非常多，有几百种</li>
+	<li>常见的编程语言有Python、Java、C/C++、Golang等</li>
+</ul><p><strong>应用层</strong>：计算机针对某种用途而设计的应用，像Word、Excel等。</p>
+
+<p><img alt="" class="has" height="211" src="https://img-blog.csdnimg.cn/20190921220703452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="756" /></p>
+
+<p> </p>
+
+<h1><a href="https://www.cnblogs.com/sum-41/p/11509094.html" rel="nofollow">(05)：计算机的计量单位</a></h1>
+
+<h1 id="容量单位">容量单位</h1>
+
+<p>在日常生活中，我们常说，200M的光盘、8G的内存、2T的硬盘，这里的M、G、T就是容量单位，那么它们各自代表着什么含义以及它们之间是如何换算的呢？</p>
+
+<p><img alt="" class="has" height="275" src="https://img-blog.csdnimg.cn/20190921220828644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="800" /></p>
+
+<p>1）在计算机的物理层面，用高低电平记录信息，高电平代表1，低电平代表0，</p>
+
+<p>2）计算机只认识0和1两种状态，这里的0或1我们就称为一个bit（比特位），</p>
+
+<p>3）但是0/1能够表示的内容太少了，需要更大的容量表示方法</p>
+
+<p><span style="color:#f33b45;">0/1称为bit（比特位）</span></p>
+
+<p><span style="color:#f33b45;">字节：1Byte=8bits</span></p>
+
+<p><span style="color:#f33b45;">1000000000Bytes</span></p>
+
+<p>因此人们用8个比特位来表示一个字节（byte），一个字节等于八个比特位。随着计算机的发展，存储容量越来越大，用字节来表示容量也显得很不方便了，于是，出现了更高的容量单位。</p>
+
+<p>1024=2^10</p>
+
+<p><img alt="" class="has" height="160" src="https://img-blog.csdnimg.cn/2019092110503033.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="900" /></p>
+
+<p>上图是现在常见常使用的计算机容量单位，可以看到，1Byte=8bit，1KB=1024Byte，1MB=1024KB ... ...</p>
+
+<p>1G内存，可以存储多少字节的数据？可以存储多少比特数据？<br /><span style="color:#f33b45;">1G=1024^3Bytes=1024^3*8bits</span></p>
+
+<p>为什么网上买的移动硬盘500G，格式化之后就只剩465G了？<br />
+硬盘商一般用10进位标记容量<br /><span style="color:#f33b45;">500*1000^3/1024^3=465</span></p>
+
+<h1 id="速度单位">速度单位</h1>
+
+<p>这部分内容包括：网络速度和CPU频率。</p>
+
+<p><strong>网络速度</strong></p>
+
+<p>装宽带的时候，我们常说50M宽带、100M宽带，这里的M不是容量单位，而是网络速度——带宽，单位是Mbps(兆位/秒)，前面只是省略了bps。</p>
+
+<p><img alt="" class="has" height="359" src="https://img-blog.csdnimg.cn/20190921222554191.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="318" /></p>
+
+<p>为什么电信拉的100M光纤，测试峰值速度只有12M每秒？<br /><span style="color:#f33b45;">网络常用单位为（Mbps）<br />
+100M/s = 100Mbps = 100Mbit/s<br />
+100Mbit/s=(100/8)MB/s=12.5MB/s</span></p>
+
+<p><strong>CPU频率</strong></p>
+
+<p>1)CPU的速度一般体现为CPU的时钟频率，也称为主频，<br />
+2)单位为赫兹（Hz），是评定CPU性能的重要指标，<br />
+3)主流CPU的时钟频率都在2GHz以上。</p>
+
+<ul><li>Hz其实就是秒分之一</li>
+	<li>并不是描述计算机领域所专有的单位</li>
+</ul><p>赫兹是国际单位制中频率的单位，是<span style="color:#f33b45;">每秒中的周期性变动重复次数的计量</span>，当用来描述计算机的CPU时，表达的是高低电平每秒钟变换的次数，主频越高，一个时钟周期里面完成的指令数也越多，2GHz，就是说每秒高低电平变换20亿次。</p>
+
+<p><img alt="" class="has" height="202" src="https://img-blog.csdnimg.cn/20190921223153963.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="713" /></p>
+
+<h1> </h1>
+
+<h1><a href="https://www.cnblogs.com/sum-41/p/11516651.html" rel="nofollow">(06)：计算机的字符与编码集</a></h1>
+
+<h1 id="字符编码集的历史">字符编码集的历史</h1>
+
+<p><strong>ASCII码</strong></p>
+
+<p>对于ASCII码，相信大家在平时的学习、工作中都有所了解。</p>
+
+<p>ASCII码，英文全称为：American Standard Code for Information Interchange，翻译过来就是：美国信息交换标准代码，是我们平常常用的一种编码。那它是怎么来的呢？</p>
+
+<p>在计算机中，所有的数据在存储和运算时都要使用二进制数表示（因为计算机用高电平和低电平分别表示1和0），例如，像a、b、c、d这样的52个字母（包括大写）以及0、1等数字还有一些常用的符号（例如*、#、@等）在计算机中存储时也要使用二进制数来表示，而具体用哪些二进制数字表示哪个符号，当然每个人都可以约定自己的一套（这就叫编码），假如，对于字符a，比尔盖茨想用0001来表示，而乔布斯想用0010来表示，那么他们在沟通交流的时候谁都无法理解对方的语言。因此，为了计算机能够互相通信而不造成混乱，就必须使用相同的编码规则，于是美国有关的标准化组织就出台了ASCII编码，统一规定了上述常用符号用哪些二进制数来表示。</p>
+
+<p>标准ASCII码也叫基础ASCII码，使用7个比特位来表示所有的大写和小写字母，数字0到9、标点符号，以及在美式英语中使用的特殊控制字符，共定义了128（2的7次方）个<strong>字符</strong>。</p>
+
+<ul><li>使用7个bits就可以完全表示ASCII码</li>
+	<li>包含95个可打印字符</li>
+	<li>33个不可打印字符（包括控制字符）</li>
+</ul><p><span style="color:#f33b45;">33+95=128=2^7</span></p>
+
+<p>下面我们通过一张表来了解部分ASCII码。</p>
+
+<p><img alt="" class="has" height="757" src="https://img-blog.csdnimg.cn/20190921105248810.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="823" /></p>
+
+<p>表中列出了常见字符的ASCII码，如：字母a表示为01100001、字符（不是数字哦~）1表示为00110001... ...</p>
+
+<p>在计算机的早期，ASCII码就能满足特定人群的使用了，但是，随着计算机的发展以及计算机的普遍性，ASCII码逐渐不能满足人们的使用需求，比如<span style="color:#f33b45;">一些数学符号以及一些国家的符号都无法表示</span>。于是，人们对<span style="color:#f33b45;">ASCII码进行了扩充，用8个比特位来表示一个字符，这就是拓展的ASCII码</span>，拓展的ASCII码能表示256个字符。</p>
+
+<p><strong>Extended ASCII码</strong></p>
+
+<p>如下图，是拓展的ASCII码表。</p>
+
+<p><img alt="" class="has" height="478" src="https://img-blog.csdnimg.cn/20190921105314262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L215c3RlcnlmbG93ZXI=,size_16,color_FFFFFF,t_70" width="779" /></p>
+
+<p>这里面包括了<span style="color:#f33b45;">常见的数学运算符</span>、<span style="color:#f33b45;">带音标的欧洲字符</span>以及<span style="color:#f33b45;">其他常用符号、表格符号等</span>。使用了拓展的ASCII码极大的补充了原来的码表，使得计算机能表达的内容越来越丰富。</p>
+
+<p><strong>字符编码集的国际化</strong></p>
+
+<p>随着计算机的进一步发展，越来越多的国家加入到了使用计算机的行列中，对字符编码集的要求也越来越高。</p>
+
+<ul><li>对于欧洲、中亚、东亚、拉丁美洲等国家来说，它们的语言丰富多样</li>
+	<li>语言体系不一样，不以有限字符为组合</li>
+	<li>尤其以中国、韩国、日本等的语言最为复杂</li>
+</ul><p>ASCII码表根本无法表达这些语言，这就迫切需要使用新的编码集，也就是字符编码集的国际化。</p>
+
+<h1 id="中文编码集">中文编码集</h1>
+
+<p><strong>GB2312</strong></p>
+
+<p>GB2312是1980年制定的中国汉字编码国家标准，是我国最早最完备的一个编码集.</p>
+
+<ul><li>《信息交换用汉字编码字符集-基本集》</li>
+	<li>一共收录了7445个字符</li>
+	<li>包括6763个汉字和682个其他字符，一个汉字占用两个字节</li>
+</ul><p><span style="color:#f33b45;">GB2312需要多少个比特位？13位</span></p>
+
+<p><strong>GBK</strong></p>
+
+<p>由于GB2312不符合国际标准，中国的科学家在1995年推出了第二套完备的编码集——GBK。</p>
+
+<ul><li>《汉字内码扩展规范》</li>
+	<li>向下兼容GB2312，向上支持国际ISO标准</li>
+	<li>收录了21003个汉字，支持全部中日韩汉字</li>
+</ul><p>GB2312和GBK都是比较完备的编码集，但是，它们只是一个本地化的编码，在中国使用是没问题的，但要跨国使用就有问题了。举个例子，一个中国人开发了一个网站，一个外国友人访问了这个网站，如果他们本地没有安装GB2312编码集或GBK编码集的话， 那么他们在访问网站网页的时候看到的会是乱码。因此，就需要一个全球统一的编码规范。</p>
+
+<p> </p>
+
+<p><strong>Unicode</strong></p>
+
+<p>为了统一所有文字的编码，Unicode应运而生。Unicode是一个兼容全球的字符集，定义了世界通用的符号集，可以表达全世界所有的文字和字符。Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了。</p>
+
+<ul><li>Unicode：统一码、万国码、单一码</li>
+	<li>Unicode定义了世界通用的符号集，UTF-*实现了编码</li>
+	<li>UTF-8以字节为单位对Unicode进行编码</li>
+</ul><p><span style="color:#f33b45;">兼容全球的字符集：Unicode</span></p>
+
+<p>我们平时用的UTF-8是其中一个编码规则，它以字节为单位对Unicode进行编码，平常写代码的时候都是推荐使用UTF-8编码。</p>
+
+<ul><li><span style="color:#f33b45;">中文Windows操作系统默认使用GBK编码</span></li>
+	<li><span style="color:#f33b45;">使用IDE编程时通常要设置成UTF-8编码</span></li>
+</ul>                                    </div>
+                                                <div class="more-toolbox">
+                <div class="left-toolbox">
+                    <ul class="toolbox-list">
+                        
+                        <li class="tool-item tool-active is-like "><a href="javascript:;"><svg class="icon" aria-hidden="true">
+                            <use xlink:href="#csdnc-thumbsup"></use>
+                        </svg><span class="name">点赞</span>
+                        <span class="count"></span>
+                        </a></li>
+                        <li class="tool-item tool-active is-collection "><a href="javascript:;" data-report-click='{"mod":"popu_824"}'><svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-csdnc-Collection-G" ></use>
+                        </svg><span class="name">收藏</span></a></li>
+                        <li class="tool-item tool-active is-share"><a href="javascript:;" data-report-click='{"mod":"1582594662_002"}'><svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-csdnc-fenxiang"></use>
+                        </svg>分享</a></li>
+                        <!--打赏开始-->
+                                                <!--打赏结束-->
+                                                <li class="tool-item tool-more">
+                            <a>
+                            <svg t="1575545411852" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5717" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M179.176 499.222m-113.245 0a113.245 113.245 0 1 0 226.49 0 113.245 113.245 0 1 0-226.49 0Z" p-id="5718"></path><path d="M509.684 499.222m-113.245 0a113.245 113.245 0 1 0 226.49 0 113.245 113.245 0 1 0-226.49 0Z" p-id="5719"></path><path d="M846.175 499.222m-113.245 0a113.245 113.245 0 1 0 226.49 0 113.245 113.245 0 1 0-226.49 0Z" p-id="5720"></path></svg>
+                            </a>
+                            <ul class="more-box">
+                                <li class="item"><a class="article-report">文章举报</a></li>
+                            </ul>
+                        </li>
+                                            </ul>
+                </div>
+                            </div>
+            <div class="person-messagebox">
+                <div class="left-message"><a href="https://blog.csdn.net/mysteryflower">
+                    <img src="https://profile.csdnimg.cn/1/2/8/3_mysteryflower" class="avatar_pic" username='mysteryflower'>
+                                            <img src="https://g.csdnimg.cn/static/user-reg-year/1x/10.png" class="user-years">
+                                    </a></div>
+                <div class="middle-message">
+                                        <div class="title"><span class="tit"><a href="https://blog.csdn.net/mysteryflower" data-report-click='{"mod":"popu_379"}' target="_blank">mysteryflower</a></span>
+                                            </div>
+                    <div class="text"><span>发布了48 篇原创文章</span> · <span>获赞 6</span> · <span>访问量 2万+</span></div>
+                </div>
+                                <div class="right-message">
+                                            <a href=https://im.csdn.net/im/main.html?userName=mysteryflower target="_blank" 
+                            class="btn btn-sm btn-red-hollow bt-button personal-letter">私信
+                        </a>
+                                                            <a class="btn btn-sm  bt-button personal-watch" data-report-click='{"mod":"popu_379"}'>关注</a>
+                                    </div>
+                            </div>
+                    </div>
+    </article>
+    
+</div>
+
+
+            <div class="hide-article-box hide-article-pos text-center">
+            <a class="btn-readmore" data-report-view='{"mod":"popu_376","dest":"https://blog.csdn.net/mysteryflower/article/details/101099678","strategy":"readmore"}' data-report-click='{"mod":"popu_376","dest":"https://blog.csdn.net/mysteryflower/article/details/101099678","strategy":"readmore"}'>
+                展开阅读全文
+                <svg class="icon chevrondown" aria-hidden="true">
+                    <use xlink:href="#csdnc-chevrondown"></use>
+                </svg>
+            </a>
+        </div>
+    <script>
+    $("#blog_detail_zk_collection").click(function(){
+        window.csdn.articleCollection()
+    })
+</script>
+
+            <div id="dmp_ad_58"><div id="kp_box_58" data-pid="58"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-gw-3+1f-3d+2z"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="7909296258"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=58&a=731&c=0&k=&d=1&t=3&u=0cc16b3e70a5426c9f3d1efaf516e12f"></div></div>            
+            <a id="commentBox" name="commentBox"></a>
+<div class="comment-box">
+	<div class="comment-edit-box d-flex">
+		<a id="commentsedit"></a>
+		<div class="user-img">
+			<a href="javascript:void(0);" target="_blank" rel="noopener">
+				<img class="show_loginbox" src="//g.csdnimg.cn/static/user-img/anonymous-User-img.png">
+			</a>
+		</div>
+		<form id="commentform">
+			<input type="hidden" id="comment_replyId">
+			<textarea class="comment-content" name="comment_content" id="comment_content" placeholder="想对作者说点什么" maxlength="1000"></textarea>
+			<div class="opt-box"> <!-- d-flex -->
+				<div id="ubbtools" class="add_code">
+					<a href="#insertcode" code="code" target="_self"><i class="icon iconfont icon-daima"></i></a>
+				</div>
+				<input type="hidden" id="comment_replyId" name="comment_replyId">
+				<input type="hidden" id="article_id" name="article_id" value="101099678">
+				<input type="hidden" id="comment_userId" name="comment_userId" value="">
+				<input type="hidden" id="commentId" name="commentId" value="">
+				<div style="display: none;" class="csdn-tracking-statistics tracking-click" data-report-click='{"mod":"popu_384","dest":""}'><a href="#" target="_blank" class="comment_area_btn" rel="noopener">发表评论</a></div>
+				<div class="dropdown" id="myDrap">
+					<a class="dropdown-face d-flex align-items-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<div class="txt-selected text-truncate">添加代码片</div>
+					<svg class="icon d-block" aria-hidden="true">
+						<use xlink:href="#csdnc-triangledown"></use>
+					</svg>
+					</a>
+					<ul class="dropdown-menu" id="commentCode" aria-labelledby="drop4">
+						<li><a data-code="html">HTML/XML</a></li>
+						<li><a data-code="objc">objective-c</a></li>
+						<li><a data-code="ruby">Ruby</a></li>
+						<li><a data-code="php">PHP</a></li>
+						<li><a data-code="csharp">C</a></li>
+						<li><a data-code="cpp">C++</a></li>
+						<li><a data-code="javascript">JavaScript</a></li>
+						<li><a data-code="python">Python</a></li>
+						<li><a data-code="java">Java</a></li>
+						<li><a data-code="css">CSS</a></li>
+						<li><a data-code="sql">SQL</a></li>
+						<li><a data-code="plain">其它</a></li>
+					</ul>
+				</div>  
+				<div class="right-box">
+                                        <span id="tip_comment" class="tip">还能输入<em>1000</em>个字符</span>
+					<input type="button" class="btn btn-sm btn-cancel d-none" value="取消回复">
+					<a data-report-click='{"mod":"1582594662_003"}'><input type="submit" class="btn btn-sm btn-red btn-comment" value="发表评论"></a>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<div class="btn btn-sm btn-link-blue" id="btnMoreComment"></div>
+		</div>
+	</div>
+</div>
+            <div class="recommend-box">
+                                    <div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/aq1z998/article/details/102823476" target="_blank"  rel="noopener" title="计算机组成原理、计算机操作系统、计算机网络" data-report-click='{"mod":"popu_387","index":"1","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/aq1z998\/article\/details\/102823476"}' data-report-view='{"mod":"popu_387","index":"1","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/aq1z998\/article\/details\/102823476"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				计算机组成原理、计算机操作系统、计算机网络		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-31</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					371</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/aq1z998/article/details/102823476" target="_blank" rel="noopener" title="计算机组成原理、计算机操作系统、计算机网络">
+				<span class="desc oneline">计算机组成原理、计算机操作系统、计算机网络一、计算机发展简史</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/aq1z998">来自：	<span class="blog_title"> aq1z998的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/u012441545/article/details/54912281" target="_blank"  rel="noopener" title="计算机基础概述--计算机技术的最基础最核心的技术（计算机网络、计算机组成原理、操作系统、数据结构）" data-report-click='{"mod":"popu_387","index":"2","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/u012441545\/article\/details\/54912281"}' data-report-view='{"mod":"popu_387","index":"2","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/u012441545\/article\/details\/54912281"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				计算机基础概述--计算机技术的最基础最核心的技术（计算机网络、计算机组成原理、操作系统、数据结构）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">02-07</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					3991</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/u012441545/article/details/54912281" target="_blank" rel="noopener" title="计算机基础概述--计算机技术的最基础最核心的技术（计算机网络、计算机组成原理、操作系统、数据结构）">
+				<span class="desc oneline">他们之间相互联系，组成了计算机技术的核心</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012441545">来自：	<span class="blog_title"> 陈旭媛</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_30455067/article/details/99654215" target="_blank"  rel="noopener" title="编程必备基础知识 计算机组成原理+操作系统+计算机网络" data-report-click='{"mod":"popu_387","index":"3","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_30455067\/article\/details\/99654215"}' data-report-view='{"mod":"popu_387","index":"3","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_30455067\/article\/details\/99654215"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				编程必备基础知识 计算机组成原理+操作系统+计算机网络		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">07-10</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1091</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_30455067/article/details/99654215" target="_blank" rel="noopener" title="编程必备基础知识 计算机组成原理+操作系统+计算机网络">
+				<span class="desc oneline">第1章编程必备基础知识：计算机组成原理、操作系统、计算机网络计算机基础知识，到底重不重要？智者见智。如果你只想当个普通程序？或许不太重要。但如果你想提升、进阶，那么你必须离不开计算机领域的基础知识。本...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30455067">来自：	<span class="blog_title"> weixin_30455067的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/dearbaba_8520/article/details/102768480" target="_blank"  rel="noopener" title="编程必备基础 计算机组成原理+操作系统+计算机网络" data-report-click='{"mod":"popu_387","index":"4","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/dearbaba_8520\/article\/details\/102768480"}' data-report-view='{"mod":"popu_387","index":"4","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/dearbaba_8520\/article\/details\/102768480"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				编程必备基础 计算机组成原理+操作系统+计算机网络		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-27</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					256</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/dearbaba_8520/article/details/102768480" target="_blank" rel="noopener" title="编程必备基础 计算机组成原理+操作系统+计算机网络">
+				<span class="desc oneline">├─01.计算机基础概要├─02.计算机简史及编程语言├─03.计算机组成及运行原理├─04.计算机进制编码与运算符├─05.计算机算法├─06.进程与文件系统├─07.线程与进程与锁├─08.基于p...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/dearbaba_8520">来自：	<span class="blog_title"> dearbaba_8520的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_59" data-pid="59"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-gp-e+1c-4d+81"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="2356783728"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=59&a=944&c=0&k=&d=1&t=3&u=9b147ff8ee7c40388c5f230cfe22287b"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/melody96313/article/details/79721072" target="_blank"  rel="noopener" title="编程基础知识、算法（一）" data-report-click='{"mod":"popu_387","index":"5","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/melody96313\/article\/details\/79721072"}' data-report-view='{"mod":"popu_387","index":"5","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/melody96313\/article\/details\/79721072"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				编程基础知识、算法（一）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">05-17</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					8148</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/melody96313/article/details/79721072" target="_blank" rel="noopener" title="编程基础知识、算法（一）">
+				<span class="desc oneline">1、哈希表（散列表）hash_map基于hashtable（哈希表）。哈希表最大的优点，就是把数据的存储和查找消耗的时间大大降低，几乎可以看成是常数时间；而代价仅仅是消耗比较多的内存。然而在当前可利用...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/melody96313">来自：	<span class="blog_title"> melody96313的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/huster1446/article/details/101542085" target="_blank"  rel="noopener" title="字节跳动视频编解码面经" data-report-click='{"mod":"popu_387","index":"6","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/huster1446\/article\/details\/101542085"}' data-report-view='{"mod":"popu_387","index":"6","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/huster1446\/article\/details\/101542085"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				字节跳动视频编解码面经		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-20</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					13万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/huster1446/article/details/101542085" target="_blank" rel="noopener" title="字节跳动视频编解码面经">
+				<span class="desc oneline">三四月份投了字节跳动的实习（图形图像岗位），然后hr打电话过来问了一下会不会opengl，c++，shador，当时只会一点c++，其他两个都不会，也就直接被拒了。七月初内推了字节跳动的提前批，因为内...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/huster1446">来自：	<span class="blog_title"> ljh_shuai的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/m0_37907797/article/details/102781027" target="_blank"  rel="noopener" title="大学四年自学走来，这些私藏的实用工具/学习网站我贡献出来了" data-report-click='{"mod":"popu_387","index":"7","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/m0_37907797\/article\/details\/102781027"}' data-report-view='{"mod":"popu_387","index":"7","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/m0_37907797\/article\/details\/102781027"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				大学四年自学走来，这些私藏的实用工具/学习网站我贡献出来了		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">02-26</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					40万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/m0_37907797/article/details/102781027" target="_blank" rel="noopener" title="大学四年自学走来，这些私藏的实用工具/学习网站我贡献出来了">
+				<span class="desc oneline">大学四年，看课本是不可能一直看课本的了，对于学习，特别是自学，善于搜索网上的一些资源来辅助，还是非常有必要的，下面我就把这几年私藏的各种资源，网站贡献出来给你们。主要有：电子书搜索、实用工具、在线视频...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37907797">来自：	<span class="blog_title"> 帅地</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/coderising/article/details/101731213" target="_blank"  rel="noopener" title="C语言这么厉害，它自身又是用什么语言写的？" data-report-click='{"mod":"popu_387","index":"8","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/coderising\/article\/details\/101731213"}' data-report-view='{"mod":"popu_387","index":"8","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/coderising\/article\/details\/101731213"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				C语言这么厉害，它自身又是用什么语言写的？		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-27</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					6万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/coderising/article/details/101731213" target="_blank" rel="noopener" title="C语言这么厉害，它自身又是用什么语言写的？">
+				<span class="desc oneline">这是来自我的星球的一个提问：“C语言本身用什么语言写的？”换个角度来问，其实是：C语言在运行之前，得编译才行，那C语言的编译器从哪里来？ 用什么语言来写的？如果是用C语......</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/coderising">来自：	<span class="blog_title"> 码农翻身</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_45081575/article/details/102886718" target="_blank"  rel="noopener" title="【奇巧淫技】系列-python！！每天早上八点自动发送天气预报邮件到QQ邮箱" data-report-click='{"mod":"popu_387","index":"9","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_45081575\/article\/details\/102886718"}' data-report-view='{"mod":"popu_387","index":"9","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_45081575\/article\/details\/102886718"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				【奇巧淫技】系列-python！！每天早上八点自动发送天气预报邮件到QQ邮箱		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">01-19</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					10万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_45081575/article/details/102886718" target="_blank" rel="noopener" title="【奇巧淫技】系列-python！！每天早上八点自动发送天气预报邮件到QQ邮箱">
+				<span class="desc oneline">将代码部署服务器，每日早上定时获取到天气数据，并发送到邮箱。也可以说是一个小人工智障。思路可以运用在不同地方，主要介绍的是思路。...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45081575">来自：	<span class="blog_title"> SunriseCai的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_60" data-pid="60"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-gp-e+1c-4d+81"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="2356783728"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=60&a=944&c=0&k=&d=1&t=3&u=8b77963d29a94e27aedd5102b6a8e32a"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_41453285/article/details/103001772" target="_blank"  rel="noopener" title="Linux(服务器编程):15---两种高效的事件处理模式（reactor模式、proactor模式）" data-report-click='{"mod":"popu_387","index":"10","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_41453285\/article\/details\/103001772"}' data-report-view='{"mod":"popu_387","index":"10","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_41453285\/article\/details\/103001772"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				Linux(服务器编程):15---两种高效的事件处理模式（reactor模式、proactor模式）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-17</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_41453285/article/details/103001772" target="_blank" rel="noopener" title="Linux(服务器编程):15---两种高效的事件处理模式（reactor模式、proactor模式）">
+				<span class="desc oneline">前言同步I/O模型通常用于实现Reactor模式	异步I/O模型则用于实现Proactor模式	最后我们会使用同步I/O方式模拟出Proactor模式一、Reactor模式Reactor模式特点它要求...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41453285">来自：	<span class="blog_title"> 江南、董少</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/DavidGoGo_/article/details/102824354" target="_blank"  rel="noopener" title="程序员接私活怎样防止做完了不给钱？" data-report-click='{"mod":"popu_387","index":"11","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/DavidGoGo_\/article\/details\/102824354"}' data-report-view='{"mod":"popu_387","index":"11","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/DavidGoGo_\/article\/details\/102824354"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				程序员接私活怎样防止做完了不给钱？		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-31</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					17万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/DavidGoGo_/article/details/102824354" target="_blank" rel="noopener" title="程序员接私活怎样防止做完了不给钱？">
+				<span class="desc oneline">首先跟大家说明一点，我们做 IT 类的外包开发，是非标品开发，所以很有可能在开发过程中会有这样那样的需求修改，而这种需求修改很容易造成扯皮，进而影响到费用支付，甚至出现做完了项目收不到钱的情况。那么，...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/DavidGoGo_">来自：	<span class="blog_title"> DavidGoGo_的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+			<div class="recommend-item-box blog-expert-recommend-box">
+			<div class="d-flex">
+				<div class="blog-expert-recommend">
+					<div class="blog-expert">
+						<div class="blog-expert-flexbox"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/heihaozi/article/details/102882698" target="_blank"  rel="noopener" title="通俗易懂地给女朋友讲：线程池的内部原理" data-report-click='{"mod":"popu_387","index":"12","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/heihaozi\/article\/details\/102882698"}' data-report-view='{"mod":"popu_387","index":"12","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/heihaozi\/article\/details\/102882698"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				通俗易懂地给女朋友讲：线程池的内部原理		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-04</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					10万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/heihaozi/article/details/102882698" target="_blank" rel="noopener" title="通俗易懂地给女朋友讲：线程池的内部原理">
+				<span class="desc oneline">餐盘在灯光的照耀下格外晶莹洁白，女朋友拿起红酒杯轻轻地抿了一小口，对我说：“经常听你说线程池，到底线程池到底是个什么原理？”...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/heihaozi">来自：	<span class="blog_title"> 万猫学社</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/Songbook/article/details/84797527" target="_blank"  rel="noopener" title="《计算机组成原理》基础概念笔记整理" data-report-click='{"mod":"popu_387","index":"13","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/Songbook\/article\/details\/84797527"}' data-report-view='{"mod":"popu_387","index":"13","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/Songbook\/article\/details\/84797527"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				《计算机组成原理》基础概念笔记整理		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">12-04</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					3572</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/Songbook/article/details/84797527" target="_blank" rel="noopener" title="《计算机组成原理》基础概念笔记整理">
+				<span class="desc oneline">《计算机组成原理》复习整理以下我将使用笔记的方式，将整本书重点整理一下，或许会有纰漏，望大家多多包涵。第一章 计算机系统概论计算机的硬件：计算机中的电子电路和物理装置；计算机硬件的五大部分：运算器、控...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/Songbook">来自：	<span class="blog_title"> 松</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_40693171/article/details/100716766" target="_blank"  rel="noopener" title="我花了一夜用数据结构给女朋友写个H5走迷宫游戏" data-report-click='{"mod":"popu_387","index":"14","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_40693171\/article\/details\/100716766"}' data-report-view='{"mod":"popu_387","index":"14","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_40693171\/article\/details\/100716766"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				我花了一夜用数据结构给女朋友写个H5走迷宫游戏		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-21</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					40万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_40693171/article/details/100716766" target="_blank" rel="noopener" title="我花了一夜用数据结构给女朋友写个H5走迷宫游戏">
+				<span class="desc oneline">起因又到深夜了，我按照以往在csdn和公众号写着数据结构！这占用了我大量的时间！我的超越妹妹严重缺乏陪伴而 怨气满满！而女朋友时常埋怨，认为数据结构这么抽象难懂的东西没啥作用，常会问道：天天写这玩意，...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40693171">来自：	<span class="blog_title"> bigsai</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_61" data-pid="61"><script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3491668",
+            container:  s
+        });
+    })();
+</script>
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js" async="async" defer="defer" ></script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=61&a=78&c=0&k=&d=1&t=3&u=d1293c9499204f22abcb4498a29e714e"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_43901693/article/details/100606828" target="_blank"  rel="noopener" title="130 个相见恨晚的超实用网站，一次性分享出来" data-report-click='{"mod":"popu_387","index":"15","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_43901693\/article\/details\/100606828"}' data-report-view='{"mod":"popu_387","index":"15","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_43901693\/article\/details\/100606828"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				130 个相见恨晚的超实用网站，一次性分享出来		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">01-06</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					27万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_43901693/article/details/100606828" target="_blank" rel="noopener" title="130 个相见恨晚的超实用网站，一次性分享出来">
+				<span class="desc oneline">相见恨晚的超实用网站持续更新中。。。</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43901693">来自：	<span class="blog_title"> 藏冰的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/z4909801/article/details/77976626" target="_blank"  rel="noopener" title="计算机组成原理知识点梳理（一）" data-report-click='{"mod":"popu_387","index":"16","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/z4909801\/article\/details\/77976626"}' data-report-view='{"mod":"popu_387","index":"16","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/z4909801\/article\/details\/77976626"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				计算机组成原理知识点梳理（一）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-14</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					4万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/z4909801/article/details/77976626" target="_blank" rel="noopener" title="计算机组成原理知识点梳理（一）">
+				<span class="desc oneline">注：所学教材为《计算机组成原理(第二版)》唐朔飞编著;本次梳理涵盖内容为：第一章计算机系统概论1.1计算机系统简介1.2计算机的基本组成参考内容以及图片来源为书本和csdn博文第一章计算机系统概论1....</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/z4909801">来自：	<span class="blog_title"> AT弄潮儿</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_41964258/article/details/102322630" target="_blank"  rel="noopener" title="win10系统安装教程（U盘PE+UEFI安装）" data-report-click='{"mod":"popu_387","index":"17","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_41964258\/article\/details\/102322630"}' data-report-view='{"mod":"popu_387","index":"17","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_41964258\/article\/details\/102322630"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				win10系统安装教程（U盘PE+UEFI安装）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">02-07</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					3万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_41964258/article/details/102322630" target="_blank" rel="noopener" title="win10系统安装教程（U盘PE+UEFI安装）">
+				<span class="desc oneline">一、准备工作u盘，电脑一台，win10原版镜像（msdn官网）二、下载wepe工具箱极力推荐微pe（微pe官方下载）下载64位的win10 pe，使用工具箱制作启动U盘打开软件，选择安装到U盘（按照操...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41964258">来自：	<span class="blog_title"> weixin_41964258的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/wjky2014/article/details/103083126" target="_blank"  rel="noopener" title="HAL 硬件抽象层介绍" data-report-click='{"mod":"popu_387","index":"18","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/wjky2014\/article\/details\/103083126"}' data-report-view='{"mod":"popu_387","index":"18","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/wjky2014\/article\/details\/103083126"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				HAL 硬件抽象层介绍		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-15</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					4184</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/wjky2014/article/details/103083126" target="_blank" rel="noopener" title="HAL 硬件抽象层介绍">
+				<span class="desc oneline">和你一起终身学习，这里是程序员Android本篇文章主要介绍Android开发中的部分知识点，通过阅读本篇文章，您将收获以下内容:和你一起终身学习，这里是程序员 Android本篇文章主要介绍Andr...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/wjky2014">来自：	<span class="blog_title"> 程序员Android</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/yangjianrong1985/article/details/102675334" target="_blank"  rel="noopener" title="如何优化MySQL千万级大表，我写了6000字的解读" data-report-click='{"mod":"popu_387","index":"19","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/yangjianrong1985\/article\/details\/102675334"}' data-report-view='{"mod":"popu_387","index":"19","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/yangjianrong1985\/article\/details\/102675334"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				如何优化MySQL千万级大表，我写了6000字的解读		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-21</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					5万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/yangjianrong1985/article/details/102675334" target="_blank" rel="noopener" title="如何优化MySQL千万级大表，我写了6000字的解读">
+				<span class="desc oneline">这是学习笔记的第2138篇文章千万级大表如何优化，这是一个很有技术含量的问题，通常我们的直觉思维都会跳转到拆分或者数据分区，在此我想做一些补充和梳理，想和大家做一些这方面的经验总结，也欢迎大家提出建议...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/yangjianrong1985">来自：	<span class="blog_title"> 杨建荣的学习笔记</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_62" data-pid="62"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-gp-e+1c-4d+81"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="2356783728"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=62&a=944&c=0&k=&d=1&t=3&u=7a83cbb96c084340882652cdf0cdd44d"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/rabbitbride/article/details/82867512" target="_blank"  rel="noopener" title="《计算机组成原理高分笔记》-笔记" data-report-click='{"mod":"popu_387","index":"20","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/rabbitbride\/article\/details\/82867512"}' data-report-view='{"mod":"popu_387","index":"20","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/rabbitbride\/article\/details\/82867512"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				《计算机组成原理高分笔记》-笔记		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-28</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1308</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/rabbitbride/article/details/82867512" target="_blank" rel="noopener" title="《计算机组成原理高分笔记》-笔记">
+				<span class="desc oneline">偶遇一本书。计算机考研四大件之一，数据结构。语言基础数据类型* 结构型* 指针型* 结点的构造：链表结点的定义；二叉树结点的定义* typedef #define函数* 被传输的参数是否会改变* 关于...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/rabbitbride">来自：	<span class="blog_title"> 就这样吧</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/csdnnews/article/details/103097703" target="_blank"  rel="noopener" title="加快推动区块链技术和产业创新发展，2019可信区块链峰会在京召开" data-report-click='{"mod":"popu_387","index":"21","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/csdnnews\/article\/details\/103097703"}' data-report-view='{"mod":"popu_387","index":"21","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/csdnnews\/article\/details\/103097703"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				加快推动区块链技术和产业创新发展，2019可信区块链峰会在京召开		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-18</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					10万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/csdnnews/article/details/103097703" target="_blank" rel="noopener" title="加快推动区块链技术和产业创新发展，2019可信区块链峰会在京召开">
+				<span class="desc oneline">11月8日，由中国信息通信研究院、中国通信标准化协会、中国互联网协会、可信区块链推进计划联合主办，科技行者协办的2019可信区块链峰会将在北京悠唐皇冠假日酒店开幕。　　区块链技术被认为是继蒸汽机、电力...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/csdnnews">来自：	<span class="blog_title"> CSDN资讯</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_45396666/article/details/96732784" target="_blank"  rel="noopener" title="学习编程基础知识，进阶成为更优秀的程序员" data-report-click='{"mod":"popu_387","index":"22","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_45396666\/article\/details\/96732784"}' data-report-view='{"mod":"popu_387","index":"22","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_45396666\/article\/details\/96732784"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				学习编程基础知识，进阶成为更优秀的程序员		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">07-21</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					6720</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_45396666/article/details/96732784" target="_blank" rel="noopener" title="学习编程基础知识，进阶成为更优秀的程序员">
+				<span class="desc oneline">“脚本小子”常常从某些网站上复制脚本代码，然后到处粘贴，却并不明白其中的方法与原理​​当你看到编程语言编进教材的时候，看到一个文科生也在编写Python程序进行数据分析的时候，你就会发现，这是一个万物...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45396666">来自：	<span class="blog_title"> weixin_45396666的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/yanglr2010/article/details/103173344" target="_blank"  rel="noopener" title="知乎高赞：中国有什么拿得出手的开源软件产品？(整理自本人原创回答)" data-report-click='{"mod":"popu_387","index":"23","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/yanglr2010\/article\/details\/103173344"}' data-report-view='{"mod":"popu_387","index":"23","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/yanglr2010\/article\/details\/103173344"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				知乎高赞：中国有什么拿得出手的开源软件产品？(整理自本人原创回答)		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-20</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					10万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/yanglr2010/article/details/103173344" target="_blank" rel="noopener" title="知乎高赞：中国有什么拿得出手的开源软件产品？(整理自本人原创回答)">
+				<span class="desc oneline">知乎高赞：中国有什么拿得出手的开源软件产品？在知乎上，有个问题问“中国有什么拿得出手的开源软件产品（在 GitHub 等社区受欢迎度较好的）？”事实上，还不少呢~本人于2019.7.6进行了较为全面的...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/yanglr2010">来自：	<span class="blog_title"> 大白技术控 - 大白技术Bravo Yeung</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_43188825/article/details/103731725" target="_blank"  rel="noopener" title="如何搭建个人网站（内容详细，适合新手）" data-report-click='{"mod":"popu_387","index":"24","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_43188825\/article\/details\/103731725"}' data-report-view='{"mod":"popu_387","index":"24","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_43188825\/article\/details\/103731725"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				如何搭建个人网站（内容详细，适合新手）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">12-27</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_43188825/article/details/103731725" target="_blank" rel="noopener" title="如何搭建个人网站（内容详细，适合新手）">
+				<span class="desc oneline">大家在网上自行搜索相关题目，会有很多的文章啦。那，如果你跟我一样。作为一个小白，没有专业知识，但热衷想体验一番。可以看看以下内容，这是我刚踩完坑后的(粗略)经验，分享给大家。经历昨晚几个小时的研究，终...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43188825">来自：	<span class="blog_title"> 希米鹿</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/QbitAI/article/details/102380762" target="_blank"  rel="noopener" title="告别AV画质：实时把动画变成4k高清，延时仅3毫秒，登上GitHub趋势榜" data-report-click='{"mod":"popu_387","index":"25","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/QbitAI\/article\/details\/102380762"}' data-report-view='{"mod":"popu_387","index":"25","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/QbitAI\/article\/details\/102380762"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				告别AV画质：实时把动画变成4k高清，延时仅3毫秒，登上GitHub趋势榜		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-04</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/QbitAI/article/details/102380762" target="_blank" rel="noopener" title="告别AV画质：实时把动画变成4k高清，延时仅3毫秒，登上GitHub趋势榜">
+				<span class="desc oneline">栗子发自凹非寺量子位出品|公众号QbitAI看动画(特别是里番)的时候，总会觉得画质不够好，就算已经有1080p，还是会感到不够清晰。所以，这个世界十分......</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/QbitAI">来自：	<span class="blog_title"> 量子位</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_33459121/article/details/91488352" target="_blank"  rel="noopener" title="基础知识系列博客——计算机组成原理" data-report-click='{"mod":"popu_387","index":"26","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_33459121\/article\/details\/91488352"}' data-report-view='{"mod":"popu_387","index":"26","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_33459121\/article\/details\/91488352"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				基础知识系列博客——计算机组成原理		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">06-12</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1031</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_33459121/article/details/91488352" target="_blank" rel="noopener" title="基础知识系列博客——计算机组成原理">
+				<span class="desc oneline">《计算机原理与体系结构》由王海瑞和袁梅宇两位老师主编，我水平非常有限，读着非常难受。这本书把“数字逻辑”和“计算机组成原理”和“计算机系统结构”三门课程内容混在一本书里面，我非常不理解，内容杂而且生硬...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33459121">来自：	<span class="blog_title"> dchao</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/alitech2017/article/details/103720946" target="_blank"  rel="noopener" title="2019 年 AI 领域都发生了什么？" data-report-click='{"mod":"popu_387","index":"27","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/alitech2017\/article\/details\/103720946"}' data-report-view='{"mod":"popu_387","index":"27","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/alitech2017\/article\/details\/103720946"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				2019 年 AI 领域都发生了什么？		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">12-26</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/alitech2017/article/details/103720946" target="_blank" rel="noopener" title="2019 年 AI 领域都发生了什么？">
+				<span class="desc oneline">简介： 回首即将逝去的 2019 年，在人工智能领域中，都有哪些可圈可点的地方呢？《生成式深度学习》（Generative Deep Learning）（O’ Reilly Media 2019 年出...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/alitech2017">来自：	<span class="blog_title"> 阿里技术</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_41569732/article/details/104071901" target="_blank"  rel="noopener" title="编程必备基础知识-计算机组成原理-概述篇" data-report-click='{"mod":"popu_387","index":"28","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_41569732\/article\/details\/104071901"}' data-report-view='{"mod":"popu_387","index":"28","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_41569732\/article\/details\/104071901"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				编程必备基础知识-计算机组成原理-概述篇		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">01-22</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1523</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_41569732/article/details/104071901" target="_blank" rel="noopener" title="编程必备基础知识-计算机组成原理-概述篇">
+				<span class="desc oneline">简单记录-慕课网-编程必备基础 计算机组成原理+操作系统+计算机网络编程必备基础知识-计算机组成原理-概述篇回头补补计算机基础知识的理论计算机基础知识-计算机组成原理、操作系统、计算机网络目录文章目录...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41569732">来自：	<span class="blog_title"> 渐若窥宏大的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/Peggy_Chang/article/details/79534861" target="_blank"  rel="noopener" title="计算机网络+计算机组成原理+操作系统高频笔试面试题" data-report-click='{"mod":"popu_387","index":"29","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/Peggy_Chang\/article\/details\/79534861"}' data-report-view='{"mod":"popu_387","index":"29","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/Peggy_Chang\/article\/details\/79534861"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				计算机网络+计算机组成原理+操作系统高频笔试面试题		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">03-12</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					3169</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/Peggy_Chang/article/details/79534861" target="_blank" rel="noopener" title="计算机网络+计算机组成原理+操作系统高频笔试面试题">
+				<span class="desc oneline">面经网络的一些基本知识，比如OSI，TCP/IP，以及某些层的具体功能。操作系统线程进程问题 网络中的OSI七层模型，设计模式 OSI七层中考到了物理层和传输层特性 线程进程预防死锁的机制原理 为什么...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/Peggy_Chang">来自：	<span class="blog_title"> Peggy_Chang的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_45124488/article/details/102900223" target="_blank"  rel="noopener" title="Java中List集合介绍（炒鸡详细呦）" data-report-click='{"mod":"popu_387","index":"30","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_45124488\/article\/details\/102900223"}' data-report-view='{"mod":"popu_387","index":"30","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/weixin_45124488\/article\/details\/102900223"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				Java中List集合介绍（炒鸡详细呦）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-04</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					8122</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_45124488/article/details/102900223" target="_blank" rel="noopener" title="Java中List集合介绍（炒鸡详细呦）">
+				<span class="desc oneline">Java中List集合介绍（炒鸡详细呦）1，Java集合介绍作为一个程序猿，Java集合类可以说是我们在工作中运用最多、最频繁的类。相比于数组（Array）来说，集合类的长度可变，更加方便开发。Jav...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45124488">来自：	<span class="blog_title"> 偏偏爱吃梨的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/Purpleendurer/article/details/517971" target="_blank"  rel="noopener" title="写给想当程序员的朋友（三）（四）" data-report-click='{"mod":"popu_387","index":"31","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/Purpleendurer\/article\/details\/517971"}' data-report-view='{"mod":"popu_387","index":"31","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/Purpleendurer\/article\/details\/517971"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				写给想当程序员的朋友（三）（四）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-27</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1806</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/Purpleendurer/article/details/517971" target="_blank" rel="noopener" title="写给想当程序员的朋友（三）（四）">
+				<span class="desc oneline">http://news.csdn.net/news/newstopic/28/28079.shtml来自：程序员（三） 一个程序员应该具备的基础知识和概念1、计算机是有什么组成的，CPU是什么东西，其...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/Purpleendurer">来自：	<span class="blog_title"> Purpleendurer@CSDN</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_37482202/article/details/82983467" target="_blank"  rel="noopener" title="计算机组成原理基础知识整理" data-report-click='{"mod":"popu_387","index":"32","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_37482202\/article\/details\/82983467"}' data-report-view='{"mod":"popu_387","index":"32","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/qq_37482202\/article\/details\/82983467"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				计算机组成原理基础知识整理		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-09</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1184</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_37482202/article/details/82983467" target="_blank" rel="noopener" title="计算机组成原理基础知识整理">
+				<span class="desc oneline">最近开了计算机组成原理这门课，由于我这个人上课不听讲的缘故拉下了不少课程，等想学的时候已经听不懂了，赶紧补一补，在此写下这篇文章作为笔记，与大家一起分享1、冯诺依曼体系结构：计算机主要是由五大部分组成...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37482202">来自：	<span class="blog_title"> 流月的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/ZYZMZM_/article/details/103736356" target="_blank"  rel="noopener" title="Python基础语法全体系 | 文件IO与常用文件操作模块" data-report-click='{"mod":"popu_387","index":"33","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/ZYZMZM_\/article\/details\/103736356"}' data-report-view='{"mod":"popu_387","index":"33","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/ZYZMZM_\/article\/details\/103736356"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				Python基础语法全体系 | 文件IO与常用文件操作模块		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">12-31</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					5055</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/ZYZMZM_/article/details/103736356" target="_blank" rel="noopener" title="Python基础语法全体系 | 文件IO与常用文件操作模块">
+				<span class="desc oneline">《Python基础语法全体系》系列博文第六篇，本篇博文将讲解Python的文件IO操作，包括文件的打开、读取和写入。本文整理自疯狂python编程。文章目录使用pathlib操作目录使用os.path...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/ZYZMZM_">来自：	<span class="blog_title"> ZY-JIMMY</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/jianzhang11/article/details/102867120" target="_blank"  rel="noopener" title="数据库优化 - SQL优化" data-report-click='{"mod":"popu_387","index":"34","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/jianzhang11\/article\/details\/102867120"}' data-report-view='{"mod":"popu_387","index":"34","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/jianzhang11\/article\/details\/102867120"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				数据库优化 - SQL优化		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-01</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					16万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/jianzhang11/article/details/102867120" target="_blank" rel="noopener" title="数据库优化 - SQL优化">
+				<span class="desc oneline">以实际SQL入手，带你一步一步走上SQL优化之路！</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/jianzhang11">来自：	<span class="blog_title"> 飘渺Jam的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/z4909801/article/details/77976695" target="_blank"  rel="noopener" title="计算机组成原理知识点梳理（二）" data-report-click='{"mod":"popu_387","index":"35","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/z4909801\/article\/details\/77976695"}' data-report-view='{"mod":"popu_387","index":"35","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/z4909801\/article\/details\/77976695"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				计算机组成原理知识点梳理（二）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-14</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					4460</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/z4909801/article/details/77976695" target="_blank" rel="noopener" title="计算机组成原理知识点梳理（二）">
+				<span class="desc oneline">注：所学教材为《计算机组成原理(第二版)》 唐朔飞 编著 ; 本次梳理涵盖内容为：第一章 计算机系统概论1.2 计算机的基本组成1.3 计算机硬件的主要技术指标第一章 计算机系统概论1.2 计算机的基...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/z4909801">来自：	<span class="blog_title"> AT弄潮儿</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/csdnnews/article/details/103154693" target="_blank"  rel="noopener" title="8年经验面试官详解 Java 面试秘诀" data-report-click='{"mod":"popu_387","index":"36","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/csdnnews\/article\/details\/103154693"}' data-report-view='{"mod":"popu_387","index":"36","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/csdnnews\/article\/details\/103154693"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				8年经验面试官详解 Java 面试秘诀		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-19</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					15万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/csdnnews/article/details/103154693" target="_blank" rel="noopener" title="8年经验面试官详解 Java 面试秘诀">
+				<span class="desc oneline">作者 |胡书敏责编 | 刘静出品 | CSDN（ID：CSDNnews）本人目前在一家知名外企担任架构师，而且最近八年来，在多家外企和互联网公司担任Java技术面试官，前后累计面试了有两三百位候选人。...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/csdnnews">来自：	<span class="blog_title"> CSDN资讯</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/baidu_33725271/article/details/70188334" target="_blank"  rel="noopener" title="计算机编程中常用的术语" data-report-click='{"mod":"popu_387","index":"37","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/baidu_33725271\/article\/details\/70188334"}' data-report-view='{"mod":"popu_387","index":"37","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/baidu_33725271\/article\/details\/70188334"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				计算机编程中常用的术语		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">04-15</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/baidu_33725271/article/details/70188334" target="_blank" rel="noopener" title="计算机编程中常用的术语">
+				<span class="desc oneline">术语及其解释术语解释问题解决problem-solving表述问题，找到解决方案并表述方案过程高级语言high-levellanguage便于人类读写而设计的编程语言低级语言low-levellang...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_33725271">来自：	<span class="blog_title"> 列表里的点滴岁月</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/UFv59to8/article/details/78560391" target="_blank"  rel="noopener" title="不懂这25个名词，好意思说你懂大数据？" data-report-click='{"mod":"popu_387","index":"38","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/UFv59to8\/article\/details\/78560391"}' data-report-view='{"mod":"popu_387","index":"38","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/UFv59to8\/article\/details\/78560391"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				不懂这25个名词，好意思说你懂大数据？		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-16</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					422</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/UFv59to8/article/details/78560391" target="_blank" rel="noopener" title="不懂这25个名词，好意思说你懂大数据？">
+				<span class="desc oneline">如果你刚接触大数据，你可能会觉得这个领域很难以理解，无从下手。近日，Ramesh Dontha在DataConomy上连发两篇文章，扼要而全面地介绍了关于大数据的75个核心术语，这不仅是大数据初学者很...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/UFv59to8">来自：	<span class="blog_title"> 数据与算法之美</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/xufive/article/details/102892049" target="_blank"  rel="noopener" title="C/C++/Java/Go/Rust，Python喊你来打擂：3秒钟内统计出小于1亿的素数个数" data-report-click='{"mod":"popu_387","index":"39","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/xufive\/article\/details\/102892049"}' data-report-view='{"mod":"popu_387","index":"39","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/xufive\/article\/details\/102892049"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				C/C++/Java/Go/Rust，Python喊你来打擂：3秒钟内统计出小于1亿的素数个数		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-04</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/xufive/article/details/102892049" target="_blank" rel="noopener" title="C/C++/Java/Go/Rust，Python喊你来打擂：3秒钟内统计出小于1亿的素数个数">
+				<span class="desc oneline">前几天，有个非计算机专业的同学问我，如何快速找出1亿之内的孪生素数——所谓孪生素数，就是差值为2的两个素数。原本以为这是一个很简单的问题，随便用python写了一个方法，没想到却要跑17分钟左右。改用...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/xufive">来自：	<span class="blog_title"> Python作业辅导员 - 天元浪子【许向武】</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix">
+	<div class="content">
+		<a href="https://blog.csdn.net/xufive/article/details/102993570" target="_blank"  rel="noopener" title="致 Python 初学者" data-report-click='{"mod":"popu_387","index":"40","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/xufive\/article\/details\/102993570"}' data-report-view='{"mod":"popu_387","index":"40","strategy":"BlogCommendFromMachineLearnPai2","dest":"https:\/\/blog.csdn.net\/xufive\/article\/details\/102993570"}' data-report-query='depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task' >
+		<h4 class="text-truncate oneline">
+				致 Python 初学者		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-13</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					22万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/xufive/article/details/102993570" target="_blank" rel="noopener" title="致 Python 初学者">
+				<span class="desc oneline">欢迎来到“Python进阶”专栏！来到这里的每一位同学，应该大致上学习了很多 Python 的基础知识，正在努力成长的过程中。在此期间，一定遇到了很多的困惑，对未来的学习方向感到迷茫。我非常理解你们所...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/xufive">来自：	<span class="blog_title"> Python作业辅导员 - 天元浪子【许向武】</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+                    <div class="recommend-item-box type_hot_word">
+                    <div class="content clearfix">
+                        <div class="float-left">
+                                                                                <span>
+                                <a href="https://blog.csdn.net/yilovexing/article/details/80577510" target="_blank">
+                                python</a>
+                            </span>
+                                                        <span>
+                                <a href="https://blog.csdn.net/slwbcsdn/article/details/53458352" target="_blank">
+                                json</a>
+                            </span>
+                                                        <span>
+                                <a href="https://blog.csdn.net/csdnnews/article/details/83753246" target="_blank">
+                                java</a>
+                            </span>
+                                                        <span>
+                                <a href="https://blog.csdn.net/qq_35077512/article/details/88952519" target="_blank">
+                                mysql</a>
+                            </span>
+                                                        <span>
+                                <a href="https://blog.csdn.net/pdcfighting/article/details/80297499" target="_blank">
+                                pycharm</a>
+                            </span>
+                                                        <span>
+                                <a href="https://blog.csdn.net/sinyu890807/article/details/97142065" target="_blank">
+                                android</a>
+                            </span>
+                                                        <span>
+                                <a href="https://blog.csdn.net/gexiaoyizhimei/article/details/100122368" target="_blank">
+                                linux</a>
+                            </span>
+                                                        <span>
+                                <a href="https://download.csdn.net/download/xhg_gszs/10978826" target="_blank">
+                                json格式</a>
+                            </span>
+                                                    
+                                                                                <span>
+                                <a href="https://www.csdn.net/gather_1c/MtTaggzsLWRvd25sb2Fk.html" target="_blank">
+                                c# 进程创建时间</a>
+                            </span>
+                                                        <span>
+                                <a href="https://www.csdn.net/gather_1e/MtTagg1sLWRvd25sb2Fk.html" target="_blank">
+                                c#判断数字不得为负数</a>
+                            </span>
+                                                        <span>
+                                <a href="https://www.csdn.net/gather_19/MtTagg2sLWRvd25sb2Fk.html" target="_blank">
+                                c#帧和帧协议</a>
+                            </span>
+                                                        <span>
+                                <a href="https://www.csdn.net/gather_13/MtTagg3sLWRvd25sb2Fk.html" target="_blank">
+                                c#算偏移值</a>
+                            </span>
+                                                        <span>
+                                <a href="https://www.csdn.net/gather_1a/MtTagg5sLWRvd25sb2Fk.html" target="_blank">
+                                c# 在枚举中</a>
+                            </span>
+                                                        <span>
+                                <a href="https://www.csdn.net/gather_10/MtTakgxsLWRvd25sb2Fk.html" target="_blank">
+                                c#6 字符串 插值</a>
+                            </span>
+                                                        <span>
+                                <a href="https://www.csdn.net/gather_15/MtTakgysLWRvd25sb2Fk.html" target="_blank">
+                                c#程序中的占位符标签</a>
+                            </span>
+                                                        <span>
+                                <a href="https://www.csdn.net/gather_1b/MtTakgzsLWRvd25sb2Fk.html" target="_blank">
+                                c#监听数组变化</a>
+                            </span>
+                                                        <span>
+                                <a href="https://www.csdn.net/gather_1a/MtTakg0sLWRvd25sb2Fk.html" target="_blank">
+                                c# vlc</a>
+                            </span>
+                                                        <span>
+                                <a href="https://www.csdn.net/gather_10/MtTakg1sLWRvd25sb2Fk.html" target="_blank">
+                                c#索引实现</a>
+                            </span>
+                                                                            </div>
+                    </div>
+                    </div>
+                                    <div class="recommend-loading-box">
+                    <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+                </div>
+                <div class="recommend-end-box">
+                    <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+                </div>
+            </div>
+                            <div class="template-box">
+                    <span>©️2019 CSDN</span><span class="point"></span>
+                <span>皮肤主题: 大白</span>
+                <span> 设计师:
+                                            CSDN官方博客                                    </span>
+                </div>
+                    </main>
+        <aside class="blog_container_aside">
+	<!--主页引入-->
+
+    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/mysteryflower"  data-report-click='{"mod":"popu_379","dest":"https://blog.csdn.net/mysteryflower"}'>
+                <img src="https://profile.csdnimg.cn/1/2/8/3_mysteryflower" class="avatar_pic" username='mysteryflower'>
+                                    <img src="https://g.csdnimg.cn/static/user-reg-year/1x/10.png" class="user-years">
+                            </a>
+                    </div>
+        <div class="user-info d-flex flex-column profile-intro-name-box">
+            <div>
+                                <span class="name csdn-tracking-statistics tracking-click "  style="display:block" data-report-click='{"mod":"popu_379","dest":"https://blog.csdn.net/mysteryflower"}' username='mysteryflower'>
+                    <a href="https://blog.csdn.net/mysteryflower" class="" id="uid" title='mysteryflower'>
+                    mysteryflower                    </a>
+                </span>
+            </div>
+            <div class="profile-intro-name-boxFooter">
+                                                <span class="personal-home-page" style='right:-96px;'><a target="_blank" href="https://me.csdn.net/mysteryflower">TA的个人主页 ></a></span>
+                            </div>
+        </div>
+    </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="48">
+                            <dt><a href="https://blog.csdn.net/mysteryflower" data-report-query="t=1">原创</a></dt>
+                <dd><a href="https://blog.csdn.net/mysteryflower" data-report-query="t=1"><span class="count">48</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="18">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">18</span></dd>
+        </dl>
+        <dl class="text-center" title="6">
+            <dt>获赞</dt>
+            <dd><span class="count">6</span></dd>
+        </dl>
+        <dl class="text-center" title="2">
+            <dt>评论</dt>
+            <dd><span class="count">2</span></dd>
+        </dl>
+        <dl class="text-center" title="26275">
+            <dt>访问</dt>
+            <dd><span class="count">2万+</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl class="aside-box-footerClassify">
+            <dt>等级:</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="4级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-4"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl title="40302">
+            <dt>周排名:</dt>
+            <dd>
+                <a class="grade-box-rankA" href="https://blog.csdn.net/rank/writing_rank" target="_blank">
+                    4万+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>积分:</dt>
+            <dd title="1180">
+                1180            </dd>
+        </dl>
+        <dl title="74042">
+            <dt>总排名:</dt>
+            <dd>
+                <a class="grade-box-rankA" href="https://blog.csdn.net/rank/writing_rank_total" target="_blank">
+                    7万+                </a>
+            </dd>
+        </dl>
+    </div>
+    <div class="aside-box-footer">
+                    <div class="badge-box d-flex">
+                <div class="profile-medal">勋章:</div>
+                <div class="badge d-flex">
+                                                                                                        <div class="icon-badge" title="签到新秀">
+                                    <div class="mouse-box">
+                                        <img src="https://csdnimg.cn/medal/qiandao1@120.png" alt="">
+                                        <div class="icon-arrow"></div>
+                                    </div>
+                                    <div class="grade-detail-box">
+                                        <div class="pos-box">
+                                            <div class="left-box d-flex justify-content-center align-items-center flex-column">
+                                                <img src="https://csdnimg.cn/medal/qiandao1@120.png" alt="">
+                                                <p>签到新秀</p>
+                                            </div>
+                                            <div class="right-box">
+                                                累计签到获取，不积跬步，无以至千里，继续坚持！                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                                                                                                <div class="icon-badge" title="持之以恒">
+                                    <div class="mouse-box">
+                                        <img src="https://csdnimg.cn/medal/chizhiyiheng@120.png" alt="">
+                                        <div class="icon-arrow"></div>
+                                    </div>
+                                    <div class="grade-detail-box">
+                                        <div class="pos-box">
+                                            <div class="left-box d-flex justify-content-center align-items-center flex-column">
+                                                <img src="https://csdnimg.cn/medal/chizhiyiheng@120.png" alt="">
+                                                <p>持之以恒</p>
+                                            </div>
+                                            <div class="right-box">
+                                                授予每个自然月内发布4篇或4篇以上原创或翻译IT博文的用户。不积跬步无以至千里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累！                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                                                                                                <div class="icon-badge" title="勤写标兵Lv4">
+                                    <div class="mouse-box">
+                                        <img src="https://csdnimg.cn/medal/qixiebiaobing4@120.png" alt="">
+                                        <div class="icon-arrow"></div>
+                                    </div>
+                                    <div class="grade-detail-box">
+                                        <div class="pos-box">
+                                            <div class="left-box d-flex justify-content-center align-items-center flex-column">
+                                                <img src="https://csdnimg.cn/medal/qixiebiaobing4@120.png" alt="">
+                                                <p>勤写标兵Lv4</p>
+                                            </div>
+                                            <div class="right-box">
+                                                授予每个自然周发布9篇以上（包括9篇）原创IT博文的用户。本勋章将于次周周三上午根据用户上周的博文发布情况由系统自动颁发。                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                                                                        </div>
+                <script>
+                    (function($) {
+                        setTimeout(function() {
+                            $('div.icon-badge.show-moment').removeClass('show-moment');
+                        }, 5000);
+                    })(window.jQuery)
+                </script>
+            </div>
+                
+    </div>
+        <div class="profile-intro-name-boxOpration">
+        <div class="opt-letter-watch-box">
+                            <a class="personal-watch bt-button" id="btnAttent" data-report-click='{"mod":"popu_379"}'>关注</a>
+                    </div>
+        <div class='opt-letter-watch-box'>
+            <a class="bt-button btn-red-hollow personal-letter" href=https://im.csdn.net/im/main.html?userName=mysteryflower target="_blank" rel="noopener">私信</a>
+        </div>
+    </div>
+    </div>
+<script>
+    function watchBtnChange(flag, username) {
+        $('span.blog-expert-button-follow').each(function(index) {
+            if (flag) {
+                if ($(this).attr("data-name") == username) {
+                    $(this).html('<span class="hover-hide">已关注</span><span class="hover-show">取消</span>').removeClass('btn-red-follow').addClass('btn-gray-follow attented');
+                }
+            } else {
+                if ($(this).attr("data-name") == username) {
+                    $(this).html("关注").addClass('btn-red-follow').removeClass('btn-gray-follow attented');
+                }
+            }
+        })
+        if (username == $('p.csdn-tracking-statistics').attr("username")) {
+            if (flag) {
+                $('#btnAttent').addClass("attented").text("已关注").removeClass('btn-red-hollow').addClass('btn-gray-hollow');
+                changeFans(1)
+            } else {
+                $('#btnAttent').text("关注").addClass('btn-red-hollow').removeClass('btn-gray-hollow attented');
+                changeFans(-1)
+            }
+        }
+
+    }
+
+    function changeFans(num) {
+        if ($('#fan').text().indexOf('+') < 0) {
+            $('#fan').text(parseInt($('#fan').text()) + num);
+        } else {
+            $('#fanBox').attr('title', parseInt($('#fanBox').attr('title')) + num);
+        }
+    }
+    window.csdn = window.csdn ? window.csdn : {};
+    window.csdn.watchBtnChange = watchBtnChange;
+</script><div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-report-click='{"mod":"popu_4"}' data-report-view='{"mod":"popu_4"}' style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+        <div id="kp_box_56" data-pid="56"><script  data-ad-client="ca-pub-1076724771190722" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 博客内页左上视窗-20181120 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="7700527946"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=56&a=703&c=0&k=&d=1&t=3&u=198cdbffe92f4dd3981415e3f1cf302b"></div>    </div>
+</div>
+<div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix">
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/mysteryflower/article/details/103662546"}' href="https://blog.csdn.net/mysteryflower/article/details/103662546" target="_blank" >
+                                        从游戏中学习产品设计05：反馈篇                </a>
+            </li>
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/mysteryflower/article/details/103662511"}' href="https://blog.csdn.net/mysteryflower/article/details/103662511" target="_blank" >
+                                        从游戏中学习产品设计04：成就篇                </a>
+            </li>
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/mysteryflower/article/details/103662432"}' href="https://blog.csdn.net/mysteryflower/article/details/103662432" target="_blank" >
+                                        从游戏中学习产品设计2：消费篇                </a>
+            </li>
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/mysteryflower/article/details/103662370"}' href="https://blog.csdn.net/mysteryflower/article/details/103662370" target="_blank" >
+                                        从游戏中学习产品设计1：充值篇                </a>
+            </li>
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/mysteryflower/article/details/103661764"}' href="https://blog.csdn.net/mysteryflower/article/details/103661764" target="_blank" >
+                                        游戏运营数据定义V1.0                </a>
+            </li>
+                    </ul>
+    </div>
+</div>
+    <div id="asideCategory" class="aside-box flexible-box"
+         style="">
+    <h3 class="aside-title">分类专栏</h3>
+    <div class="aside-content">
+        <ul>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9493882.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9493882.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9493882.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151053287.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">游戏运营</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">8篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9446552.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9446552.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9446552.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151026427.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">架构</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">1篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9354422.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9354422.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9354422.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151101105.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">其他</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">1篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9347781.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9347781.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9347781.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151124774.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">ThinkPHP框架-php</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">2篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9370186.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9370186.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9370186.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140158853.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">编程基础</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">1篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9311885.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9311885.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9311885.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140037908.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">前端框架</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">2篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9328117.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9328117.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9328117.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151132530.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">Yii框架-php</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">1篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_8652514.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_8652514.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_8652514.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151124774.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">Java 集合系列</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">2篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_8911660.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_8911660.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_8911660.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151117521.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">LintCode刷题</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">30篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9028553.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9028553.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9028553.html">
+                                                    <img src="https://img-blog.csdnimg.cn/2019091813595558.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">php</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">111篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9044273.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9044273.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9044273.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140213434.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">python</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">49篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9044515.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9044515.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9044515.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151124774.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">superset</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">10篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9046934.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9046934.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9046934.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140037908.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">linux</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">37篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9062741.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9062741.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9062741.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918135101160.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">mysql</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">18篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9063663.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9063663.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9063663.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140037908.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">Git</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">3篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9069479.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9069479.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9069479.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140145169.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">计算机网络</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">25篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9069547.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9069547.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9069547.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151101105.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">Redis</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">12篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9076018.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9076018.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9076018.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151124774.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">数据结构</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9104425.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9104425.html"}'
+                                               href="https://blog.csdn.net/mysteryflower/category_9104425.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140129601.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">前端</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">12篇</span>
+                                            </a>
+                </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+<div id="asideArchive" class="aside-box flexible-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/mysteryflower/article/month/2019/12" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/mysteryflower/article/month/2019/12"}'>
+                    2019年12月                    <span class="count float-right">6篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/mysteryflower/article/month/2019/11" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/mysteryflower/article/month/2019/11"}'>
+                    2019年11月                    <span class="count float-right">8篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/mysteryflower/article/month/2019/10" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/mysteryflower/article/month/2019/10"}'>
+                    2019年10月                    <span class="count float-right">33篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/mysteryflower/article/month/2019/09" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/mysteryflower/article/month/2019/09"}'>
+                    2019年9月                    <span class="count float-right">41篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/mysteryflower/article/month/2019/08" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/mysteryflower/article/month/2019/08"}'>
+                    2019年8月                    <span class="count float-right">50篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/mysteryflower/article/month/2019/07" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/mysteryflower/article/month/2019/07"}'>
+                    2019年7月                    <span class="count float-right">77篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/mysteryflower/article/month/2019/06" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/mysteryflower/article/month/2019/06"}'>
+                    2019年6月                    <span class="count float-right">47篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/mysteryflower/article/month/2019/05" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/mysteryflower/article/month/2019/05"}'>
+                    2019年5月                    <span class="count float-right">30篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/mysteryflower/article/month/2019/01" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/mysteryflower/article/month/2019/01"}'>
+                    2019年1月                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+<div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list">
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/mysteryflower/article/details/93891414"}' 
+                     href="https://blog.csdn.net/mysteryflower/article/details/93891414" >
+                                                superset官方文档的安装和配置                    </a>
+					<p class="read">阅读数 <span>1513</span></p>
+				</li>
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/mysteryflower/article/details/93064195"}' 
+                     href="https://blog.csdn.net/mysteryflower/article/details/93064195" >
+                                                CentOS7上安装anaconda3及其遇到的问题                    </a>
+					<p class="read">阅读数 <span>1379</span></p>
+				</li>
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/mysteryflower/article/details/94431584"}' 
+                     href="https://blog.csdn.net/mysteryflower/article/details/94431584" >
+                                                MySQL面试题集锦，据说知名互联网公司都用                    </a>
+					<p class="read">阅读数 <span>1345</span></p>
+				</li>
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/mysteryflower/article/details/92805659"}' 
+                     href="https://blog.csdn.net/mysteryflower/article/details/92805659" >
+                                                PHP正则表达式                    </a>
+					<p class="read">阅读数 <span>1219</span></p>
+				</li>
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/mysteryflower/article/details/92798326"}' 
+                     href="https://blog.csdn.net/mysteryflower/article/details/92798326" >
+                                                PHP Warning: file_get_contents failed to open stream解决办法                    </a>
+					<p class="read">阅读数 <span>932</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+<div id="asideNewComments" class="aside-box">
+    <h3 class="aside-title">最新评论</h3>
+    <div class="aside-content">
+        <ul class="newcomment-list">
+                        <li>
+                <a class="title text-truncate" data-report-click='{"mod":"popu_542","dest":"https://blog.csdn.net/mysteryflower/article/details/92984698#comments"}'  target="_blank" href="https://blog.csdn.net/mysteryflower/article/details/92984698#comments">centos安装gcc时出现问题：...</a>
+                <p class="comment ellipsis">
+                    <a href="https://my.csdn.net/wmy2604767068" class="user-name" target="_blank">wmy2604767068：</a>楼主好，请问安装svn时Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+No package subversion available.
+Error: Nothing to do
+安装deltarpm时报Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+No package deltarpm available.
+Error: Nothing to do                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" data-report-click='{"mod":"popu_542","dest":"https://blog.csdn.net/mysteryflower/article/details/92984698#comments"}'  target="_blank" href="https://blog.csdn.net/mysteryflower/article/details/92984698#comments">centos安装gcc时出现问题：...</a>
+                <p class="comment ellipsis">
+                    <a href="https://my.csdn.net/mrqiu_cool" class="user-name" target="_blank">mrqiu_cool：</a>楼主好，请教个问题，安装gcc 报warning: /etc/nsswitch.conf created as /etc/nsswitch.conf.rpmnew 中断后，执行yum命令 报Illegal instruction (core dumped)错，这个该怎么处理？                </p>
+            </li>
+                    </ul>
+    </div>
+</div>
+	<div id="asideFooter">
+                    <div class="aside-box">
+                <div id="kp_box_57" data-pid="57"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 博客内页左下视窗-20181130 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="1894159733"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=57&a=707&c=0&k=&d=1&t=3&u=c8bad6452d2847fa81d86886f14770a3"></div>            </div>
+        		<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).parents("p.text-center").remove();
+	})
+</script>
+<script src="https://g.csdnimg.cn/user-tooltip/1.9/user-tooltip.js"  type="text/javascript"></script>
+    </div>
+                <div class="recommend-right  align-items-stretch clearfix">
+      <aside class="recommend-right_aside">
+        <div id="recommend-right" style="height:100%;">
+          <div class='d-flex flex-column aside-box groupfile' id="groupfile">
+            <h3 class="aside-title">目录</h3>
+            <div class="align-items-stretch group_item">
+              <div class="toc-container">
+              <div class="pos-box">
+                <div class="icon-arrow"></div>
+                <div class="scroll-box">
+                  <div class="toc-box"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+                        <div id="addAdBox" style="display:none">
+                  <div id="kp_box_479" data-pid="479"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 博客内页右上视窗 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="9261210258"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=479&a=874&c=0&k=&d=1&t=3&u=927b685992634ec2a63c8d91969e5424"></div>              </div>
+                    <div class='aside-box kind_person d-flex flex-column'>
+          <h3 class="aside-title">分类专栏</h3>
+              <div class="align-items-stretch kindof_item">
+                <div class="aside-content">
+                  <ul>
+                                        <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9493882.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9493882.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9493882.html">
+                                                                <img src="https://img-blog.csdnimg.cn/2019092715111047.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">游戏运营</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">8篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9446552.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9446552.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9446552.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190927151124774.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">架构</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">1篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9354422.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9354422.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9354422.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190927151043371.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">其他</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">1篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9347781.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9347781.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9347781.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190918140053667.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">ThinkPHP框架-php</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">2篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9370186.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9370186.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9370186.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190927151132530.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">编程基础</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">1篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9311885.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9311885.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9311885.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190918140158853.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">前端框架</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">2篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9328117.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9328117.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9328117.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190927151053287.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">Yii框架-php</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">1篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_8652514.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_8652514.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_8652514.html">
+                                                                <img src="https://img-blog.csdnimg.cn/2019091813595558.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">Java 集合系列</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">2篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_8911660.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_8911660.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_8911660.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190918140012416.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">LintCode刷题</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">30篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9028553.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9028553.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9028553.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190918140158853.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">php</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">111篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9044273.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9044273.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9044273.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190918140053667.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">python</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">49篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9044515.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9044515.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9044515.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190927151026427.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">superset</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">10篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9046934.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9046934.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9046934.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190918140012416.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">linux</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">37篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9062741.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9062741.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9062741.html">
+                                                                <img src="https://img-blog.csdnimg.cn/2019092715111047.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">mysql</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">18篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9063663.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9063663.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9063663.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190918140053667.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">Git</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">3篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9069479.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9069479.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9069479.html">
+                                                                <img src="https://img-blog.csdnimg.cn/2019091813595558.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">计算机网络</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">25篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9069547.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9069547.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9069547.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190918140053667.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">Redis</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">12篇</span>
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9076018.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9076018.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9076018.html">
+                                                                <img src="https://img-blog.csdnimg.cn/20190918140213434.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">数据结构</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                        </a>
+                      </li>
+                                          <li class="">
+                                                    <a class="clearfix" 
+                                                        data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9104425.html"}'
+                              data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/mysteryflower/category_9104425.html"}'
+                                                      href="https://blog.csdn.net/mysteryflower/category_9104425.html">
+                                                                <img src="https://img-blog.csdnimg.cn/2019091813595558.png" alt="">
+                                                            <!--####是否付费-->
+                              <span class="title oneline"><span class="text">前端</span>
+                                                                </span>
+                              <!--####是否付费-->
+                                                                <span class="count float-right">12篇</span>
+                                                        </a>
+                      </li>
+                                      </ul>
+              </div>
+              </div>
+              
+          </div>
+      </div>
+      </aside>  
+    </div>
+    
+    </div>
+<div class="mask-dark"></div>
+<div class="tool-box vertical">
+	<ul class="meau-list">
+		<li class="btn-like-box ">
+			<button class=" low-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p id="supportCount"></p>
+			</button>
+		</li>
+		<li class="to-commentBox" id = 'sharePost' data-report-click='{"mod":"popu_794","dest":"https://blog.csdn.net/mysteryflower/article/details/101099678"}'>
+			<a class="btn-comments low-height hover-box" >
+				<svg class="icon hover-hide" aria-hidden="true" style="padding-top: 3px;">
+					<use xlink:href="#icon-csdnc-fenxiang"></use>
+				</svg>
+				<span class="hover-show text">海报</span>
+				<p class="">
+				</p>
+			</a>
+		</li>
+		<li class="to-commentBox">
+						<a class="btn-comments low-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+										</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<a class="btn-toc low-height hover-box btn-comments" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</a>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+
+		</li>
+		<li>
+			<a class="btn-bookmark low-height hover-box btn-comments"  data-report-click='{"mod":"popu_824"}' title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true" style="padding-top: 2px;">
+					<use xlink:href="#icon-shoucangjia"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true" style="padding-top: 2px;">
+					<use xlink:href="#icon-csdnc-Collection-G" ></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</a>
+		</li>
+		<li class="bdsharebuttonbox">
+			<div class="weixin-qr btn-comments low-height hover-box" >
+				<a id="btnQrShare" class="bds_weixin clear-share-style" data-report-click='{"mod":"popu_831","dest":""}'  title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-usephone"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</div>
+		</li>
+							<li class="widescreen-hide">
+				<a class="prev btn-comments low-height hover-box" href="https://blog.csdn.net/mysteryflower/article/details/100560085" title="Yii框架学习笔记-安装-01">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-chevronleft"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="widescreen-hide">
+			<a class="next btn-comments hover-box low-height" href="https://blog.csdn.net/mysteryflower/article/details/101457848" title="Chrome 调试技巧">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-chevronright"></use>
+				</svg>
+				<span class="hover-show text text3">下一篇</span>
+			</a>
+		</li>
+						<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/mysteryflower/article/details/100560085" title="Yii框架学习笔记-安装-01">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-chevronleft"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+																<li class="widescreen-more">
+					<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/mysteryflower/article/details/101457848" title="Chrome 调试技巧">
+						<svg class="icon hover-hide" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronright"></use>
+						</svg>
+						<span class="hover-show text text3">下一篇</span>
+					</a>
+				</li>
+							</ul>
+		</li>
+        	</ul>
+</div>
+<div id = 'tool-post-common'>
+	<div class = 'tool_post_box'>
+		<img class = 'tool_post_img' src="https://csdnimg.cn/release/phoenix/write/assets/postShareBack.png" alt="">
+		<div id = 'shareCode'></div>
+	</div>
+</div>
+<div id="share-bg-shadow">
+<div id="share-qrcode-box">
+    <h3>分享到微信朋友圈</h3>
+    <div class='qrcode-img-box'>
+        <a class="btn-close">×</a>
+        <div id='shareQrCode'></div>
+	</div>
+    <p>扫一扫，手机浏览</p>
+</div>
+</div>
+<script>
+		var imgReal = new Image();
+		imgReal.src = "https://csdnimg.cn/release/phoenix/write/assets/postShareBack.png"
+</script>
+<script type=text/javascript crossorigin src="https://csdnimg.cn/release/phoenix/production/qrcode-7c90a92189.min.js"></script>
+<script type=text/javascript crossorigin src="https://csdnimg.cn/release/phoenix/production/icon-1349369f06.js"></script>
+<script src="//g.csdnimg.cn/??sharewx/1.2.1/sharewx.js" type="text/javascript"></script>
+<script type="text/javascript" crossorigin src="https://g.csdnimg.cn/collection-box/1.1.7/collection-box.js"></script><script>
+    var recommendCount = 40;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var ChannelId = 0;
+    var articleId = "101099678";
+    var commentscount = 0;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/mysteryflower/article/details/101099678";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "编程必备基础知识-计算机组成原理-01概述篇-笔记_网络_mysteryflower的专栏-CSDN博客";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = '';
+	var highlight = ["\u7f16\u7a0b","\u5fc5\u5907","\u57fa\u7840\u77e5\u8bc6","-","\u8ba1\u7b97\u673a","\u7ec4\u6210","\u539f\u7406","-","01","\u6982\u8ff0","-","\u7b14\u8bb0"];//高亮数组
+
+    var share_card_url = 'https://blog.csdn.net/mysteryflower/article/shareArticleCardPage?article_id=101099678'
+    var RecommendBlogExpertList = [{"user_name":"aq1z998","nick_name":"aq1z998","avatar":"https:\/\/profile.csdnimg.cn\/F\/A\/E\/3_aq1z998","is_expert":false,"article_count":1,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"u012441545","nick_name":"\u6708\u8d1d","avatar":"https:\/\/profile.csdnimg.cn\/0\/2\/6\/3_u012441545","is_expert":false,"article_count":174,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"weixin_30455067","nick_name":"weixin_30455067","avatar":"https:\/\/profile.csdnimg.cn\/4\/B\/4\/3_weixin_30455067","is_expert":false,"article_count":4421,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"dearbaba_8520","nick_name":"dearbaba_8520","avatar":"https:\/\/profile.csdnimg.cn\/D\/F\/9\/3_dearbaba_8520","is_expert":false,"article_count":1221,"rank":"1000+"},{"user_name":"melody96313","nick_name":"melody96313","avatar":"https:\/\/profile.csdnimg.cn\/7\/E\/5\/3_melody96313","is_expert":false,"article_count":39,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"huster1446","nick_name":"ljh_shuai","avatar":"https:\/\/profile.csdnimg.cn\/2\/7\/7\/3_huster1446","is_expert":false,"article_count":28,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"m0_37907797","nick_name":"\u5e05\u5730","avatar":"https:\/\/profile.csdnimg.cn\/9\/8\/5\/3_m0_37907797","is_expert":true,"article_count":81,"rank":"290"},{"user_name":"coderising","nick_name":"\u7801\u519c\u7ffb\u8eab","avatar":"https:\/\/profile.csdnimg.cn\/8\/A\/1\/3_coderising","is_expert":false,"article_count":648,"rank":"7000+"},{"user_name":"weixin_45081575","nick_name":"SunriseCai","avatar":"https:\/\/profile.csdnimg.cn\/0\/C\/6\/3_weixin_45081575","is_expert":false,"article_count":46,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"qq_41453285","nick_name":"\u6c5f\u5357\u3001\u8463\u5c11","avatar":"https:\/\/profile.csdnimg.cn\/9\/7\/E\/3_qq_41453285","is_expert":true,"article_count":1483,"rank":"836"}];
+	var articleType = 2;
+	var CopyrightContent = '';
+    // 是否是博客专家
+    var blog_flag = 0;
+    // 百度上报
+    _hmt.push(['_trackCustomEvent', 'blogexpert_artile', {'isblogexpertartile':blog_flag}]);
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging-3d3b805766.js"></script>
+<div class="skin-boxshadow"></div>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+</body>
+    <!-- 高亮未与 markdown兼容  -->
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.6.0/ckeditor/plugins/chart/chart.css" />
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.6.0/ckeditor/plugins/chart/lib/chart.min.js"></script>
+    <script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.6.0/ckeditor/plugins/chart/widget2chart.js"></script>
+    <script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-f91259fb12.js"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.6.0/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-light.css">
+<script>
+ // 全局声明
+ if (window.csdn === undefined) {
+      window.csdn = {};
+    }
+    window.csdn.sideToolbar = {
+        options: {
+            report:{
+                isShow: true,
+            },
+            qr: {
+                isShow: false,
+            }
+        }
+    }
+    $(function(){
+        $(document).on('click',"a.option-box[data-type='report']",function() {
+            window.csdn.userLogin.loadAjax(function(res){
+                showReport(false,articleTitles);
+            })
+        });
+    })
+</script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/iconfont/csdnc-c439e66521.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-da450fe83c.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-4d270b7758.min.js"></script>
+	<script src="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-e2b6be7b58.min.js"></script>
+<script src="https://g.csdnimg.cn/copyright/1.0.3/copyright.js" type="text/javascript"></script>
+<script type="text/javascript"  src="https://g.csdnimg.cn/??login-box/1.1.1/30/login-box.js,login-box/1.1.1/30/login-auto.js"></script>
+<script>
+    $(".MathJax").remove();
+    if ($('div.markdown_views pre.prettyprint code.hljs').length > 0) {
+        $('div.markdown_views')[0].className = 'markdown_views';
+    }
+</script>
+<script type="text/javascript" src="https://csdnimg.cn/release/blog_mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+    <script src="//g.csdnimg.cn/baidu-search/1.0.2/baidu-search.js"  type="text/javascript"></script>
+</html>
