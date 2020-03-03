@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <meta property="og:description" content="呼唤集群 并发量 ops 数据量 大数据 数据分布 顺序分区和哈希分区 修改：顺序分布其实不支持批量操作 哈希分布 搭建集群 Redis Cluster架构 节点 cluster-enabled ye" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>一站式学习Redis 从入门到高可用分布式实践（慕课）第九章 Redis Cluster（集群） - 明觉乃自清 - 博客园</title>
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=bY1L8C4sDM5eS-FBZ53dCHGUGiTPogsnScmdZ88QTfs" />
+    <link id="MainCss" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001.min.css?v=vmUk-3Bh8LDsKXwjNHs2GDiFna-ZMTUgOJzjUaXTlPA" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001-mobile.min.css?v=cJiDsI1JAuHHd-OAUWJeyE5JMXXsG4mmuUi2rVmEK1c" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/jiang910/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/jiang910/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/jiang910/wlwmanifest.xml" />
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=RN4A4Od0JtqUzcav7-WMHoGZ6h4UqCWUpkxU_3gbHZM"></script>
+    <script>
+        var currentBlogId = 475351;
+        var currentBlogApp = 'jiang910';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+    </script>
+    
+    
+    
+</head>
+<body>
+    <a name="top"></a>
+    
+    <div id="wrapper">
+<div id="header">
+
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>
+</h1>
+<div id="subtitle">
+
+</div>
+</div>
+<div id="sub"><div class="BlogStats">随笔 - 
+34, 文章 - 
+0, 评论 - 
+2, 引用 - 
+0</div>
+
+</div>
+
+
+
+
+</div>
+<div id="main_container">
+<div id="main_content">
+<div id="content">
+	<div id="post_detail">
+    <div class="post">
+        <h2>
+            
+<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/jiang910/p/10031181.html">一站式学习Redis 从入门到高可用分布式实践（慕课）第九章 Redis Cluster（集群）</a>
+
+        </h2>
+        <div class="postbody">
+            
+<div id="cnblogs_post_body" class="blogpost-body ">
+    <ul>
+<li><span style="font-size: 18pt;">呼唤集群</span></li>
+</ul>
+<p>&nbsp; &nbsp;并发量&nbsp; ops</p>
+<p>&nbsp; &nbsp;数据量&nbsp; 大数据</p>
+<ul>
+<li><span style="font-size: 18pt;">数据分布</span></li>
+</ul>
+<p>&nbsp;顺序分区和哈希分区</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128132713713-614132329.png" alt="" width="559" height="293" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128132754638-1282728092.png" alt="" width="489" height="307" /></p>
+<p>修改：顺序分布其实不支持批量操作</p>
+<p>哈希分布</p>
+<ol>
+<li>节点取余分区&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --------建议多倍扩容比较好，数据迁移量少</li>
+<li>一致性哈希分区&nbsp; &nbsp; &nbsp; --------token环，只影响邻近节点，对其他节点影响小（节点多时候建议）</li>
+<li>虚拟槽分区&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;--------前两者是客户端分片，后者是redis-cluster，服务端管理节点、槽、数据</li>
+</ol>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128134632325-164200466.png" alt="" width="684" height="375" /></p>
+<ul>
+<li><span style="font-size: 18pt;">搭建集群</span></li>
+</ul>
+<p>&nbsp;Redis Cluster架构</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 节点&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cluster-enabled&nbsp; yes&nbsp; 开启节点</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; meet&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 节点间通讯，所有节点共享信息</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;指派槽&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;16384个slot默认</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 复制&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;主从复制，高可用，分片从而实现故障自动转移</p>
+<p>两种安装方式：</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 原生命令安装</p>
+<p>第一步：开启节点</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128135958873-2001376052.png" alt="" width="541" height="289" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128140049344-331182814.png" alt="" width="529" height="345" /></p>
+<p>port 7000<br />daemonize yes<br />bind 0.0.0.0<br />dir "/opt/moudels/redis/data"<br />logfile "7000.log"<br />dbfilename "dump-7000.rdb"<br />cluster-enabled yes<br />cluster-config-file nodes-7000.conf<br />cluster-require-full-coverage no</p>
+<p><strong>可以使用如下语句进行配置文件复制和改动：sed 's/7000/7001/g' redis-7000.conf &gt; redis-7001.conf</strong></p>
+<p>第二步：meet</p>
+<p>[root@redis01 redis]# redis-cli -h 127.0.0.1 -p 7000 cluster meet 127.0.0.1 70001</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128140753020-462987131.png" alt="" width="483" height="240" /></p>
+<p>最后一个yes改成no</p>
+<p>第三步：分布槽</p>
+<p>[root@redis01 redis]# redis-cli -h 127.0.0.1 -p 7000 cluster addslots{0...5461}</p>
+<p>[root@redis01 redis]# redis-cli -h 127.0.0.1 -p 7001 cluster addslots{5462...10992}</p>
+<p>[root@redis01 redis]# redis-cli -h 127.0.0.1 -p 7002 cluster addslots{10992...16383}</p>
+<p>第四步：设置主从</p>
+<p>&nbsp;[root@redis01 redis]# redis-cli -h 127.0.0.1 -p 7003 cluster replicate ${node-id-7000}</p>
+<p>&nbsp;[root@redis01 redis]# redis-cli -h 127.0.0.1 -p 7004 cluster replicate ${node-id-7001}</p>
+<p>&nbsp;[root@redis01 redis]# redis-cli -h 127.0.0.1 -p 7005 cluster replicate ${node-id-7002}</p>
+<p>以上集群就说三主三从安装。</p>
+<p>[root@redis01 script]# more addslots.sh <br />start=$1<br />end=$2<br />port=$3<br />for slot in `seq ${start} ${end}`<br />do<br />  echo "slot:${slot}"<br />   redis-cli -p ${port} cluster addslots ${slot}<br />done<br />[root@redis01 script]#</p>
+<p>分配槽</p>
+<p>&nbsp;</p>
+<p>sh addslots.sh 0 5461 7000&nbsp;</p>
+<p>sh addslots.sh 5462 10922 7001</p>
+<p>sh addslots.sh 10923 16383 7002</p>
+<p>&nbsp;</p>
+<p><strong>[root@redis01 script]# redis-cli -p 7000 cluster nodes</strong><br />16c0e2f17551fbcc5e4e23ec6f9c5e686f97448e 127.0.0.1:7001 master - 0 1543299928519 1 connected 5462-10922<br />334b8b113051d594f0e95898a8bfcb6776409114 127.0.0.1:7003 master - 0 1543299926503 3 connected<br />4574a8677f3aa2412cda7b761a62205ab6f37515 127.0.0.1:7005 master - 0 1543299927510 5 connected<br />a1c2a222a0527b46621fcee0b9a95eb6dbc562ee 127.0.0.1:7000 myself,master - 0 0 0 connected 0-5461<br />31efa34cdf52947268a9c7a2b325b3d0e99d631f 127.0.0.1:7002 master - 0 1543299925495 2 connected 10923-16383<br />553393c9b7aeaa4414f49cf9b06bc124fb626c54 127.0.0.1:7004 master - 0 1543299929529 4 connected</p>
+<p>设置主从：<br />[root@redis01 script]# redis-cli -p 7003 cluster replicate a1c2a222a0527b46621fcee0b9a95eb6dbc562ee<br />OK<br />[root@redis01 script]#</p>
+<p>最后一步：[root@redis01 script]# redis-cli -c -p 7000</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128150313116-701508455.png" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 官方工具安装&nbsp; &nbsp; &nbsp; &nbsp;ruby工具</p>
+<p>&nbsp;Ruby环境准备</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128151555084-865169953.png" alt="" width="487" height="203" /></p>
+<p>&nbsp; &nbsp; &nbsp;下载编译安装ruby</p>
+<p>&nbsp;wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz&nbsp; #下载</p>
+<p>&nbsp;tar -xzvf ruby-2.4.3.tar.gz #解压</p>
+<p>cd ruby-2.4.3</p>
+<p>./configure&nbsp;--prefix=/usr/local/ruby</p>
+<p>sudo make &amp;&amp; make install #编译安装</p>
+<p>安装完记得配置PATH</p>
+<p>&nbsp; &nbsp; &nbsp; 安装rubygem redis</p>
+<p>&nbsp;wget https://rubygems.org/downloads/redis-3.3.0.gem&nbsp; #下载</p>
+<p>gem install -l redis-3.3.0.gem</p>
+<p>gem list --check redis gem</p>
+<p>&nbsp; &nbsp; &nbsp; 安装redis-trib.rb</p>
+<p>cp ${redis-home}/src/redis-trib.rb /usr/local/bin</p>
+<p>&nbsp;创建集群：</p>
+<p>redis-trib.rb create --replicas 1 127.0.0.1:6481 127.0.0.1:6482 127.0.0.1:6483&nbsp;127.0.0.1:6484 127.0.0.1:6485 127.0.0.1:6486</p>
+<p>集群完整性检查</p>
+<p>redis-trib.rb check 127.0.0.1:6379&nbsp; &nbsp;&nbsp;redis-trib.rb check 127.0.0.1:6481</p>
+<p>&nbsp;</p>
+<ul>
+<li><span style="font-size: 18pt;">集群伸缩</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p><strong>扩容集群</strong></p>
+<p>&nbsp;准备新节点</p>
+<p>&nbsp;加入集群&nbsp; </p>
+<p>127.0.0.1&gt;cluster meet 127.0.0.1 6385 加入&nbsp; &nbsp;</p>
+<p>[root@redis01 config]# redis-trib.rb add-node 127.0.0.1:8006&nbsp;127.0.0.1:8000&nbsp; &nbsp;--slave --master-id 有meet的作用</p>
+<p>&nbsp;迁移槽和数据</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128172615748-270732478.png" alt="" width="516" height="463" /></p>
+<p>&nbsp;<img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128173152398-1395716467.png" alt="" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128173400714-1317712826.png" alt="" /></p>
+<p>&nbsp;缩容</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128195019515-1173408504.png" alt="" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128195316832-811197178.png" alt="" width="787" height="148" /></p>
+<p>先下从节点再下主节点</p>
+<ul>
+<li><span style="font-size: 18pt;">客户端路由</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>&nbsp;moved重定向</p>
+<p>&gt;cluster keysolt php&nbsp; 返回键所在的槽号</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181128195958941-223389311.png" alt="" width="498" height="379" /></p>
+<p>&nbsp;</p>
+<p>ask重定向</p>
+<p>smart客户端</p>
+<p>故障发现：通过ping/pong消息实现故障发现，不需要sentinal</p>
+<p>&nbsp;</p>
+<ul>
+<li><span style="font-size: 18pt;">集群原理</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><span style="font-size: 18pt;">开发运维常见问题</span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p>&nbsp;<img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129094950676-467186427.png" alt="" width="612" height="428" /></p>
+<p>因而不建议使用从节点。集群模式下不建议使用读写分离</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129095234411-1682843522.png" alt="" width="500" height="425" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129100319255-766582354.png" alt="" width="670" height="459" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129100809760-340703237.png" alt="" width="760" height="368" /></p>
+<p>&nbsp;</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129101150205-586922279.png" alt="" width="949" height="518" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129101237690-1913560702.png" alt="" /></p>
+<p>&nbsp;</p>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+        </div>
+        <p class="postfoot">
+            posted on 
+<span id="post-date">2018-11-28 11:38</span>&nbsp;
+<a href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>&nbsp;
+阅读(<span id="post_view_count">...</span>)&nbsp;
+评论(<span id="post_comment_count">...</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10031181" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(10031181);return false;">收藏</a>
+        </p>
+    </div>
+</div>
+
+<script src="https://common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 475351, cb_blogApp = 'jiang910', cb_blogUserGuid = '06c546e1-793f-4679-4e16-08d64a299ffb';
+    var cb_entryId = 10031181, cb_entryCreatedDate = '2018-11-28 11:38', cb_postType = 1; 
+    loadViewCount(cb_entryId);
+</script><a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<script>
+    var commentManager = new blogCommentManager();
+    commentManager.renderComments(0);
+</script>
+
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+    <script>
+        googletag.cmd.push(function () {
+            googletag.defineSlot("/1090369/C1", [300, 250], "div-gpt-ad-1546353474406-0").addService(googletag.pubads());
+            googletag.defineSlot("/1090369/C2", [468, 60], "div-gpt-ad-1539008685004-0").addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+    <div id="cnblogs_c1" class="c_ad_block">
+        <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;"></div>
+    </div>
+    <div id="under_post_news"></div>
+    <div id="cnblogs_c2" class="c_ad_block">
+        <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;">
+            <script>
+                if (new Date() >= new Date(2018, 9, 13)) {
+                    googletag.cmd.push(function () { googletag.display("div-gpt-ad-1539008685004-0"); });
+                }
+            </script>
+        </div>
+    </div>
+    <div id="under_post_kb"></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+        fixPostBody();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverAdT2();
+        deliverAdC1();
+        deliverAdC2();
+        loadNewsAndKb();
+        loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+</div>
+</div>
+<div id="leftmenu">
+
+
+<h3>导航</h3>
+<ul>
+    <li>
+        <a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/jiang910/">
+首页</a>
+
+    </li>
+    <li>
+        
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E6%98%8E%E8%A7%89%E4%B9%83%E8%87%AA%E6%B8%85">
+联系</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/jiang910/rss/">
+订阅</a>
+        
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/jiang910/rss/">
+    <img src="/skins/anothereon001/images/xml.gif" alt="订阅" />
+</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+    </li>
+</ul>
+
+
+<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>
+
+<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+
+<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+
+</div>
+</div>
+<div class="clear"></div>
+<div id="footer">
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	
+<a href="https://www.cnblogs.com/" id="Footer1_Hyperlink3" style="font-size: 12px; font-family: Verdana">博客园</a>
+	<br />
+	Copyright &copy; 2020 明觉乃自清
+<br /><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+</p>
+
+
+</div>
+</div>
+
+
+    
+</body>
+</html>

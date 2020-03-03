@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <meta property="og:description" content="课程目录 缓存的使用与设计 缓存的受益与成本 受益：1.加速读写：通过缓存加速读写速度：CPU L1/L2/L3Cache、Linux page Cache加速硬盘读写、浏览器缓存、Ehcache缓存" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>一站式学习Redis 从入门到高可用分布式实践（慕课）第十章 缓存设计与优化 - 明觉乃自清 - 博客园</title>
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=bY1L8C4sDM5eS-FBZ53dCHGUGiTPogsnScmdZ88QTfs" />
+    <link id="MainCss" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001.min.css?v=vmUk-3Bh8LDsKXwjNHs2GDiFna-ZMTUgOJzjUaXTlPA" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001-mobile.min.css?v=cJiDsI1JAuHHd-OAUWJeyE5JMXXsG4mmuUi2rVmEK1c" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/jiang910/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/jiang910/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/jiang910/wlwmanifest.xml" />
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=RN4A4Od0JtqUzcav7-WMHoGZ6h4UqCWUpkxU_3gbHZM"></script>
+    <script>
+        var currentBlogId = 475351;
+        var currentBlogApp = 'jiang910';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+    </script>
+    
+    
+    
+</head>
+<body>
+    <a name="top"></a>
+    
+    <div id="wrapper">
+<div id="header">
+
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>
+</h1>
+<div id="subtitle">
+
+</div>
+</div>
+<div id="sub"><div class="BlogStats">随笔 - 
+34, 文章 - 
+0, 评论 - 
+2, 引用 - 
+0</div>
+
+</div>
+
+
+
+
+</div>
+<div id="main_container">
+<div id="main_content">
+<div id="content">
+	<div id="post_detail">
+    <div class="post">
+        <h2>
+            
+<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/jiang910/p/10036759.html">一站式学习Redis 从入门到高可用分布式实践（慕课）第十章 缓存设计与优化</a>
+
+        </h2>
+        <div class="postbody">
+            
+<div id="cnblogs_post_body" class="blogpost-body ">
+    <p style="text-align: center;"><span style="color: #ff0000; font-size: 18pt;">课程目录</span></p>
+<p><span style="font-size: 14pt; color: #ff0000;">缓存的使用与设计</span></p>
+<ul>
+<li><span style="font-size: 18px; color: #ff0000;">缓存的受益与成本</span></li>
+</ul>
+<p><span style="font-size: 18px; color: #ff0000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #000000;">受益：1.加速读写：通过缓存加速读写速度：CPU L1/L2/L3Cache、Linux page Cache加速硬盘读写、浏览器缓存、Ehcache缓存数据库结果 </span></span></p>
+<p><span style="font-size: 18px; color: #ff0000;"><span style="color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.降低后端负载：后端服务器通过前端缓存降低负载：业务端使用Redis降低后端MySQL负载等</span></span></p>
+<p><span style="font-size: 18px; color: #ff0000;"><span style="color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;成本：1.数据不一致 ：缓存层和数据层有时间窗口不一致，和更新策略有关</span></span></p>
+<p><span style="font-size: 18px; color: #ff0000;"><span style="color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.代码维护成本：多了一层缓存逻辑</span></span></p>
+<p><span style="font-size: 18px; color: #ff0000;"><span style="color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.运维成本：例如Redis Cluster</span></span></p>
+<p><span style="font-size: 18px; color: #ff0000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 14pt;">使用场景</span></span></p>
+<p><span style="font-size: 18px; color: #ff0000;"><span style="color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1.降低后端负载：对高消耗的SQL：join结果集/分组统计结果缓存</span></span></p>
+<p><span style="font-size: 18px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.加速请求响应：利用Redis/Memcache优化IO响应时间</span></p>
+<p><span style="font-size: 18px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3.大量写合并为批量写：如计数器先Redis累加再批量写DB</span></p>
+<ul>
+<li><span style="font-size: 18px; color: #ff0000;">缓存更新策略</span></li>
+</ul>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1.LRU/LFU/FIFO算法剔除：例如maxmemory-policy</span></p>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.超时剔除：例如expire</span></p>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3.主动更新：开发控制生命周期</span></p>
+<p><span style="font-size: 18px; color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129103350063-1042385445.png" alt="" width="397" height="251" /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129103447793-2102291268.png" alt="" width="476" height="115" /></span></p>
+<ul>
+<li><span style="font-size: 18px;"><span style="color: #ff0000;">缓存粒度控制</span></span></li>
+</ul>
+<p><span style="font-size: 18px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;三个角度</span></p>
+<p><span style="font-size: 18px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1.通用性：全量属性更好。</span></p>
+<p><span style="font-size: 18px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.占用空间：部分属性更好。</span></p>
+<p><span style="font-size: 18px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3.代码维护：表面上全量属性更好。</span></p>
+<ul>
+<li><span style="font-size: 18px;"><span style="color: #ff0000;">缓存穿透优化----大量请求不命中</span></span></li>
+</ul>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;原因：&nbsp; 1.业务代码自身问题</span></p>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.恶意共计、爬虫等等</span></p>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;如何发现：1.业务的响应时间（可预计的）</span></p>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.业务本身问题</span></p>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.相关指标:总调用数、缓存层 命中数、存储层命中数</span></p>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 解决方法：</span></p>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1.缓存空对象</span></p>
+<p><span style="font-size: 18px; color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129110514565-1306785425.png" alt="" width="354" height="364" /></span></p>
+<p><span style="font-size: 18px; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.布隆过滤器拦截</span></p>
+<p><span style="font-size: 18px; color: #000000;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129110247700-1176510692.png" alt="" width="376" height="322" /></span></p>
+<ul>
+<li><span style="font-size: 18px;"><span style="color: #ff0000;">无底洞问题优化</span></span></li>
+</ul>
+<p><span style="font-size: 18px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 加机器性能没有提升，反而下降</span></p>
+<p>&nbsp;<img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129111134439-53192245.png" alt="" width="386" height="167" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129111204223-2051867117.png" alt="" width="301" height="190" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129111257271-70511594.png" alt="" width="450" height="223" /></p>
+<ul>
+<li><span style="font-size: 18px;"><span style="color: #ff0000;">缓存雪崩优化</span></span></li>
+<li><span style="font-size: 18px;"><span style="color: #ff0000;">热点key重建优化</span></span></li>
+</ul>
+<p>&nbsp;<img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129111802176-870001479.png" alt="" width="354" height="251" /></p>
+<p><span style="font-size: 18px;">互斥锁 ：减少了重建缓存次数，增加了等待</span></p>
+<p><span style="font-size: 18px;">永不过期：可能数据不一致</span></p>
+<p><span style="font-size: 18px;"><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129112202891-819085661.png" alt="" width="450" height="156" /></span></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181129112416867-1160511539.png" alt="" width="446" height="231" /></p>
+<p>&nbsp;</p>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+        </div>
+        <p class="postfoot">
+            posted on 
+<span id="post-date">2018-11-29 10:38</span>&nbsp;
+<a href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>&nbsp;
+阅读(<span id="post_view_count">...</span>)&nbsp;
+评论(<span id="post_comment_count">...</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10036759" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(10036759);return false;">收藏</a>
+        </p>
+    </div>
+</div>
+
+<script src="https://common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 475351, cb_blogApp = 'jiang910', cb_blogUserGuid = '06c546e1-793f-4679-4e16-08d64a299ffb';
+    var cb_entryId = 10036759, cb_entryCreatedDate = '2018-11-29 10:38', cb_postType = 1; 
+    loadViewCount(cb_entryId);
+</script><a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<script>
+    var commentManager = new blogCommentManager();
+    commentManager.renderComments(0);
+</script>
+
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+    <script>
+        googletag.cmd.push(function () {
+            googletag.defineSlot("/1090369/C1", [300, 250], "div-gpt-ad-1546353474406-0").addService(googletag.pubads());
+            googletag.defineSlot("/1090369/C2", [468, 60], "div-gpt-ad-1539008685004-0").addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+    <div id="cnblogs_c1" class="c_ad_block">
+        <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;"></div>
+    </div>
+    <div id="under_post_news"></div>
+    <div id="cnblogs_c2" class="c_ad_block">
+        <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;">
+            <script>
+                if (new Date() >= new Date(2018, 9, 13)) {
+                    googletag.cmd.push(function () { googletag.display("div-gpt-ad-1539008685004-0"); });
+                }
+            </script>
+        </div>
+    </div>
+    <div id="under_post_kb"></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+        fixPostBody();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverAdT2();
+        deliverAdC1();
+        deliverAdC2();
+        loadNewsAndKb();
+        loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+</div>
+</div>
+<div id="leftmenu">
+
+
+<h3>导航</h3>
+<ul>
+    <li>
+        <a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/jiang910/">
+首页</a>
+
+    </li>
+    <li>
+        
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E6%98%8E%E8%A7%89%E4%B9%83%E8%87%AA%E6%B8%85">
+联系</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/jiang910/rss/">
+订阅</a>
+        
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/jiang910/rss/">
+    <img src="/skins/anothereon001/images/xml.gif" alt="订阅" />
+</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+    </li>
+</ul>
+
+
+<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>
+
+<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+
+<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+
+</div>
+</div>
+<div class="clear"></div>
+<div id="footer">
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	
+<a href="https://www.cnblogs.com/" id="Footer1_Hyperlink3" style="font-size: 12px; font-family: Verdana">博客园</a>
+	<br />
+	Copyright &copy; 2020 明觉乃自清
+<br /><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+</p>
+
+
+</div>
+</div>
+
+
+    
+</body>
+</html>

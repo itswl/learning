@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <meta property="og:description" content="Redis API的使用和理解 1.通用命令 通用命令 mset /mget 批量设置 减少了网络时间 一般而言=网络时间&#x2B;命令时间 sadd myset a b c d e 将一个或多个成员元素加入" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>一站式学习Redis  从入门到高可用分布式实践（慕课）第二章 Redis API的使用和理解 - 明觉乃自清 - 博客园</title>
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=bY1L8C4sDM5eS-FBZ53dCHGUGiTPogsnScmdZ88QTfs" />
+    <link id="MainCss" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001.min.css?v=vmUk-3Bh8LDsKXwjNHs2GDiFna-ZMTUgOJzjUaXTlPA" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001-mobile.min.css?v=cJiDsI1JAuHHd-OAUWJeyE5JMXXsG4mmuUi2rVmEK1c" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/jiang910/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/jiang910/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/jiang910/wlwmanifest.xml" />
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=RN4A4Od0JtqUzcav7-WMHoGZ6h4UqCWUpkxU_3gbHZM"></script>
+    <script>
+        var currentBlogId = 475351;
+        var currentBlogApp = 'jiang910';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+    </script>
+    
+    
+    
+</head>
+<body>
+    <a name="top"></a>
+    
+    <div id="wrapper">
+<div id="header">
+
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>
+</h1>
+<div id="subtitle">
+
+</div>
+</div>
+<div id="sub"><div class="BlogStats">随笔 - 
+34, 文章 - 
+0, 评论 - 
+2, 引用 - 
+0</div>
+
+</div>
+
+
+
+
+</div>
+<div id="main_container">
+<div id="main_content">
+<div id="content">
+	<div id="post_detail">
+    <div class="post">
+        <h2>
+            
+<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/jiang910/p/10020636.html">一站式学习Redis  从入门到高可用分布式实践（慕课）第二章 Redis API的使用和理解</a>
+
+        </h2>
+        <div class="postbody">
+            
+<div id="cnblogs_post_body" class="blogpost-body ">
+    <p><span style="color: #000000; font-size: 14pt;"><strong>Redis API的使用和理解</strong></span></p>
+<p>1.通用命令&nbsp; &nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 通用命令&nbsp; &nbsp; &nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mset /mget&nbsp; &nbsp; &nbsp; 批量设置&nbsp; 减少了网络时间&nbsp; &nbsp;一般而言=网络时间+命令时间</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sadd myset a b c d e&nbsp; &nbsp;将一个或多个成员元素加入到集合中</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; keys *&nbsp; &nbsp; &nbsp; 生产不适用&nbsp; 热备从节点&nbsp; scan</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dbsize&nbsp; &nbsp; &nbsp; 计算key的总数</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; exists&nbsp; key&nbsp; &nbsp;检查key是否存在</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; expire key seconds&nbsp; key在seconds秒后过期</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ttl key&nbsp; 查看key剩余的过期时间</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; persist&nbsp; key&nbsp; 去掉key的过期时间</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;type&nbsp; key&nbsp; &nbsp; &nbsp;返回key的类型</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181126152858724-1172195367.png" alt="" width="285" height="171" /></p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 数据结构和内部编码</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181126154527653-2073494638.png" alt="" width="335" height="432" /></p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 单线程架构</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 单线程为什么这么块？</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1.纯内存</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.非阻塞IO</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3.避免现场切换和竟态消耗</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181126155838242-576351041.png" alt="" width="507" height="144" /></p>
+<p>2.字符串类型</p>
+<p>&nbsp;incr&nbsp; key&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#自增1</p>
+<p>decr key&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #自减1</p>
+<p>incrby key k&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#自增k&nbsp; &nbsp;</p>
+<p>decrby key k&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #自减k</p>
+<p>set key value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#不管key是否存在，都设置</p>
+<p>setnx key value&nbsp; &nbsp; &nbsp; &nbsp; #key不存在，才设置</p>
+<p>set key value xx&nbsp; &nbsp; &nbsp; &nbsp;#key存在，才设置</p>
+<p>getset&nbsp; key newvalue&nbsp; #set key newvalue并返回旧的value</p>
+<p>append key value&nbsp; &nbsp; &nbsp; &nbsp;#将value追加到旧的value</p>
+<p>strlen&nbsp; key&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#返回字符串的长度</p>
+<p>incrbyfloat key 3.5&nbsp; &nbsp; &nbsp; &nbsp;#增加key对应的值3.5</p>
+<p>getrange key start&nbsp; end&nbsp; #获取字符串指定下标的所有值</p>
+<p>setrange key index value #设置指定下标所对应的值</p>
+<p>3.哈希类型</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181126163905741-213381072.png" alt="" width="301" height="300" /></p>
+<p>以h开头：</p>
+<p>&nbsp; &nbsp; &nbsp;hget/hegtall&nbsp; &nbsp; &nbsp; &nbsp;hmget/hmset</p>
+<p>&nbsp; &nbsp; &nbsp;hset</p>
+<p>&nbsp; &nbsp; &nbsp;hdel</p>
+<p>&nbsp; &nbsp; &nbsp;hincrby&nbsp; user:1:info&nbsp; &nbsp;pageview&nbsp; count</p>
+<p>&nbsp; &nbsp; &nbsp;hvals&nbsp; key&nbsp; #返回hash&nbsp; key对应所有的值</p>
+<p>&nbsp; &nbsp; &nbsp;hkeys key&nbsp; #返回hash&nbsp; key对应的所有field</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181126164811081-1594625645.png" alt="" width="353" height="347" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181126164929749-76483101.png" alt="" width="615" height="146" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181126165128351-1080536311.png" alt="" width="614" height="216" /></p>
+<p>&nbsp;</p>
+<p>4.列表类型</p>
+<p>有序 可以重复</p>
+<p>lpush和rpush&nbsp; 弹入</p>
+<p>lpop和rpop 从左边弹出一个|从右边弹出一个</p>
+<p>lrem&nbsp; key&nbsp; count value</p>
+<p>ltrim&nbsp; key&nbsp; start&nbsp; &nbsp;end&nbsp; #按照索引范围进行修减列表</p>
+<p>linsert&nbsp; listkey&nbsp; before|after&nbsp; b&nbsp; java</p>
+<p>lrange</p>
+<p>lindex key index</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181126171713718-776076765.png" alt="" width="465" height="443" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181126172250247-1540054012.png" alt="" width="539" height="256" /></p>
+<p>5.集合类型</p>
+<p>sadd&nbsp; 添加&nbsp; &nbsp;srem&nbsp; 删除</p>
+<p>scard sismember</p>
+<p>srandmember&nbsp; 也是弹出 不会破坏集合</p>
+<p>smembers&nbsp; 无序 慎用 可以用scan</p>
+<p>spop随机弹出一个元素</p>
+<p>sinter 取出两个集合相同的元素</p>
+<p>sdiff&nbsp; &nbsp;取出两个集合不同的元素</p>
+<p>sunion 取出两个集合的并集</p>
+<p>无序 无重复&nbsp; 支持集合间操作</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127090910248-595441068.png" alt="" width="397" height="408" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127091317055-632243270.png" alt="" width="406" height="217" /></p>
+<p>6.有序集合类型</p>
+<p>特点：</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127091556333-1993813075.png" alt="" width="486" height="257" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127091809027-1585627289.png" alt="" width="544" height="287" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127091926608-1067176912.png" alt="" width="544" height="303" /></p>
+<p>zadd</p>
+<p>zrem</p>
+<p>zscore&nbsp; key&nbsp; element&nbsp; 返回元素分数</p>
+<p>zincrby key increScore element&nbsp; 增加或减少元素的分数</p>
+<p>zcard key&nbsp; &nbsp;返回元素的总个数</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127092607677-1991300932.png" alt="" width="492" height="396" /></p>
+<p>zrange&nbsp; key start end [withscores]&nbsp; 返回指定索引范围内的升序元素[分值]</p>
+<p>zrange key minScore maxScore&nbsp;&nbsp;[withscores]&nbsp;&nbsp;返回指定分数范围内的升序元素[分值]</p>
+<p>zcount&nbsp; key&nbsp;minScore maxScore&nbsp; 返回有序集合内在指定分数范围内的个数</p>
+<p>zremrangebyrank&nbsp; key start&nbsp; end&nbsp; &nbsp;删除指定排名内的升序元素</p>
+<p>zremrangebyscore&nbsp; key minScore maxScore&nbsp; 删除指定分数内的升序元素&nbsp;&nbsp;</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127093423659-735597248.png" alt="" width="576" height="462" /></p>
+<p>zrevrank&nbsp; 从高到低</p>
+<p>zrevrange&nbsp;</p>
+<p>zrevrangebyscore</p>
+<p>zinterstore</p>
+<p>zunionstore</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127094328104-702290313.png" alt="" width="487" height="416" /></p>
+<p>&nbsp;</p>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+        </div>
+        <p class="postfoot">
+            posted on 
+<span id="post-date">2018-11-26 15:37</span>&nbsp;
+<a href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>&nbsp;
+阅读(<span id="post_view_count">...</span>)&nbsp;
+评论(<span id="post_comment_count">...</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10020636" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(10020636);return false;">收藏</a>
+        </p>
+    </div>
+</div>
+
+<script src="https://common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 475351, cb_blogApp = 'jiang910', cb_blogUserGuid = '06c546e1-793f-4679-4e16-08d64a299ffb';
+    var cb_entryId = 10020636, cb_entryCreatedDate = '2018-11-26 15:37', cb_postType = 1; 
+    loadViewCount(cb_entryId);
+</script><a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<script>
+    var commentManager = new blogCommentManager();
+    commentManager.renderComments(0);
+</script>
+
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+    <script>
+        googletag.cmd.push(function () {
+            googletag.defineSlot("/1090369/C1", [300, 250], "div-gpt-ad-1546353474406-0").addService(googletag.pubads());
+            googletag.defineSlot("/1090369/C2", [468, 60], "div-gpt-ad-1539008685004-0").addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+    <div id="cnblogs_c1" class="c_ad_block">
+        <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;"></div>
+    </div>
+    <div id="under_post_news"></div>
+    <div id="cnblogs_c2" class="c_ad_block">
+        <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;">
+            <script>
+                if (new Date() >= new Date(2018, 9, 13)) {
+                    googletag.cmd.push(function () { googletag.display("div-gpt-ad-1539008685004-0"); });
+                }
+            </script>
+        </div>
+    </div>
+    <div id="under_post_kb"></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+        fixPostBody();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverAdT2();
+        deliverAdC1();
+        deliverAdC2();
+        loadNewsAndKb();
+        loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+</div>
+</div>
+<div id="leftmenu">
+
+
+<h3>导航</h3>
+<ul>
+    <li>
+        <a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/jiang910/">
+首页</a>
+
+    </li>
+    <li>
+        
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E6%98%8E%E8%A7%89%E4%B9%83%E8%87%AA%E6%B8%85">
+联系</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/jiang910/rss/">
+订阅</a>
+        
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/jiang910/rss/">
+    <img src="/skins/anothereon001/images/xml.gif" alt="订阅" />
+</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+    </li>
+</ul>
+
+
+<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>
+
+<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+
+<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+
+</div>
+</div>
+<div class="clear"></div>
+<div id="footer">
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	
+<a href="https://www.cnblogs.com/" id="Footer1_Hyperlink3" style="font-size: 12px; font-family: Verdana">博客园</a>
+	<br />
+	Copyright &copy; 2020 明觉乃自清
+<br /><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+</p>
+
+
+</div>
+</div>
+
+
+    
+</body>
+</html>

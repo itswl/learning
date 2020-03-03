@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <meta property="og:description" content="什么是主从复制 主从复制的配置 全部复制和部分复制 故障处理 开发运维常见问题 主从复制作用 数据副本 扩展读性能 简单总结： 1.一个master可以有多个slave 2.一个slave只能有一个m" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>一站式学习Redis 从入门到高可用分布式实践（慕课）第七章  Redis复制的原理与优化 - 明觉乃自清 - 博客园</title>
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=bY1L8C4sDM5eS-FBZ53dCHGUGiTPogsnScmdZ88QTfs" />
+    <link id="MainCss" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001.min.css?v=vmUk-3Bh8LDsKXwjNHs2GDiFna-ZMTUgOJzjUaXTlPA" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001-mobile.min.css?v=cJiDsI1JAuHHd-OAUWJeyE5JMXXsG4mmuUi2rVmEK1c" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/jiang910/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/jiang910/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/jiang910/wlwmanifest.xml" />
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=RN4A4Od0JtqUzcav7-WMHoGZ6h4UqCWUpkxU_3gbHZM"></script>
+    <script>
+        var currentBlogId = 475351;
+        var currentBlogApp = 'jiang910';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+    </script>
+    
+    
+    
+</head>
+<body>
+    <a name="top"></a>
+    
+    <div id="wrapper">
+<div id="header">
+
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>
+</h1>
+<div id="subtitle">
+
+</div>
+</div>
+<div id="sub"><div class="BlogStats">随笔 - 
+34, 文章 - 
+0, 评论 - 
+2, 引用 - 
+0</div>
+
+</div>
+
+
+
+
+</div>
+<div id="main_container">
+<div id="main_content">
+<div id="content">
+	<div id="post_detail">
+    <div class="post">
+        <h2>
+            
+<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/jiang910/p/10026646.html">一站式学习Redis 从入门到高可用分布式实践（慕课）第七章  Redis复制的原理与优化</a>
+
+        </h2>
+        <div class="postbody">
+            
+<div id="cnblogs_post_body" class="blogpost-body ">
+    <ul>
+<li>
+<blockquote><span style="font-size: 18pt;">什么是主从复制</span></blockquote>
+</li>
+<li>
+<blockquote><span style="font-size: 18pt;">主从复制的配置</span></blockquote>
+</li>
+<li>
+<blockquote><span style="font-size: 18pt;">全部复制和部分复制</span></blockquote>
+</li>
+<li>
+<blockquote><span style="font-size: 18pt;">故障处理</span></blockquote>
+</li>
+<li>
+<blockquote><span style="font-size: 18pt;">开发运维常见问题</span></blockquote>
+</li>
+</ul>
+<blockquote>
+<p><strong><span style="font-size: 18pt;">主从复制作用</span></strong></p>
+<p>数据副本</p>
+<p>扩展读性能</p>
+<p><span style="font-size: 18pt;">简单总结：</span></p>
+<p>1.一个master可以有多个slave</p>
+<p>2.一个slave只能有一个master</p>
+<p>3.数据流向是单向的，master到slave</p>
+<p><strong><span style="font-size: 18pt;">主从复制的配置</span></strong></p>
+<p><span style="font-size: 16px;">两种实现方式：</span></p>
+<p><span style="font-size: 16px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;slaveof命令&nbsp; &nbsp; slaveof&nbsp; &nbsp;127.0.0.1 6379</span></p>
+<p><span style="font-size: 16px;"><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127163729314-1777030756.png" alt="" width="439" height="219" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127163843523-1057672040.png" alt="" width="482" height="233" /></span></p>
+<p>&nbsp;</p>
+<p>断掉主从不会删掉数据，但是再找新的主时候会被清空</p>
+<p><span style="font-size: 16px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 配置</span></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127164105225-1096613550.png" alt="" width="367" height="117" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127164144237-1980546628.png" alt="" width="364" height="151" /></p>
+<p><strong><span style="font-size: 18pt;">全部复制和部分复制</span></strong></p>
+<p>run_id:b75a2ccffc783a8379934046ad8d716e91740cd9</p>
+<p>master_repl_offset:1079 偏移量</p>
+<p>redis-cli -p 6382 info replication</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127172031333-174471870.png" alt="" width="500" height="300" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127172747081-1756192661.png" alt="" width="476" height="354" /></p>
+<p><strong><span style="font-size: 18pt;">全量复制的开销</span></strong></p>
+<p><strong><span style="font-size: 18pt;"><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127172237366-323318906.png" alt="" width="364" height="237" /></span></strong></p>
+<p><strong>1. redis什么时候会发生全量复制？</strong></p>
+<p><strong>a) redis slave首启动或者重启后，连接到master时</strong></p>
+<p><strong>b) redis slave进程没重启，但是掉线了，重连后不满足部分复制条件</strong></p>
+<p><strong>2. redis什么时候会发生部分复制？</strong></p>
+<p><strong>先来看部分复制需要的条件</strong></p>
+<p><strong>a) 主从的redis版本&gt;=2.8</strong></p>
+<p><strong>b) redis slave进程没有重启，但是掉线了，重连了master(因为slave进程重启的话，run id就没有了)</strong></p>
+<p><strong>c) redis slave保存的run id与master当前run id一致 (注：run id并不是pid，slave把它保存在内存中，重启就消失)</strong></p>
+<p><strong>d) redis slave掉线期间，master保存在内存的offset可用，也就是master变化不大，被更改的指令都保存在内存</strong></p>
+<p><strong>3. redis进程重启后会发生全量复制还是部分复制？</strong></p>
+<p><strong>a) master重启时，run id会发生变化</strong></p>
+<p><strong>b) slave重启时，run id会丢失</strong></p>
+<p><strong>答：很显然，会发生全量复制，因为部分复制的条件之一run id已经不能满足</strong></p>
+<p><strong>4.当全量复制或者同步复制完毕，增量是如何更新到slave的？</strong></p>
+<p><strong>答：通过流式的命令更新，此时master就是slave的client，这样去理解。</strong></p>
+<p><strong>5. run id如何查看？</strong></p>
+<p><strong>答：通过info server命令查看</strong></p>
+<p><strong><span style="font-size: 18pt;">&nbsp;故障处理</span></strong></p>
+<p><strong>SLAVE宕机</strong></p>
+<p>&nbsp;<img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127173143343-350979794.png" alt="" width="442" height="197" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127173251944-1623869273.png" alt="" width="426" height="220" /></p>
+<p><strong>MASTER宕机</strong></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127173439699-1160718744.png" alt="" width="498" height="229" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127173539387-1380372123.png" alt="" width="515" height="234" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127173807665-450383482.png" alt="" width="475" height="227" /></p>
+<p>&nbsp;</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127173839794-1426080983.png" alt="" width="513" height="303" /></p>
+<p><span style="font-size: 18pt;"><strong>开发运维常见问题</strong></span></p>
+<p>&nbsp;1.读写分离&nbsp; #读流量分摊到从节点，MySQL也是读写分离</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 可能遇到的问题：</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 复制数据延迟</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 读到过期数据</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 从节点故障&nbsp;&nbsp;</p>
+<p>&nbsp;2.主从配置不一致</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 例如maxmemory不一致：丢失数据&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 例如数据结构优化参数（hash-max-ziplist-entries）：内存不一致</p>
+<p>&nbsp;3.规避全量复制</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3.1&nbsp; &nbsp;第一次全量复制，不可避免&nbsp; &nbsp; &nbsp;小主节点 、低峰</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3.2&nbsp; &nbsp; 节点运行ID不匹配&nbsp; 主节点重启（运行ID变化）</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;故障转移，例如哨兵或集群（sentinals和Redis Cluster）</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3.3&nbsp; &nbsp;复制积压缓冲区不足</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 网络中断，部分复制无法满足</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 增大复制缓冲区配置rel_backlog_size 默认1m，网络&ldquo;增强&rdquo;。#10m</p>
+<p>&nbsp;4.规避复制风暴</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4.1&nbsp; &nbsp;单主节点复制风暴</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;问题：主节点重启，多从节点复制</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;解决：更换复制拓扑</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127195749751-2132664280.png" alt="" width="284" height="154" /></p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4.2&nbsp; &nbsp;单机器复制风暴</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127195919327-44582994.png" alt="" width="333" height="257" /></p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 主节点分散多机器</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</blockquote>
+<p>&nbsp;</p>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+        </div>
+        <p class="postfoot">
+            posted on 
+<span id="post-date">2018-11-27 15:27</span>&nbsp;
+<a href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>&nbsp;
+阅读(<span id="post_view_count">...</span>)&nbsp;
+评论(<span id="post_comment_count">...</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10026646" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(10026646);return false;">收藏</a>
+        </p>
+    </div>
+</div>
+
+<script src="https://common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 475351, cb_blogApp = 'jiang910', cb_blogUserGuid = '06c546e1-793f-4679-4e16-08d64a299ffb';
+    var cb_entryId = 10026646, cb_entryCreatedDate = '2018-11-27 15:27', cb_postType = 1; 
+    loadViewCount(cb_entryId);
+</script><a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<script>
+    var commentManager = new blogCommentManager();
+    commentManager.renderComments(0);
+</script>
+
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+    <script>
+        googletag.cmd.push(function () {
+            googletag.defineSlot("/1090369/C1", [300, 250], "div-gpt-ad-1546353474406-0").addService(googletag.pubads());
+            googletag.defineSlot("/1090369/C2", [468, 60], "div-gpt-ad-1539008685004-0").addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+    <div id="cnblogs_c1" class="c_ad_block">
+        <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;"></div>
+    </div>
+    <div id="under_post_news"></div>
+    <div id="cnblogs_c2" class="c_ad_block">
+        <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;">
+            <script>
+                if (new Date() >= new Date(2018, 9, 13)) {
+                    googletag.cmd.push(function () { googletag.display("div-gpt-ad-1539008685004-0"); });
+                }
+            </script>
+        </div>
+    </div>
+    <div id="under_post_kb"></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+        fixPostBody();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverAdT2();
+        deliverAdC1();
+        deliverAdC2();
+        loadNewsAndKb();
+        loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+</div>
+</div>
+<div id="leftmenu">
+
+
+<h3>导航</h3>
+<ul>
+    <li>
+        <a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/jiang910/">
+首页</a>
+
+    </li>
+    <li>
+        
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E6%98%8E%E8%A7%89%E4%B9%83%E8%87%AA%E6%B8%85">
+联系</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/jiang910/rss/">
+订阅</a>
+        
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/jiang910/rss/">
+    <img src="/skins/anothereon001/images/xml.gif" alt="订阅" />
+</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+    </li>
+</ul>
+
+
+<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>
+
+<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+
+<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+
+</div>
+</div>
+<div class="clear"></div>
+<div id="footer">
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	
+<a href="https://www.cnblogs.com/" id="Footer1_Hyperlink3" style="font-size: 12px; font-family: Verdana">博客园</a>
+	<br />
+	Copyright &copy; 2020 明觉乃自清
+<br /><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+</p>
+
+
+</div>
+</div>
+
+
+    
+</body>
+</html>

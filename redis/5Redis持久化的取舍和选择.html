@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <meta property="og:description" content="Redis持久化的取舍和选择 持久化的作用 RDB save命令容易阻塞 redis配置文件中可以设置/opt/moudels/redis/config save 900 1 #900s内改变1次就生" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>一站式学习Redis 从入门到高可用分布式实践（慕课）第五章 Redis持久化的取舍和选择 - 明觉乃自清 - 博客园</title>
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=bY1L8C4sDM5eS-FBZ53dCHGUGiTPogsnScmdZ88QTfs" />
+    <link id="MainCss" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001.min.css?v=vmUk-3Bh8LDsKXwjNHs2GDiFna-ZMTUgOJzjUaXTlPA" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/anothereon001/bundle-anothereon001-mobile.min.css?v=cJiDsI1JAuHHd-OAUWJeyE5JMXXsG4mmuUi2rVmEK1c" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/jiang910/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/jiang910/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/jiang910/wlwmanifest.xml" />
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=RN4A4Od0JtqUzcav7-WMHoGZ6h4UqCWUpkxU_3gbHZM"></script>
+    <script>
+        var currentBlogId = 475351;
+        var currentBlogApp = 'jiang910';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+    </script>
+    
+    
+    
+</head>
+<body>
+    <a name="top"></a>
+    
+    <div id="wrapper">
+<div id="header">
+
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>
+</h1>
+<div id="subtitle">
+
+</div>
+</div>
+<div id="sub"><div class="BlogStats">随笔 - 
+34, 文章 - 
+0, 评论 - 
+2, 引用 - 
+0</div>
+
+</div>
+
+
+
+
+</div>
+<div id="main_container">
+<div id="main_content">
+<div id="content">
+	<div id="post_detail">
+    <div class="post">
+        <h2>
+            
+<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/jiang910/p/10025879.html">一站式学习Redis 从入门到高可用分布式实践（慕课）第五章 Redis持久化的取舍和选择</a>
+
+        </h2>
+        <div class="postbody">
+            
+<div id="cnblogs_post_body" class="blogpost-body ">
+    <p><span style="font-size: 18pt;">Redis持久化的取舍和选择</span></p>
+<ul>
+<li><span style="font-size: 14pt;">持久化的作用</span></li>
+</ul>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127133138118-1749681943.png" alt="" width="334" height="157" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127133349050-1259959979.png" alt="" width="357" height="181" /></p>
+<ul>
+<li><span style="font-size: 14pt;">RDB</span></li>
+</ul>
+<p>&nbsp;<img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127133528670-83568536.png" alt="" width="363" height="108" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127133708018-602667013.png" alt="" width="399" height="297" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127133812773-1435105465.png" alt="" width="449" height="286" /></p>
+<p>&nbsp;save命令容易阻塞</p>
+<p>&nbsp;<img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127133938936-521077726.png" alt="" width="391" height="181" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127134038610-1811051985.png" alt="" width="451" height="174" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127134225601-2047646126.png" alt="" width="455" height="240" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127134345472-896367830.png" alt="" width="571" height="254" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127134701532-2007063984.png" alt="" width="474" height="266" /></p>
+<blockquote>
+<p>redis配置文件中可以设置/opt/moudels/redis/config</p>
+<p>save 900 1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #900s内改变1次就生成RDB</p>
+<p>save 300 10</p>
+<p>save 60 10000</p>
+<p>dbfilename dump.rdb&nbsp; &nbsp;#设置rdb的名称</p>
+<p>dir ./&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #rdb文件的位置</p>
+<p>stop-writes-on-bgsave-error&nbsp; yes</p>
+<p>rdbcompression&nbsp; yes</p>
+<p>rdbchecksum&nbsp; &nbsp; &nbsp; yes</p>
+</blockquote>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127135310646-642199154.png" alt="" width="570" height="262" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127140702593-1397785199.png" alt="" width="396" height="267" /></p>
+<p>触发机制---不容忽略方式</p>
+<p>1.全量复制&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;主从复制</p>
+<p>2.debug reload&nbsp; &nbsp;debug机制</p>
+<p>3.shutdown&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<ul>
+<li><span style="font-size: 14pt;">AOF</span></li>
+</ul>
+<p>&nbsp;RDB现存问题：</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;耗时，耗性能&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;--- fork（）， IO性能</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 不可控，丢失数据</p>
+<p>&nbsp;什么是AOF</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127141538691-887558257.png" alt="" width="428" height="226" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127141642461-1887883903.png" alt="" width="428" height="234" /></p>
+<p>&nbsp;AOF三种策略</p>
+<p>&nbsp; &nbsp; &nbsp; always&nbsp; &nbsp;&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; everysec</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;no</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127141850306-2124555477.png" alt="" width="288" height="89" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127141954628-166619346.png" alt="" width="294" height="96" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127142053174-1344738046.png" alt="" width="358" height="116" /></p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127142151972-1507258714.png" alt="" width="366" height="153" /></p>
+<p>&nbsp;AOF重写</p>
+<p>作用：减少磁盘占用量</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;加速恢复速度</p>
+<p>AOF重写实现两种方式</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1. bgrewriteaof</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127142724148-1596955276.png" alt="" width="375" height="193" /></p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2. AOF重写配置</p>
+<p><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127142829541-1028415526.png" alt="" width="288" height="182" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127142931575-294256655.png" alt="" width="387" height="182" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127143319682-47026694.png" alt="" width="372" height="192" /></p>
+<p>在客户端修改配置文件：</p>
+<blockquote>
+<p>127.0.0.1:6379&gt; config get appendonly<br />1) "appendonly"<br />2) "no"<br />127.0.0.1:6379&gt; config set appendonly yes<br />OK<br />127.0.0.1:6379&gt; config rewrite<br />OK<br />127.0.0.1:6379&gt; </p>
+
+
+
+
+</blockquote>
+<ul>
+<li><span style="font-size: 14pt;">RDB和AOF的决择</span></li>
+
+
+
+
+</ul>
+<p>&nbsp;<img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127144705421-1695491361.png" alt="" width="395" height="214" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127145013380-763871111.png" alt="" width="392" height="306" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127145139723-482974900.png" alt="" width="401" height="318" /><img src="https://img2018.cnblogs.com/blog/1537355/201811/1537355-20181127145258492-876883593.png" alt="" width="390" height="356" /></p>
+<p>&nbsp;</p>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+        </div>
+        <p class="postfoot">
+            posted on 
+<span id="post-date">2018-11-27 13:34</span>&nbsp;
+<a href="https://www.cnblogs.com/jiang910/">明觉乃自清</a>&nbsp;
+阅读(<span id="post_view_count">...</span>)&nbsp;
+评论(<span id="post_comment_count">...</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10025879" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(10025879);return false;">收藏</a>
+        </p>
+    </div>
+</div>
+
+<script src="https://common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 475351, cb_blogApp = 'jiang910', cb_blogUserGuid = '06c546e1-793f-4679-4e16-08d64a299ffb';
+    var cb_entryId = 10025879, cb_entryCreatedDate = '2018-11-27 13:34', cb_postType = 1; 
+    loadViewCount(cb_entryId);
+</script><a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<script>
+    var commentManager = new blogCommentManager();
+    commentManager.renderComments(0);
+</script>
+
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+    <script>
+        googletag.cmd.push(function () {
+            googletag.defineSlot("/1090369/C1", [300, 250], "div-gpt-ad-1546353474406-0").addService(googletag.pubads());
+            googletag.defineSlot("/1090369/C2", [468, 60], "div-gpt-ad-1539008685004-0").addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+    <div id="cnblogs_c1" class="c_ad_block">
+        <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;"></div>
+    </div>
+    <div id="under_post_news"></div>
+    <div id="cnblogs_c2" class="c_ad_block">
+        <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;">
+            <script>
+                if (new Date() >= new Date(2018, 9, 13)) {
+                    googletag.cmd.push(function () { googletag.display("div-gpt-ad-1539008685004-0"); });
+                }
+            </script>
+        </div>
+    </div>
+    <div id="under_post_kb"></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+        fixPostBody();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverAdT2();
+        deliverAdC1();
+        deliverAdC2();
+        loadNewsAndKb();
+        loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+</div>
+</div>
+<div id="leftmenu">
+
+
+<h3>导航</h3>
+<ul>
+    <li>
+        <a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/jiang910/">
+首页</a>
+
+    </li>
+    <li>
+        
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E6%98%8E%E8%A7%89%E4%B9%83%E8%87%AA%E6%B8%85">
+联系</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/jiang910/rss/">
+订阅</a>
+        
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/jiang910/rss/">
+    <img src="/skins/anothereon001/images/xml.gif" alt="订阅" />
+</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+    </li>
+</ul>
+
+
+<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>
+
+<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+
+<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+
+</div>
+</div>
+<div class="clear"></div>
+<div id="footer">
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	
+<a href="https://www.cnblogs.com/" id="Footer1_Hyperlink3" style="font-size: 12px; font-family: Verdana">博客园</a>
+	<br />
+	Copyright &copy; 2020 明觉乃自清
+<br /><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+</p>
+
+
+</div>
+</div>
+
+
+    
+</body>
+</html>
