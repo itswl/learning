@@ -4,16 +4,32 @@
 2. Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
 3. Redis支持数据的备份，即master-slave模式的数据备份
 4. 高可用，分布式
+5. 功能丰富，发布订阅，事物，pipeline,lua脚本
+6. 不依赖外部库，单线程模型
+7. 高可用 redis-sentinel ,分布式 redis-cluster
+
 
 Redis运行在内存中但是可以持久化到磁盘(性能极高)(aof或)，所以在对不同数据集进行高速读写时需要权衡内存，应为数据量不能大于硬件内存.
 
-**主要用途** ： 数据库，缓存和消息中间件
+
+**主要用途** ： 数据库，缓存和消息中间件,计数器，排行榜，消息队列，社交网络，实时系统
+
+### 执行文件
+`redis-check-aof` aof文件检查工具
+`redis-check-dump` rdb文件检查工具
+`redis-sentinel` sentinel服务器
+`redis-server` redis服务器
+`redis-cli` redis命令行客户端
+`redis-benchmark` redis性能测试工具
+
+
 
 ## 安装
 ```
 wget http://download.redis.io/releases/redis-5.0.5.tar.gz
 tar xzf redis-5.0.5.tar.gz
-cd redis-5.0.5
+ln -s redis-5.0.5 redis
+cd redis
 make 
 
 
