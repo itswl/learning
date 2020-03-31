@@ -15,7 +15,7 @@ vi /root/.jupyter/jupyter_notebook_config.py
  
 ln -s /root/flask_nginx.conf /etc/nginx/conf.d/
 
-setsid uwsgi --ini ./flask_uwsgi.ini &
+setsid uwsgi --ini /root/flask_uwsgi.ini &
 
 
 nohup jupyter notebook --allow-root  > jupyter.log 2>&1 &
